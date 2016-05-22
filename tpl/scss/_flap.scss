@@ -1,0 +1,99 @@
+/* ====================== */
+/* Flaps */
+/* ====================== */
+
+.flap {
+  background: $color-site-2;
+}
+
+.wrap-flap {
+  @extend .clearfix;
+  @extend .center;
+  position: relative;
+  padding: $space-5 $space-7;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -$space-3;
+    width: $space-3;
+    height: 20em;
+    background: $color-site-1;
+    @include transform(translate(0, -50%));
+  }
+}
+
+.wrap-title-flap {
+  padding: $space-4 0;
+}
+
+.title-flap {
+  font-size: 15px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* ====================== */
+/* Content */
+/* ====================== */
+
+.wrap-list-flap {
+  position: relative;
+  overflow: visible;
+}
+
+.bloc-list-flap {
+  width: 100%;
+  overflow: hidden;
+  //box-shadow: 0px 100px 100px 0px rgba(0, 0, 0, 0.5);
+}
+
+.list-flap {
+  display: flex;
+  margin: 0 0 0 -15%;
+  padding: $space-5 0;
+  width: 130%;
+}
+
+.wrap-item-flap {
+  position: relative;
+  float: left;
+  flex: 1;
+  margin: $space-3;
+  overflow: hidden;
+  @include transition(all .5s ease-out);
+  //@extend .box-shadow;
+
+  &:nth-child(1) {
+    @include transform(translate(0, 5%) skew(-25deg));
+  }
+
+  &:nth-child(2) {
+    @include transform(skew(-25deg));
+  }
+
+  &:nth-child(3) {
+    @include transform(translate(0, -5%) skew(-25deg));
+  }
+
+  &:hover {
+    flex: 2;
+  }
+}
+
+.item-flap {
+  height: 512px;
+  background: $color-site-1;
+
+  .img-item-flap {
+    position: absolute; top: 50%; left: 50%;
+    @include transform(skew(25deg) translate(-50%, -50%));
+  }
+}
+
+.item-txt-flap {
+  position: absolute;
+  left: -50px; top: 50%;
+  @include transform(skew(25deg));
+}

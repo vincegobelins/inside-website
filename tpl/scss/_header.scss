@@ -13,8 +13,8 @@
   z-index: 1;
   position: absolute;
   top: 0; right: 0;
-  width: 50%;
-  height: 900px;
+  width: 47%;
+  height: 899px;
   background: $color-site-1;
 }
 
@@ -33,7 +33,7 @@
 
 .tools {
   float: right;
-  padding: $space-5;
+  padding: $space-7;
 }
 
 /* ====================== */
@@ -71,6 +71,54 @@
   }
 }
 
+/* ====================== */
+/* Bloc Facebook */
+/* ====================== */
+
+.bloc-fb {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: $space-3 $space-2;
+}
+
+.bloc-count-fb {
+	position: relative;
+	display: block;
+	margin-bottom: $space-1;
+	text-align: center;
+	border: 1px solid $color-site-2;
+
+	&:after, &:before {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		height: 0;
+		width: 0;
+		border: solid transparent;
+	}
+
+	&:before {
+		border-color: rgba(6, 0, 199, 0);
+		border-top-color: $color-site-2;
+		border-width: 7px;
+		margin-left: -7px;
+	}
+
+	&:after {
+		border-color: rgba(253, 40, 79, 0);
+		border-top-color: $color-site-1;
+		border-width: 6px;
+		margin-left: -6px;
+	}
+}
+
+.count-fb {
+	color: $color-text-3;
+	font-weight: 900;
+	//font-size: 11px;
+}
 
 @media only screen and (max-width: $mq-7) {
 }

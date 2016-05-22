@@ -5,11 +5,17 @@
 .intro {
   @extend .clearfix;
   @extend .center;
-  @extend .box-shadow;
   z-index: 1;
-  margin-top: $space-5;
-  padding : 0 $space-6;
+  position: static;
+  margin-top: $space-6;
   background: $color-site-2;
+}
+
+.wrap-intro {
+  @extend .clearfix;
+  @extend .box-shadow;
+  position: relative;
+  padding : $space-1 $space-8;
 }
 
 /* ====================== */
@@ -22,7 +28,7 @@
 
 .menu-item {
   float: left;
-  padding: $space-5 $space-5 $space-5 0;
+  padding: $space-4 $space-7 $space-4 0;
 }
 
 .link-menu-item {
@@ -120,7 +126,7 @@
 }
 
 .bloc-desc-intro {
-  padding: $space-5 0;
+  padding: $space-4 0;
 }
 
 .desc-intro {
@@ -137,9 +143,9 @@
   z-index: 20;
   position: absolute;
   top: 13em;
-  right: -$space-3;
-  width: 35%;
-  height: 100%;
+  right: -$space-5;
+  width: 44em;
+  height: 110%;
   background: $color-site-1;
 }
 
@@ -151,9 +157,44 @@
   font-size: 28px;
   font-weight: 600;
   font-style: italic;
+  line-height: 1.5em;
 
   .hightlight {
     font-weight: 700;
     font-style: normal;
   }
+}
+
+/* ====================== */
+/* Scroll Top */
+/* ====================== */
+
+.bloc-scroll-top {
+	z-index: 20;
+	position: absolute;
+	bottom: 0;
+	left: 53%;
+	padding: $space-5;
+}
+
+.scroll-top {
+	z-index: 20;
+	position: relative;
+	font-size: 16px;
+	font-weight: 700;
+	color: $color-site-2;
+  letter-spacing: 4px;
+	text-transform: uppercase;
+
+	&:before {
+		z-index: 20;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 13px;
+		height: 48px;
+		background: url("../img/arrow.png");
+		@include transform(translate(-50%, -150%));
+	}
 }
