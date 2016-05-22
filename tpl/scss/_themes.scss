@@ -1,0 +1,44 @@
+/* ====================== */
+/* boucle pour gestion des couleurs et positionnement backgroud automatiques */
+/* ====================== */
+
+$colors: $color-second-1, $color-second-2;
+
+/* boucle sur le nombre de couleurs et gere les changements lies aux classes .theme-n */
+@for $i from 1 through length($colors) {
+    $this-color: nth($colors, $i); 
+
+    .theme-#{$i} {
+		.test {
+            background: $this-color;
+        }
+		.test {
+            border-color: $this-color;
+            color: $this-color;
+        }
+		.text-content .link-content:hover:before, 
+		.text-content .link-content:focus:before {
+			background: url('../img/themes.png') left -#{($i - 1) * 50}px no-repeat;
+		}
+		.text-content .link-content-download:hover:before, 
+		.text-content .link-content-download:focus:before {
+			background-position: -60px -#{($i - 1) * 50}px;
+		}
+		.text-content .link-content-contact:hover:before, 
+		.text-content .link-content-contact:focus:before {
+			background-position: -120px -#{($i - 1) * 50}px;
+		}
+    }
+	
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+		.backgroundsize {
+			.theme-#{$i} {
+				.text-content .link-content:hover:before, 
+				.text-content .link-content:focus:before {
+					background-image: url('../img/themes@2x.png');
+					background-size: 200px;
+				}
+			}			
+		}
+	}
+}

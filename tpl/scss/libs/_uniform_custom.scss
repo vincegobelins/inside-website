@@ -1,0 +1,267 @@
+
+/* General settings */
+
+div.selector,
+div.selector span,
+div.checker span,
+div.radio span,
+div.uploader,
+div.uploader span.action,
+div.button,
+div.button span {
+	background: none;
+}
+
+.selector,
+.checker,
+.button,
+.radio,
+.uploader {
+	vertical-align: top;
+}
+
+/* Input & Textarea */
+
+input.text,
+input.email,
+input.search,
+input.tel,
+input.url,
+input.datetime,
+input.date,
+input.month,
+input.week,
+input.time,
+input.datetime-local,
+input.number,
+input.color,
+input.password,
+select.uniform-multiselect,
+textarea.uniform {
+	padding: 0;
+	background: none;
+}
+
+
+input.text:focus,
+input.email:focus,
+input.search:focus,
+input.tel:focus,
+input.url:focus,
+input.datetime:focus,
+input.date:focus,
+input.month:focus,
+input.week:focus,
+input.time:focus,
+input.datetime-local:focus,
+input.number:focus,
+input.color:focus,
+input.password:focus,
+select.uniform-multiselect:focus,
+textarea.uniform:focus {
+	background: none;
+}
+
+/* Select */
+
+div.selector {
+	height: auto; padding: 0; width: 63% !important; border-radius: 5px;
+	background: none;
+	line-height: normal;
+	box-shadow: $color-shadow-1 0 -1px inset;
+}
+
+div.selector.fixedWidth {
+	width: auto;
+}
+
+div.selector span {
+	position: relative;
+	padding: 8px 35px 8px 10px; height: auto; width: auto !important;
+	border: 1px solid $color-border-1; border-radius: 5px;
+	background: $color-bg-4 url('../img/uniform.png') right -100px no-repeat; 
+	line-height: normal;
+	cursor: pointer;
+}
+
+div.selector.fixedWidth span {
+	width: auto;
+}
+
+div.selector select {
+	top: 0; left: 0;
+	height: 100%; 
+}
+
+div.selector select option {
+	padding: 5px 10px;
+	background: $color-white;
+}
+
+div.selector.hover span,
+div.selector:hover span,
+div.selector.focus span {
+	border-color: $color-site-1;
+	background-color: $color-site-1; background-position: right -100px; color: $color-white;
+}
+
+div.selector.error span {
+	border-color: $color-error-1;
+}
+
+div.selector.focus:active span,
+div.selector:hover:active span,
+div.selector.active:hover span,
+div.selector.focus.active span,
+div.selector.disabled span,
+div.selector.disabled:active span,
+div.selector.disabled.active span {
+	background-position: right -100px;
+}
+
+/* Checkbox */
+
+div.checker,
+div.checker span,
+div.checker input {
+	display: inline-block;
+	width: auto; height: auto;
+}
+
+div.checker span {
+	position: relative;
+	margin: 0 5px 0 0;
+	border: 1px solid $color-border-1; border-radius: 5px;
+	background: $color-bg-4;
+	box-shadow: $color-shadow-1 0 -1px inset;
+	@include transition;
+	cursor: pointer;
+}
+
+div.checker input {
+	margin: 0 !important; width: 14px; height: 14px;
+}
+
+div.checker.focus span,
+div.checker:hover span {
+	border-color: $color-border-4;
+}
+
+div.checker.error span {
+	border-color: $color-border-2;
+}
+
+div.checker span.checked {
+	border-color: $color-border-4;
+	background: $color-bg-1 url('../img/uniform.png') left top no-repeat;
+}
+
+div.checker:active span.checked,
+div.checker.active span.checked {
+	background-position: left top;
+}
+
+div.checker.focus span.checked,
+div.checker:hover span.checked {
+	border-color: $color-border-4;
+	background-position: left top;
+}
+
+div.checker.focus:active span.checked,
+div.checker:hover:active span.checked,
+div.checker.active:hover span.checked,
+div.checker.active.focus span.checked,
+div.checker.disabled span.checked,
+div.checker.disabled:active span.checked,
+div.checker.disabled.active span.checked {
+	background-position: -165px -75px;
+}
+
+/* Radio */
+
+div.radio,
+div.radio span,
+div.radio input {
+	width: auto; height: auto;
+}
+
+div.radio span {
+	position: relative;
+	margin: 0 5px 0 0; width: 8px; height: 8px;
+	border: 3px solid transparent; border-radius: 5px;
+	background: $color-white;
+	@include transition;
+}
+
+div.radio input {
+	margin: 0 !important;
+}
+
+div.radio.focus span,
+div.radio:hover span {
+	border-color: $color-border-2;
+}
+
+div.radio.error span {
+	border-color: $color-error-1;
+}
+
+div.radio span.checked {
+	border-color: $color-border-4;
+}
+
+div.radio:active span.checked,
+div.radio.active span.checked,
+div.radio.focus span.checked,
+div.radio:hover span.checked,
+div.radio.focus:active span.checked,
+div.radio:hover:active span.checked,
+div.radio.focus.active span.checked,
+div.radio.active:hover span.checked,
+div.radio.disabled span.checked,
+div.radio.disabled:active span.checked,
+div.radio.disabled.active span.checked {
+	border-color: $color-border-4;
+}
+
+/* Uploader */
+
+div.uploader {
+	width: auto; height: auto;
+	background: none;
+}
+
+div.uploader span.action {	
+	position: relative; z-index: 1;
+	width: 70px; margin: 0 0 0 7px; padding: 7px 5px 8px;
+	border: 1px solid $color-border-1;
+	background: $color-bg-2;
+	font-size: 0.929em; line-height: normal;
+	@include transition;
+}
+
+div.uploader span.filename {
+	display: block; position: relative; z-index: 0;
+	padding: 7px 10px 8px; width: 240px; margin: 0 0 0 10px;
+	font-size: 0.929em; line-height: normal;
+}
+
+div.uploader input {
+	top: 0; right: 0; z-index: 10;
+	width: 348px !important; padding: 0;
+	text-align: right;
+	cursor: pointer;
+}
+
+div.uploader input:hover + span.filename + span.action {
+	background: $color-bg-2; color: $color-white;
+}
+
+div.uploader.focus span.action {
+	border-color: $color-border-2;
+}
+
+div.uploader.error span.action {
+	border-color: $color-error-1;
+}
+

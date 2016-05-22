@@ -1,0 +1,44 @@
+.ui-datepicker-trigger {
+    position: relative;
+    margin: 0 0 0 5px; padding: 9px;
+    background: $color-bg-3; color: $color-white;
+    border-radius: 3px;
+    @include transition;
+    img {
+		display: block;
+		margin: 0 auto;
+    }
+}
+
+.ui-datepicker-trigger:hover {
+    background: $color-bg-2;
+}
+
+.ui-widget-header {
+    border-color: $color-border-1;
+    background: $color-bg-1;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+    text-align: center;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    color: $color-text-1;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border-color: $color-border-1;
+    background: $color-bg-3; color: $color-white;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    border-color: $color-border-1;
+    background: $color-site-1; color: $color-white;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, 
+.ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    border-color: $color-border-1;
+    background: $color-bg-2; color: $color-white; 
+}

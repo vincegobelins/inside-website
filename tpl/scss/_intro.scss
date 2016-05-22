@@ -1,0 +1,159 @@
+/* ====================== */
+/* Intro */
+/* ====================== */
+
+.intro {
+  @extend .clearfix;
+  @extend .center;
+  @extend .box-shadow;
+  z-index: 1;
+  margin-top: $space-5;
+  padding : 0 $space-6;
+  background: $color-site-2;
+}
+
+/* ====================== */
+/* Navigation */
+/* ====================== */
+
+.main-nav {
+  @extend .clearfix;
+}
+
+.menu-item {
+  float: left;
+  padding: $space-5 $space-5 $space-5 0;
+}
+
+.link-menu-item {
+  @extend .link;
+}
+
+/* ====================== */
+/* Bloc video */
+/* ====================== */
+
+.bloc-video-intro {
+  z-index: 10;
+  position: relative;
+  width: 100%;
+}
+
+.content-video-intro {
+  margin-top: -50px;
+}
+
+.video-intro {
+  width: 90%;
+  height: auto;
+}
+
+.bloc-title-video-intro {
+  z-index: 30;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  @include transform(translate(0, -50%));
+}
+
+.title-video-intro {
+  display: block;
+  font-size: 70px;
+  font-weight: 300;
+  letter-spacing: 4px;
+}
+
+.bloc-shape-video-intro {
+  mix-blend-mode: overlay;
+  z-index: 30;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 65%;
+  text-align: center;
+  @include transform(translate(-50%, -50%));
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 2.5em;
+    height: 100%;
+    background: $color-site-2;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    right: 0;
+  }
+}
+
+.shape-video-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2.5em;
+    background: $color-site-2;
+  }
+
+  &:before {
+    top: 0;
+  }
+
+  &:after {
+    bottom: 0;
+  }
+}
+
+.bloc-desc-intro {
+  padding: $space-5 0;
+}
+
+.desc-intro {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* ====================== */
+/* Subtitle Intro */
+/* ====================== */
+
+.bloc-subtitle-intro {
+  @extend .box-shadow;
+  z-index: 20;
+  position: absolute;
+  top: 13em;
+  right: -$space-3;
+  width: 35%;
+  height: 100%;
+  background: $color-site-1;
+}
+
+.subtitle-intro {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: $space-3;
+  font-size: 28px;
+  font-weight: 600;
+  font-style: italic;
+
+  .hightlight {
+    font-weight: 700;
+    font-style: normal;
+  }
+}

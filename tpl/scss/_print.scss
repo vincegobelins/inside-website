@@ -1,0 +1,61 @@
+/* ====================== */
+/* print */
+/* ====================== */
+@media print {
+    * { text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+    pre, blockquote { page-break-inside: avoid; }
+    thead { display: table-header-group; }
+    tr, img { page-break-inside: avoid; }
+    img { max-width: 100% !important; }
+	
+    @page {
+        size: portrait 21cm 29.7cm;
+        margin: 1cm;
+    }
+	
+    p, h2, h3 { orphans: 3; widows: 3; }
+    h2, h3 { page-break-after: avoid; }
+
+	.block-notice,
+    #footer,
+    .links-nav,
+    .print-page {
+        display: none;
+    }
+    .title-article {
+        font-size: 3em;
+    }
+    .chapo {
+        font-size: 1.4em;
+    }
+    .editor-wysiwyg {
+        a {
+            text-decoration: underline;
+        }
+        h2 {		
+        }
+        h3 {
+        }
+        h4 {
+        }
+        h5 {
+        }
+        h6 {
+        }
+        ul, ol {
+            padding-left: 0;
+        }
+        ul, ul li {
+            list-style: square;
+            background: transparent;
+        }
+        ol, ol li {
+            list-style: decimal;
+        }
+        ol li {
+            &:before{
+                display: none;
+            }
+        }
+    }
+}

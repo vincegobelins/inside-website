@@ -1,0 +1,30 @@
+@import "bourbon";
+@import "reset";
+@import "variables";
+@import "common";
+@import "form";
+@import "header";
+@import "footer";
+@import "tools";
+@import "intro";
+@import "content";
+
+/* ====================== */
+/* body */
+/* ====================== */
+
+body {
+  &.dev {
+    background: url('../img/tmp/fond.jpg') top center no-repeat;
+    opacity: 0.5;
+  }
+}
+
+
+/* ====================== */
+/* sitemap */
+/* ====================== */
+
+@import "adapt";
+@import "responsive";
+@import "print";

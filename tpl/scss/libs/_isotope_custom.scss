@@ -1,0 +1,31 @@
+/* ====================== */
+/* isotope */
+/* ====================== */
+.isotope {
+    overflow: visible !important;
+}
+
+.isotope-item {
+    z-index: 2;
+    @include transition;
+}
+
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+
+.msg-no-result {
+    clear: both; position: relative; overflow: hidden;
+    max-height: 0; margin: 0 0 1em;
+    background: $color-white; color: $color-site-2;
+    font-family: $font-1; font-size: 1.6em; text-align: center;
+    @include transition;
+    &.visible {
+        max-height: 100em;
+    }
+    p {
+        padding: 1em 1.5em;
+    }
+}
+

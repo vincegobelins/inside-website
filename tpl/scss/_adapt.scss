@@ -1,0 +1,57 @@
+/* ====================== */
+/* ie */
+/* ====================== */
+
+.lt-ie9 {
+
+}
+
+/* ====================== */
+/* javascript */
+/* ====================== */
+.js {
+    .body-side {
+        .nav-main-level-2 {
+            max-height: 0;
+            padding: 0 15px;
+        }
+        .item-nav-main-level-1.open {
+            .nav-main-level-2 {
+                max-height: 1000em;
+                padding: 15px;
+            }
+        }
+    }
+}
+
+.no-js {
+    .faded {
+        opacity: 1;
+    }
+}
+
+/* ====================== */
+/* dependances modernizr */
+/* ====================== */
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+    .backgroundsize {
+        .cta-nav-resp {
+            background-image: url('../img/sprite-1@2x.png');
+            background-size: 300px;
+        }
+    }
+
+}
+
+.placeholder {
+    .hidden-placeholder {
+        position: absolute; top: -99999em; left: -99999em;
+    }
+}
+
+.svgasimg {
+	.bx-prev:before,
+	.bx-next:before {
+		background-image: url('../img/sprite-1.svg');
+	}
+}

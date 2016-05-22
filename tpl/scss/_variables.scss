@@ -1,0 +1,143 @@
+/* ====================== */
+/* mixins compass */
+/* ====================== */
+$default-transition-duration: .15s;
+$default-transition-function: ease-in-out;
+
+/* ====================== */
+/* colors */
+/* ====================== */
+$color-site-1: #fc2850; /*--- red ---*/
+$color-site-2: #0500cc; /*--- blue ---*/
+
+$color-text-1: #ffffff; /*--- white ---*/
+$color-text-2: #fc2850; /*--- red ---*/
+$color-text-3: #0500cc; /*--- blue ---*/
+
+$color-bg-1: #fc2850; /*--- red ---*/
+$color-bg-2: #0500cc; /*--- blue ---*/
+
+$color-border-1: #5a5a5a; /*--- dark grey ---*/
+$color-border-2: #acadaf; /*--- grey ---*/
+$color-border-3: #f3f3f3; /*--- very light grey ---*/
+
+$color-error-1: #f8941e; /*--- orange ---*/
+$color-error-2: #f8c588; /*--- light orange ---*/
+
+$color-white: #fff; /*--- white ---*/
+$color-black: #000; /*--- black ---*/
+
+/* ====================== */
+/* font */
+/* ====================== */
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-Bold.eot');
+	src: url('../font/National-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-Bold.woff') format('woff'),
+		url('../font/National-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-MediumItalic.eot');
+	src: url('../font/National-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-MediumItalic.woff') format('woff'),
+		url('../font/National-MediumItalic.ttf') format('truetype');
+	font-weight: 600;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-BoldItalic.eot');
+	src: url('../font/National-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-BoldItalic.woff') format('woff'),
+		url('../font/National-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-Regular.eot');
+	src: url('../font/National-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-Regular.woff') format('woff'),
+		url('../font/National-Regular.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-LightItalic.eot');
+	src: url('../font/National-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-LightItalic.woff') format('woff'),
+		url('../font/National-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-Light.eot');
+	src: url('../font/National-Light.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-Light.woff') format('woff'),
+		url('../font/National-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-ThinItalic.eot');
+	src: url('../font/National-ThinItalic.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-ThinItalic.woff') format('woff'),
+		url('../font/National-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-BlackItalic.eot');
+	src: url('../font/National-BlackItalic.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-BlackItalic.woff') format('woff'),
+		url('../font/National-BlackItalic.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'National';
+	src: url('../font/National-Black.eot');
+	src: url('../font/National-Black.eot?#iefix') format('embedded-opentype'),
+		url('../font/National-Black.woff') format('woff'),
+		url('../font/National-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+$font-1: 'National';
+
+/* ====================== */
+/* grid */
+/* ====================== */
+
+$space-inline: -.31em;
+$space-1: 1em;
+$space-2: 2em;
+$space-3: 3em;
+$space-4: 4em;
+$space-5: 5em;
+$space-6: 13em;
+
+$mq-1: 25em; /* --- 400px --- */
+$mq-2: 32em; /* --- 512px --- */
+$mq-3: 38em; /* --- 608px --- */
+$mq-4: 50em; /* --- 800px --- */
+$mq-5: 58em; /* --- 928px --- */
+$mq-6: 76em; /* --- 1216px --- */
+$mq-7: 85em; /* --- 1360px --- */

@@ -1,0 +1,88 @@
+/* ====================== */
+/* Header */
+/* ====================== */
+
+.header {
+  @extend .clearfix;
+  @extend .center;
+  position: relative;
+}
+
+.wrap-header {
+	@extend .box-shadow;
+  z-index: 1;
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%;
+  height: 900px;
+  background: $color-site-1;
+}
+
+/* ====================== */
+/* Logo */
+/* ====================== */
+
+.logo {
+  display: inline-block;
+  padding: $space-5;
+}
+
+.title-logo {
+  display: none;
+}
+
+.tools {
+  float: right;
+  padding: $space-5;
+}
+
+/* ====================== */
+/* Subscribe */
+/* ====================== */
+
+.item-tool {
+  float: left;
+
+  &:last-child {
+    .link-tool {
+      &:after {
+        content: "";
+      }
+    }
+  }
+}
+
+.link-tool {
+  @extend .link;
+  margin-left: $space-1;
+  font-weight: 300;
+
+  &:before {
+    background: $color-site-2;
+  }
+
+  &:after {
+    content: "/";
+    position: absolute; top: 0; right: -0.75em;
+  }
+
+  &:hover {
+    font-weight: 300;
+  }
+}
+
+
+@media only screen and (max-width: $mq-7) {
+}
+@media only screen and (max-width: $mq-6) {
+}
+@media only screen and (max-width: $mq-5) {
+}
+@media only screen and (max-width: $mq-4) {
+}
+@media only screen and (max-width: $mq-3) {
+}
+@media only screen and (max-width: $mq-2) {
+}
+@media only screen and (max-width: $mq-1) {
+}

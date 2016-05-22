@@ -1,0 +1,58 @@
+.jspPane {
+	@include transition;
+}
+
+.jspHorizontalBar {
+	background: none;
+	.jspDrag {
+		height: 5px;
+		border-top: 5px solid $color-border-1; border-bottom: 5px solid $color-border-1; 
+	}
+}
+
+.jspTrack {
+	background: none;
+	cursor: pointer;
+}
+
+.jspDrag {
+	background: $color-bg-4;
+	@include transition;
+	&:hover {
+		background: $color-bg-2;
+	}
+}
+
+.jspArrow {
+	background: url('../img/sprite.png') -30px -218px no-repeat;
+	@include transition;
+	&:hover,
+	&:focus {
+		background-position: -30px -248px;
+	}
+}
+
+.jspArrow.jspDisabled {
+	background: url('../img/sprite.png') -30px -218px no-repeat;
+	opacity: .3;
+}
+
+.jspArrowRight {
+	background-position: -55px -218px;
+	&:hover,
+	&:focus {
+		background-position: -55px -248px;
+	}
+}
+
+.jspArrowRight.jspDisabled {
+	background-position: -55px -218px;
+}
+
+.jspVerticalBar .jspArrow {
+	height: 20px;
+}
+
+.jspHorizontalBar .jspArrow {
+	width: 20px;
+}
