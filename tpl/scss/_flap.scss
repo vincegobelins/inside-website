@@ -63,7 +63,6 @@
   margin: $space-3;
   overflow: hidden;
   @include transition(all .5s ease-out);
-  //@extend .box-shadow;
 
   &:nth-child(1) {
     @include transform(translate(0, 5%) skew(-25deg));
@@ -82,9 +81,12 @@
   }
 }
 
+
+
 .item-flap {
   height: 512px;
   background: $color-site-1;
+  @extend .box-shadow;
 
   .img-item-flap {
     position: absolute; top: 50%; left: 50%;

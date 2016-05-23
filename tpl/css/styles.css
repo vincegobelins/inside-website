@@ -562,7 +562,7 @@ a:link {
 /* ====================== */
 /* classes projet */
 /* ====================== */
-.box-shadow, .wrap-header, .wrap-intro, .bloc-subtitle-intro {
+.box-shadow, .wrap-header, .wrap-intro, .bloc-subtitle-intro, .item-flap {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
 }
 
