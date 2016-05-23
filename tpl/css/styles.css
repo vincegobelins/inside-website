@@ -562,8 +562,12 @@ a:link {
 /* ====================== */
 /* classes projet */
 /* ====================== */
-.box-shadow, .wrap-header, .wrap-intro, .bloc-subtitle-intro, .item-flap {
+.box-shadow, .wrap-header, .wrap-intro, .bloc-subtitle-intro {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow-min, .bloc-img-item-flap {
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
 }
 
 /* ====================== */
@@ -1196,7 +1200,6 @@ button[type="submit"],
   left: -3em;
   width: 3em;
   height: 20em;
-  background: #fc2850;
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
@@ -1219,11 +1222,9 @@ button[type="submit"],
 /* ====================== */
 .wrap-list-flap {
   position: relative;
-  overflow: visible;
 }
 
 .bloc-list-flap {
-  width: 100%;
   overflow: hidden;
 }
 
@@ -1234,26 +1235,68 @@ button[type="submit"],
   width: 130%;
 }
 
-.wrap-item-flap {
-  position: relative;
+.item-flap {
   float: left;
   flex: 1;
-  margin: 3em;
+  margin: 2em;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.item-flap:nth-child(1) .item-txt-flap {
+  left: -7em;
+}
+
+.item-flap:nth-child(1) .bloc-img-item-flap {
+  top: 3em;
+}
+
+.item-flap:nth-child(2) .item-txt-flap {
+  z-index: 1;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.item-flap:nth-child(3) .item-txt-flap {
+  right: -17em;
+  text-align: right;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.item-flap:nth-child(3) .bloc-img-item-flap {
+  top: -3em;
+}
+
+.item-flap:hover {
+  flex: 1.5;
+}
+
+.item-flap:hover .bloc-img-item-flap:after {
+  opacity: 0.8;
+}
+
+.item-flap:hover:nth-child(1) .item-txt-flap {
+  left: 4em;
+}
+
+.item-flap:hover:nth-child(3) .item-txt-flap {
+  right: -3em;
+}
+
+.bloc-img-item-flap {
+  position: relative;
   overflow: hidden;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-}
-
-.wrap-item-flap:nth-child(1) {
-  -webkit-transform: translate(0, 5%) skew(-25deg);
-  -moz-transform: translate(0, 5%) skew(-25deg);
-  -ms-transform: translate(0, 5%) skew(-25deg);
-  -o-transform: translate(0, 5%) skew(-25deg);
-  transform: translate(0, 5%) skew(-25deg);
-}
-
-.wrap-item-flap:nth-child(2) {
+  height: 512px;
   -webkit-transform: skew(-25deg);
   -moz-transform: skew(-25deg);
   -ms-transform: skew(-25deg);
@@ -1261,43 +1304,50 @@ button[type="submit"],
   transform: skew(-25deg);
 }
 
-.wrap-item-flap:nth-child(3) {
-  -webkit-transform: translate(0, -5%) skew(-25deg);
-  -moz-transform: translate(0, -5%) skew(-25deg);
-  -ms-transform: translate(0, -5%) skew(-25deg);
-  -o-transform: translate(0, -5%) skew(-25deg);
-  transform: translate(0, -5%) skew(-25deg);
-}
-
-.wrap-item-flap:hover {
-  flex: 2;
-}
-
-.item-flap {
-  height: 512px;
+.bloc-img-item-flap:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #fc2850;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
-.item-flap .img-item-flap {
+.img-item-flap {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: skew(25deg) translate(-50%, -50%);
-  -moz-transform: skew(25deg) translate(-50%, -50%);
-  -ms-transform: skew(25deg) translate(-50%, -50%);
-  -o-transform: skew(25deg) translate(-50%, -50%);
-  transform: skew(25deg) translate(-50%, -50%);
+  display: block;
+  -webkit-transform: skew(25deg) translate(-40%, -50%);
+  -moz-transform: skew(25deg) translate(-40%, -50%);
+  -ms-transform: skew(25deg) translate(-40%, -50%);
+  -o-transform: skew(25deg) translate(-40%, -50%);
+  transform: skew(25deg) translate(-40%, -50%);
 }
 
 .item-txt-flap {
+  z-index: 100;
   position: absolute;
-  left: -50px;
-  top: 50%;
-  -webkit-transform: skew(25deg);
-  -moz-transform: skew(25deg);
-  -ms-transform: skew(25deg);
-  -o-transform: skew(25deg);
-  transform: skew(25deg);
+  bottom: 30%;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.title-txt-flap {
+  font-size: 38px;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+}
+
+.subtitle-txt-flap {
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 /* ====================== */

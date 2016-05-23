@@ -19,7 +19,6 @@
     left: -$space-3;
     width: $space-3;
     height: 20em;
-    background: $color-site-1;
     @include transform(translate(0, -50%));
   }
 }
@@ -40,13 +39,10 @@
 
 .wrap-list-flap {
   position: relative;
-  overflow: visible;
 }
 
 .bloc-list-flap {
-  width: 100%;
   overflow: hidden;
-  //box-shadow: 0px 100px 100px 0px rgba(0, 0, 0, 0.5);
 }
 
 .list-flap {
@@ -56,46 +52,113 @@
   width: 130%;
 }
 
-.wrap-item-flap {
-  position: relative;
+.item-flap {
   float: left;
   flex: 1;
-  margin: $space-3;
-  overflow: hidden;
-  @include transition(all .5s ease-out);
+  margin: $space-2;
+  @include transition(all .5s ease-in-out);
 
   &:nth-child(1) {
-    @include transform(translate(0, 5%) skew(-25deg));
+
+    .item-txt-flap {
+      left: -$space-7;
+    }
+
+    .bloc-img-item-flap {
+      top: $space-3;
+    }
   }
 
   &:nth-child(2) {
-    @include transform(skew(-25deg));
+
+    .item-txt-flap {
+      z-index: 1;
+      left: 50%;
+      @include transform(translate(-50%, 0));
+      text-align: center;
+    }
   }
 
   &:nth-child(3) {
-    @include transform(translate(0, -5%) skew(-25deg));
+
+    .item-txt-flap {
+      right: -10em + -$space-7;
+      text-align: right;
+      @include transform(translate(-50%, 0));
+    }
+
+    .bloc-img-item-flap {
+      top: -$space-3;
+    }
   }
 
   &:hover {
-    flex: 2;
+    flex: 1.5;
+
+    .bloc-img-item-flap {
+      &:after {
+        opacity: 0.8;
+      }
+    }
+
+    &:nth-child(1) {
+      .item-txt-flap {
+        left: $space-4;
+      }
+    }
+
+    &:nth-child(3) {
+      .item-txt-flap {
+        right: -$space-3;
+      }
+    }
+  }
+}
+
+.bloc-img-item-flap {
+  @extend .box-shadow-min;
+  position: relative;
+  overflow: hidden;
+  height: 512px;
+  @include transform(skew(-25deg));
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-bg-1;
+    opacity: 0;
+    @include transition(opacity .5s ease-out);
   }
 }
 
 
 
-.item-flap {
-  height: 512px;
-  background: $color-site-1;
-  @extend .box-shadow;
-
-  .img-item-flap {
-    position: absolute; top: 50%; left: 50%;
-    @include transform(skew(25deg) translate(-50%, -50%));
-  }
+.img-item-flap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  @include transform(skew(25deg) translate(-40%, -50%));
 }
 
 .item-txt-flap {
+  z-index: 100;
   position: absolute;
-  left: -50px; top: 50%;
-  @include transform(skew(25deg));
+  bottom: 30%;
+  @include transition(all .5s ease-in-out);
+}
+
+.title-txt-flap {
+  font-size: 38px;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+}
+
+.subtitle-txt-flap {
+  font-weight: 300;
+  text-transform: uppercase;
 }

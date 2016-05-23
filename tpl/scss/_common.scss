@@ -178,3 +178,7 @@ a:link { -webkit-tap-highlight-color: rgba($color-site-1, .2); }
 .box-shadow {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
 }
+
+.box-shadow-min {
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+}
