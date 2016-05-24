@@ -1,5 +1,6 @@
 /* ==== Scroll down to find where to put your styles :) ==== */
 /*  HTML5 ? Boilerplate  */
+@import url(https://fonts.googleapis.com/css?family=Paytone+One);
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
@@ -234,16 +235,16 @@ a:hover { color: #0976d8; }*/
   visibility: hidden;
 }
 
-.clearfix:before, .list-col-center:before, .field:before, .header:before, .intro:before, .wrap-intro:before, .main-nav:before, .wrap-flap:before, .clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after {
+.clearfix:before, .list-col-center:before, .field:before, .header:before, .intro:before, .wrap-intro:before, .main-nav:before, .wrap-flap:before, .slider:before, .clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after, .slider:after {
   content: "";
   display: block;
 }
 
-.clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after {
+.clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after, .slider:after {
   clear: both;
 }
 
-.clearfix, .list-col-center, .field, .header, .intro, .wrap-intro, .main-nav, .wrap-flap {
+.clearfix, .list-col-center, .field, .header, .intro, .wrap-intro, .main-nav, .wrap-flap, .slider {
   zoom: 1;
 }
 
@@ -562,11 +563,14 @@ a:link {
 /* ====================== */
 /* classes projet */
 /* ====================== */
-.box-shadow, .wrap-header, .wrap-intro, .bloc-subtitle-intro {
+.box-shadow, button,
+input[type="submit"],
+.input-button,
+.input-submit, .wrap-header, .wrap-intro, .bloc-subtitle-intro {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
 }
 
-.box-shadow-min, .bloc-img-item-flap {
+.box-shadow-min, .bloc-img-item-flap, .deco-slider, .img-screen, .details-slider {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -731,28 +735,35 @@ button,
 input[type="submit"],
 .input-button,
 .input-submit {
-  position: relative;
   overflow: visible;
-  padding: .5em 1em;
-  margin: 0 .5em 1em 0;
-  border: 1px solid #5a5a5a;
-  background: none;
+  position: relative;
+  display: block;
+  margin: 2em 0;
+  padding: 1em 3em;
+  border: 0;
+  background: #fc2850;
   color: #ffffff;
-  vertical-align: top;
+  font-family: "Paytone One";
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   -webkit-transition: all 0.15s ease-out 0s;
   -moz-transition: all 0.15s ease-out 0s;
   transition: all 0.15s ease-out 0s;
 }
 
-button:hover, button:focus,
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-.input-button:hover,
-.input-button:focus,
-.input-submit:hover,
-.input-submit:focus {
-  background-color: #0500cc;
-  color: #fff;
+button:after,
+input[type="submit"]:after,
+.input-button:after,
+.input-submit:after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 80%;
+  height: 100%;
+  background: url("../img/tmp/background-btn.jpg");
 }
 
 input[type="submit"],
@@ -884,7 +895,7 @@ button[type="submit"],
 
 .tools {
   float: right;
-  padding: 7em;
+  padding: 8em;
 }
 
 /* ====================== */
@@ -1006,7 +1017,7 @@ button[type="submit"],
 /* ====================== */
 .menu-item {
   float: left;
-  padding: 4em 7em 4em 0;
+  padding: 4em 8em 4em 0;
 }
 
 /* ====================== */
@@ -1190,7 +1201,7 @@ button[type="submit"],
 
 .wrap-flap {
   position: relative;
-  padding: 5em 7em;
+  padding: 5em 8em;
 }
 
 .wrap-flap:before {
@@ -1208,13 +1219,20 @@ button[type="submit"],
 }
 
 .wrap-title-flap {
-  padding: 4em 0;
+  padding: 2em 0;
 }
 
 .title-flap {
   font-size: 15px;
   font-weight: 300;
   text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.big-title-flap {
+  margin: 1em 0.25em 1em 0;
+  font-size: 35px;
+  color: #fc2850;
 }
 
 /* ====================== */
@@ -1222,6 +1240,7 @@ button[type="submit"],
 /* ====================== */
 .wrap-list-flap {
   position: relative;
+  margin-top: -84px;
 }
 
 .bloc-list-flap {
@@ -1245,7 +1264,7 @@ button[type="submit"],
 }
 
 .item-flap:nth-child(1) .item-txt-flap {
-  left: -7em;
+  left: -8em;
 }
 
 .item-flap:nth-child(1) .bloc-img-item-flap {
@@ -1264,7 +1283,7 @@ button[type="submit"],
 }
 
 .item-flap:nth-child(3) .item-txt-flap {
-  right: -17em;
+  right: -18em;
   text-align: right;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
@@ -1348,6 +1367,90 @@ button[type="submit"],
 .subtitle-txt-flap {
   font-weight: 300;
   text-transform: uppercase;
+}
+
+/* ====================== */
+/* Slider */
+/* ====================== */
+.slider {
+  position: relative;
+}
+
+.deco-slider {
+  margin: 8em 0 8em 50%;
+  width: 58em;
+  height: 85em;
+  background: #fc2850;
+  -webkit-transform: translate(-100%, 0);
+  -moz-transform: translate(-100%, 0);
+  -ms-transform: translate(-100%, 0);
+  -o-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+}
+
+.pager-slider {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 100%;
+  height: 25em;
+  background: url("../img/tmp/background.jpg") no-repeat center bottom;
+  background-size: cover;
+  border-left: 2em solid #0500cc;
+  border-right: 2em solid #0500cc;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.screen-slider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0 90px;
+  -webkit-transform: translate(-100%, -50%);
+  -moz-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  -o-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+
+.img-screen {
+  display: block;
+}
+
+.details-slider {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin: 0 0 0 50%;
+  width: 52em;
+  height: 70em;
+  background: #0500cc;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.bloc-detail {
+  padding: 10em;
+}
+
+.title-detail {
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+.text-detail {
+  margin: 1.5em 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 2em;
 }
 
 /* ====================== */

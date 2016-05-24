@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Paytone+One);
+
 /* ====================== */
 /* mixins compass */
 /* ====================== */
@@ -121,6 +123,7 @@ $color-black: #000; /*--- black ---*/
 }
 
 $font-1: 'National';
+$font-2: 'Paytone One';
 
 /* ====================== */
 /* grid */
@@ -133,7 +136,7 @@ $space-3: 3em;
 $space-4: 4em;
 $space-5: 5em;
 $space-6: 6em;
-$space-7: 7em;
+$space-7: 8em;
 $space-8: 13em;
 
 $mq-1: 25em; /* --- 400px --- */

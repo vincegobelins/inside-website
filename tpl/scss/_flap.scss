@@ -24,13 +24,20 @@
 }
 
 .wrap-title-flap {
-  padding: $space-4 0;
+  padding: $space-2 0;
 }
 
 .title-flap {
   font-size: 15px;
   font-weight: 300;
   text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.big-title-flap {
+  margin: $space-1 .25em $space-1 0;
+  font-size: 35px;
+  color: $color-text-2;
 }
 
 /* ====================== */
@@ -39,6 +46,7 @@
 
 .wrap-list-flap {
   position: relative;
+  margin-top: -84px;
 }
 
 .bloc-list-flap {

@@ -144,13 +144,13 @@
             <section class="flap">
               <div class="wrap-flap">
                 <div class="wrap-title-flap">
-                  <h2 class="title-flap"><strong>3 expériences de concert</strong> en une application !</h2>
+                  <h2 class="title-flap"><strong><span class="big-title-flap">3</span> expériences de concert</strong> en une application !</h2>
                 </div>
                 <div class="wrap-list-flap">
                   <div class="bloc-list-flap">
                   <ul class="list-flap">
                     <li class="item-flap">
-                        <div class="bloc-img-item-flap">
+                        <div id="bloc-img-item-flap-1" class="bloc-img-item-flap">
                           <img class="img-item-flap" src="tpl/img/tmp/replay.jpg" alt="">
                         </div>
                         <div class="item-txt-flap">
@@ -159,7 +159,7 @@
                         </div>
                     </li>
                     <li class="item-flap">
-                        <div class="bloc-img-item-flap">
+                        <div id="bloc-img-item-flap-2" class="bloc-img-item-flap">
                           <img class="img-item-flap" src="tpl/img/tmp/replay.jpg" alt="">
                         </div>
                         <div class="item-txt-flap">
@@ -168,7 +168,7 @@
                         </div>
                     </li>
                     <li class="item-flap">
-                        <div class="bloc-img-item-flap">
+                        <div id="bloc-img-item-flap-3" class="bloc-img-item-flap">
                           <img class="img-item-flap" src="tpl/img/tmp/replay.jpg" alt="">
                         </div>
                         <div class="item-txt-flap">
@@ -180,6 +180,48 @@
                   </div>
                 </div>
               </div>
+            </section>
+
+            <!-- Section slider -->
+            <section class="slider">
+
+              <div class="deco-slider"></div>
+
+              <div class="pager-slider">
+                <div class="pages-slider">
+                  <div class="list-pages">
+                    <li class="page">
+                      <a href="#" class="link-page">1</a>
+                    </li>
+                    <li class="page">
+                      <a href="#" class="link-page">2</a>
+                    </li>
+                  </div>
+                </div>
+              </div>
+
+              <div class="screen-slider">
+                <ul class="list-screen">
+                  <li class="item-screen">
+                    <a href="" class="link-screen">
+                      <img class="img-screen" src="tpl/img/tmp/screen-1.jpg" alt="">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="details-slider">
+                <ul class="list-details">
+                  <li class="item-detail">
+                    <div class="bloc-detail">
+                      <h3 class="title-detail">Une expérience de concert inédit</h3>
+                      <p class="text-detail">Aussi simplement que si vous filmiez pour vous avec votre téléphone, partagez ce que vous vivez au concert de manière inédite ! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mollis lorem nibh, id pharetra mi euismod euismod. Cras sit amet venenatis orci.</p>
+                      <button class="cta-regular">Découvrir</button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
             </section>
           </div>
         </div>
@@ -195,13 +237,19 @@
     <!-- @include:footer:end -->
   </div>
 
-  <!-- @include:scripts:start -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="tpl/js/libs/jquery.min.js"><\/script>')</script>
 
+  <script src="tpl/js/libs/ScrollMagic.min.js"></script>
+  <script src="tpl/js/libs/plugins/animation.gsap.min.js"></script>
+  <script src="tpl/js/libs/plugins/animation.velocity.min.js"></script>
+  <script src="tpl/js/libs/plugins/debug.addIndicators.min.js"></script>
+  <script src="tpl/js/libs/plugins/jquery.ScrollMagic.min.js"></script>
+  <script src="tpl/js/libs/TimelineMax.min.js"></script>
+  <script src="tpl/js/libs/TweenMax.min.js"></script>
+
   <script src="tpl/js/plugins.min.js"></script>
   <script src="tpl/js/scripts-dist.js"></script>
-  <!-- @include:scripts:end -->
 
 </body>
 </html>

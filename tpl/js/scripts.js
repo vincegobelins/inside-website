@@ -16,12 +16,6 @@
         /*--- javascript strict mode ---*/
         "use strict";
 
-        /*--- initialisation des tailles de viewport ---*/
-        currentWidth = wWidth = viewport().width;
-        currentHeight = wHeight = viewport().height;
-
-        wScroll = $(window).scrollTop();
-
         /*================== INITIALISATIONS ==========================*/
 
         $('body').keypress(function() {
@@ -31,86 +25,38 @@
           }
         });
 
-        /*--- scroll tableaux qui debordent - 1/2 ---*/
-        scrollTable('.editor-wysiwyg');
+        /*================== PARALLAX ==========================*/
 
-        /*================== ACTIONS AU RESIZE ET SCROLL ==========================*/
+        /*
+        var controller = new ScrollMagic.Controller();
 
-        /*--- fonctions dependant de resolution d'ecran (si reconnait media queries) ---*/
-        if (Modernizr.mq('only all')) {
+        // build tween
+        var tweenIntro = new TimelineMax ()
+          .add([
+            TweenMax.fromTo(".bloc-subtitle-intro", 1, {top: 50}, {top: 300, ease: Power4.easeOut}),
+            TweenMax.fromTo(".bloc-shape-video-intro", 1, {top: "40%"}, {top: "90%", ease: Power4.easeOut})
+          ]);
 
+          var tweenFlaps = new TimelineMax ()
+            .add([
+              //TweenMax.fromTo(".bloc-subtitle-intro", 1, {top: 100}, {top: 200, ease: Linear.easeNone}),
+              //TweenMax.fromTo(".bloc-shape-video-intro", 1, {top: "40%"}, {top: "90%", ease: Linear.easeNone})
+              TweenMax.from("#bloc-img-item-flap-1", 0.5, {top: -200, ease: Power4.easeOut}),
+              TweenMax.from("#bloc-img-item-flap-2", 0.5, {top: -200, ease: Power4.easeOut}),
+              TweenMax.from("#bloc-img-item-flap-3", 0.5, {top: -200, ease: Power4.easeOut})
+            ]);
 
-            $(window).on('resize', function() {
-                wWidth = viewport().width;
-                wHeight = viewport().height;
-                if (currentHeight != wHeight || currentWidth != wWidth) {
-                    currentHeight = wHeight;
-                    currentWidth = wWidth;
-                    /*--- timer pour le redimensionnement d'ecran ---*/
-                    clearTimeout(timerResponsive);
-                    timerResponsive = setTimeout(makeResponsive, 300);
-                }
+        // build scene
+        var sceneIntro = new ScrollMagic.Scene({triggerElement: ".intro", duration: $(window).width()})
+                .setTween(tweenIntro)
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(controller);
 
-            });
-        }
-		makeResponsive();
-
-        /*--- fonctions au scroll ---*/
-        $(window).on('scroll', function() {
-            wScroll = $(window).scrollTop();
-        });
-
-        /*================== ACTIONS SPECIFIQUES OLD IE ==========================*/
-
+                var sceneFlaps = new ScrollMagic.Scene({triggerElement: ".flaps", duration: $(window).height()})
+                        .setTween(tweenFlaps)
+                        .addIndicators() // add indicators (requires plugin)
+                        .addTo(controller);
+*/
     });
-
-
-    document.onreadystatechange = function() {
-        if (document.readyState == "complete") {
-            makeResponsive();
-        }
-    }
-
-    function makeResponsive() {
-        /*--- garde proportions iframe 1/2 ---*/
-        /*--- mettre styles iframe width:100% ---*/
-        resizeIframe('.editor-wysiwyg');
-    }
-
-	/*================== FONCTIONS GENERALES ==========================*/
-
-    function viewport() {
-        var e = window, a = 'inner';
-        if (!('innerWidth' in window)) {
-            a = 'client';
-            e = document.documentElement || document.body;
-        }
-        return {
-            width: e[ a + 'Width' ],
-            height: e[ a + 'Height' ]
-        };
-    }
-
-    function resizeIframe(className) {
-        $(className + ' iframe').each(function() {
-            var ratio = $(this).attr('width') / $(this).attr('height');
-            var newH = $(this).width() / ratio;
-            $(this).css('height', newH + 'px');
-        });
-    }
-
-    /*--- scroll tableaux qui debordent - 2/2 ---*/
-    function scrollTable(className) {
-        $(className + ' table').each(function() {
-            var table = $(this);
-            var container = $('<div class="table-scroll"></div>')
-            $(table).before(container);
-            $(container).append(table);
-        });
-    }
-
-	/*================== FONCTIONS SPECIFIQUES AU PROJET ==========================*/
-
-    /*================== FONCTIONS GLOBALES PROJET (POUR UTILISATION DEV) ==========================*/
 
 })(jQuery);
