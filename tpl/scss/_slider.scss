@@ -4,7 +4,18 @@
 
 .slider {
   @extend .clearfix;
+  overflow: hidden;
   position: relative;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: $color-site-1;
+    @include transform(rotate(-35deg));
+  }
 }
 
 .deco-slider {
@@ -15,6 +26,10 @@
   background: $color-site-1;
   @include transform(translate(-100%, 0));
 }
+
+/* ====================== */
+/* Pager */
+/* ====================== */
 
 .pager-slider {
   position: absolute;
@@ -28,6 +43,71 @@
   border-right: $space-2 solid $color-site-2;
   @include transform(translate(0, -50%));
 }
+
+.wrap-pages {
+  @extend .center;
+}
+
+.list-pages {
+  float: right;
+  display: table;
+  margin-top: 75px;
+}
+
+.item-page {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.link-page {
+  @extend .link;
+  margin: 0 5px;
+  font-family: $font-2;
+  color: $color-text-1;
+  text-shadow: none;
+}
+
+.current-page {
+  .link-page {
+    font-size: 60px;
+    color: $color-text-2;
+
+    &:before {
+      background: $color-site-2;
+    }
+  }
+}
+
+.next-page {
+  .link-page {
+    position: relative;
+    padding-left: 60px;
+    font-family: $font-2;
+    font-size: 20px;
+
+    &:after {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 48px;
+      height: 13px;
+      background: url("../img/arrow-right.png") no-repeat;
+      @include transition;
+    }
+
+    &:hover {
+      &:after {
+        left: 110%;
+      }
+    }
+  }
+}
+
+/* ====================== */
+/* Screen */
+/* ====================== */
 
 .screen-slider {
   position: absolute;

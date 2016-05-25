@@ -111,26 +111,13 @@ input[type="radio"],
 	}
 }
 
-button,
-input[type="submit"],
-.input-button,
-.input-submit {
+.bloc-cta-regular {
 	@extend .box-shadow;
-	overflow: visible;
 	position: relative;
-	display: block;
+	display: inline-block;
 	margin: $space-2 0;
-	padding: $space-1 $space-3;
-	border: 0;
-	background: $color-site-1;
-	color: $color-text-1;
-	font-family: $font-2;
-  font-size: 20px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	@include transition;
 
-	&:after {
+	&:before {
 		content: "";
 		z-index: -1;
 		position: absolute;
@@ -140,10 +127,49 @@ input[type="submit"],
 		height: 100%;
 		background: url('../img/tmp/background-btn.jpg')
 	}
+}
+
+button,
+input[type="submit"],
+.input-button,
+.input-submit {
+	overflow: visible;
+	position: relative;
+	display: block;
+	padding: $space-1 $space-3;
+	border: 0;
+	color: $color-text-1;
+	font-family: $font-2;
+  font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	background: none;
+
+	&:after, &:before {
+		z-index: -1;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	&:before {
+		background: $color-site-1;
+	}
+
+	&:after {
+		background: $color-site-2;
+		width: 0%;
+		@include transition;
+	}
 
 	&:hover,
 		&:focus {
-		//background-color: $color-bg-2; color: $color-white;
+		&:after {
+			width: 100%;
+		}
 	}
 }
 
