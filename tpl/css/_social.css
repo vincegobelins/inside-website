@@ -1,0 +1,17 @@
+/* ====================== */
+/* Social */
+/* ====================== */
+.wrap-social {
+  position: relative;
+}
+
+/* ====================== */
+/* Facebook */
+/* ====================== */
+.facebook {
+  width: 40%;
+}
+
+.content-facebook {
+  position: absolute;
+}

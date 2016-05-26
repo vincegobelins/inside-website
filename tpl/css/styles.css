@@ -235,16 +235,16 @@ a:hover { color: #0976d8; }*/
   visibility: hidden;
 }
 
-.clearfix:before, .list-col-center:before, .field:before, .header:before, .intro:before, .wrap-intro:before, .main-nav:before, .wrap-flap:before, .slider:before, .clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after, .slider:after {
+.clearfix:before, .list-col-center:before, .field:before, .header:before, .intro:before, .wrap-intro:before, .main-nav:before, .wrap-flap:before, .slider:before, .wrap-social:before, .clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after, .slider:after, .wrap-social:after {
   content: "";
   display: block;
 }
 
-.clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after, .slider:after {
+.clearfix:after, .list-col-center:after, .field:after, .header:after, .intro:after, .wrap-intro:after, .main-nav:after, .wrap-flap:after, .slider:after, .wrap-social:after {
   clear: both;
 }
 
-.clearfix, .list-col-center, .field, .header, .intro, .wrap-intro, .main-nav, .wrap-flap, .slider {
+.clearfix, .list-col-center, .field, .header, .intro, .wrap-intro, .main-nav, .wrap-flap, .slider, .wrap-social {
   zoom: 1;
 }
 
@@ -423,7 +423,7 @@ a:link {
 /* ====================== */
 /* classes extend */
 /* ====================== */
-.center, .header, #footer, .intro, .wrap-flap, .wrap-pages {
+.center, .header, #footer, .intro, .wrap-flap, .wrap-pages, .wrap-social {
   margin: 0 auto;
   width: 1460px;
   max-width: 96%;
@@ -468,16 +468,16 @@ a:link {
   height: auto;
 }
 
-.list-col {
+.list-col, .list-social {
   overflow: hidden;
   /* overflow clearfix */
-  margin: -1em;
+  margin: -3em;
 }
 
-.item-col {
+.item-col, .item-social {
   display: block;
   float: left;
-  padding: 1em;
+  padding: 3em;
 }
 
 .list-col-center {
@@ -563,7 +563,7 @@ a:link {
 /* ====================== */
 /* classes projet */
 /* ====================== */
-.box-shadow, .bloc-cta-regular, .wrap-header, .wrap-intro, .bloc-subtitle-intro {
+.box-shadow, .bloc-cta-regular, .bloc-cta-facebook, .wrap-header, .wrap-intro, .bloc-subtitle-intro {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -728,13 +728,13 @@ input[type="radio"]:focus,
   border-color: #acadaf;
 }
 
-.bloc-cta-regular {
+.bloc-cta-regular, .bloc-cta-facebook {
   position: relative;
   display: inline-block;
   margin: 2em 0;
 }
 
-.bloc-cta-regular:before {
+.bloc-cta-regular:before, .bloc-cta-facebook:before {
   content: "";
   z-index: -1;
   position: absolute;
@@ -1445,22 +1445,21 @@ button[type="submit"],
 /* Slider */
 /* ====================== */
 .slider {
-  overflow: hidden;
   position: relative;
 }
 
 .slider:before {
   position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
+  top: -75%;
+  left: 50%;
+  width: 160%;
   height: 1px;
   background: #fc2850;
-  -webkit-transform: rotate(-35deg);
-  -moz-transform: rotate(-35deg);
-  -ms-transform: rotate(-35deg);
-  -o-transform: rotate(-35deg);
-  transform: rotate(-35deg);
+  -webkit-transform: rotate(-35deg) translate(-50%, 0);
+  -moz-transform: rotate(-35deg) translate(-50%, 0);
+  -ms-transform: rotate(-35deg) translate(-50%, 0);
+  -o-transform: rotate(-35deg) translate(-50%, 0);
+  transform: rotate(-35deg) translate(-50%, 0);
 }
 
 .deco-slider {
@@ -1596,6 +1595,37 @@ button[type="submit"],
   font-size: 16px;
   font-weight: 300;
   line-height: 2em;
+}
+
+/* ====================== */
+/* Social */
+/* ====================== */
+.wrap-social {
+  position: relative;
+}
+
+/* ====================== */
+/* Facebook */
+/* ====================== */
+.facebook {
+  width: 40%;
+}
+
+.content-facebook {
+  position: absolute;
+}
+
+/* ====================== */
+/* Blog */
+/* ====================== */
+.blog {
+  width: 60%;
+}
+
+.title-blog {
+  font-size: 21px;
+  font-weight: 300;
+  color: #0500cc;
 }
 
 /* ====================== */

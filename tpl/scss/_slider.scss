@@ -4,17 +4,16 @@
 
 .slider {
   @extend .clearfix;
-  overflow: hidden;
   position: relative;
 
   &:before {
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
+    top: -75%;
+    left: 50%;
+    width: 160%;
     height: 1px;
     background: $color-site-1;
-    @include transform(rotate(-35deg));
+    @include transform(rotate(-35deg) translate(-50%, 0));
   }
 }
 

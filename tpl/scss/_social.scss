@@ -1,0 +1,62 @@
+/* ====================== */
+/* Social */
+/* ====================== */
+
+.social {
+  //before
+}
+
+.wrap-social {
+  @extend .clearfix;
+  @extend .center;
+  position: relative;
+}
+
+.list-social {
+  @extend .list-col;
+}
+
+.item-social {
+  @extend .item-col;
+}
+/* ====================== */
+/* Facebook */
+/* ====================== */
+
+.facebook {
+  width: 40%;
+}
+
+.media-facebook {
+  @extend .img;
+}
+
+.content-facebook {
+  position: absolute;
+}
+
+.bloc-cta-facebook {
+  @extend .bloc-cta-regular;
+}
+
+.cta-regular {
+  @extend .cta-regular;
+}
+
+/* ====================== */
+/* Blog */
+/* ====================== */
+
+.blog {
+  width: 60%;
+}
+
+.title-blog {
+  font-size: 21px;
+  font-weight: 300;
+  color: $color-text-3;
+}
+
+.media-blog {
+  @extend .img;
+}
