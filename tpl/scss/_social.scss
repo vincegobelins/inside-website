@@ -3,7 +3,17 @@
 /* ====================== */
 
 .social {
-  //before
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -50px;
+    width: 70%;
+    height: 180px;
+    background: $color-site-1;
+  }
 }
 
 .wrap-social {
@@ -18,13 +28,27 @@
 
 .item-social {
   @extend .item-col;
+  position: relative;
 }
+
 /* ====================== */
 /* Facebook */
 /* ====================== */
 
 .facebook {
-  width: 40%;
+  position: relative;
+  width: 45%;
+  margin-top: $space-3;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: $space-3;
+    left: 0;
+    width: 860px;
+    height: 160px;
+    background: url('../img/inside.png') no-repeat;
+  }
 }
 
 .media-facebook {
@@ -32,14 +56,90 @@
 }
 
 .content-facebook {
+  z-index: 2;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  @include transform(translate(-50%, -50%));
+
+  .hightlight {
+    font-size: 30px;
+    font-family: $font-2;
+    font-style: normal;
+  }
+}
+
+/* Hover Facebook */
+
+.article-facebook {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  padding: $space-5;
+  background: $color-white;
+  @include transform(translate(-50%, -50%));
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -45px;
+    left: -28px;
+    width: 50px;
+    height: 80px;
+    background: url('../img/fb-blue.png') no-repeat;
+  }
+}
+
+.text-facebook {
+  font-weight: 500;
+  font-size: 12px;
+  color: $color-site-2;
+  line-height: 1.5em;
+
+  p {
+      @extend .margin-bottom;
+  }
+}
+
+.meta-facebook {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: $color-site-1
 }
 
 .bloc-cta-facebook {
   @extend .bloc-cta-regular;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  @include transform(translate(-50%, 0));
+
+  &:before {
+    background: none;
+    background-color: $color-site-2;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -45px;
+    left: -28px;
+    width: 50px;
+    height: 80px;
+    background: url('../img/fb-white.png') no-repeat;
+  }
 }
 
-.cta-regular {
+.cta-facebook {
   @extend .cta-regular;
 }
 
@@ -48,15 +148,167 @@
 /* ====================== */
 
 .blog {
-  width: 60%;
+  width: 55%;
 }
 
 .title-blog {
+  display: inline-block;
+  margin-left: $space-4;
   font-size: 21px;
   font-weight: 300;
   color: $color-text-3;
+  text-align: right;
+
+  .hightlight {
+    font-weight: 600;
+    font-size: 30px;
+    font-style: italic;
+  }
 }
 
-.media-blog {
+/* ====================== */
+/* Article */
+/* ====================== */
+
+.wrap-article {
+  position: relative;
+  margin-top: $space-5;
+  z-index: 0;
+
+  /* Hover */
+
+  &:hover {
+    .bloc-media-article {
+      &:after {
+        opacity: 0.5;
+      }
+
+      .media-article {
+        @include transform(scale(1));
+      }
+    }
+    .title-article {
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.link-blog {
+  text-decoration: none;
+}
+
+.bloc-media-article {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-site-2;
+    opacity: 0;
+    @include transition(opacity .5s ease-out);
+  }
+}
+
+.media-article {
   @extend .img;
+  @include transform(scale(1.05));
+  @include transition(all 1s ease-in-out .1s);
+}
+
+.wrap-content-article {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: $space-5;
+  width: 55%;
+  background: $color-white;
+  @extend .box-shadow-min;
+}
+
+.cat-article {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: $color-text-2;
+}
+
+.margin-bottom {
+  margin-bottom: 30px;
+}
+
+.meta-article {
+  @extend .margin-bottom;
+  @extend .img;
+}
+
+.date-article {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-text-2;
+}
+
+.title-article {
+  @extend .margin-bottom;
+  position: relative;
+  display: block;
+  padding-bottom: 1em;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: $color-text-3;
+  line-height: 1.3em;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 1px;
+    background: $color-site-1;
+    @include transition(width .5s ease-out);
+  }
+}
+
+.text-article {
+  @extend .margin-bottom;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+  color: $color-site-2;
+  line-height: 1.5em;
+}
+
+.read-more-article {
+  @extend .link;
+  color: $color-text-2;
+
+  &:hover {
+    color: $color-text-1;
+  }
+}
+
+.bloc-cta-blog {
+  @extend .bloc-cta-regular;
+  float: right;
+  margin: 0;
+  z-index: 1;
+  box-shadow: none;
+
+  &:before {
+    background: none;
+    background-color: $color-site-2;
+  }
+}
+
+.cta-blog {
+  @extend .cta-regular;
 }

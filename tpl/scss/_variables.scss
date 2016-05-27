@@ -3,8 +3,10 @@
 /* ====================== */
 /* mixins compass */
 /* ====================== */
-$default-transition-duration: .15s;
-$default-transition-function: ease-in-out;
+$default-transition-property : all;
+$default-transition-duration : .25s;
+$default-transition-function : false;
+$default-transition-delay    : false;
 
 /* ====================== */
 /* colors */
