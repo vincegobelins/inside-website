@@ -60,6 +60,9 @@ a:link { -webkit-tap-highlight-color: rgba($color-site-1, .2); }
 /* ====================== */
 /* classes extend */
 /* ====================== */
+.overflow {
+  overflow: hidden;
+}
 .center {
     margin: 0 auto;
     width: 1460px; max-width: 96%;

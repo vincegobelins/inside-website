@@ -1,3 +1,7 @@
+/** ###############
+* Parallax *
+* ############## */
+
 class Parallax {
 
   constructor(itemsHTML) {
@@ -31,7 +35,6 @@ class Parallax {
 
       let offsetTop = this.items[i].obj.getBoundingClientRect().top;
       let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
-//this.activeItems[1].obj.getBoundingClientRect().height/2 - this.activeItems[1].obj.getBoundingClientRect().top) * 100 / this.windowHeight
 
       if(offsetTop < this.windowHeight && offsetBottom > 0) {
         this.activeItems[this.items[i].id] = this.items[i];
@@ -52,13 +55,13 @@ class Parallax {
     Array.prototype.forEach.call(this.activeItems, function(item) {
       let position = item.obj.getBoundingClientRect().height/2 - item.obj.getBoundingClientRect().top;
       let offset = ( position * 100 / self.windowHeight) * item.speed;
-      let transform = 'translateY(' + offset + 'px)';
+      let transform = 'translateY(' + offset.toFixed(2) + 'px)';
       item.obj.style["transform"] = transform;
       item.obj.style["webkitTransform"] = transform
       item.obj.style["mozTransform"] = transform;
       item.obj.style["msTransform"] = transform;
     });
-    
+
     requestAnimationFrame(this.render.bind(this));
   }
 
@@ -76,6 +79,81 @@ class Parallax {
   }
 }
 
+/** ###############
+* Slider *
+* ############## */
+
+class Slider {
+
+  constructor(wrapper, slides) {
+    this.wrapper = wrapper;
+    this.slides = slides;
+
+    //this.bindUIActions();
+    this.initSlider();
+  }
+
+  initSlider() {
+    self = this;
+    console.log(self);
+
+    let slider = this.wrapper.bxSlider({
+      mode: "fade",
+      speed: 0,
+      pause: 5000,
+      controls: false,
+      auto: true,
+      autoControls: false,
+      autoControlsCombine: false,
+      pager: false,
+      touchEnabled: true,
+      adaptiveHeight: true,
+      responsive: true,
+
+      onSlideBefore: function($slideElement, self){
+          TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "-100%", ease: Power2.easeInOut}, 0.25);
+          $(".pager-slider").addClass("active");
+
+          // ici je veux appeler  onSlideBefore
+      },
+      onSlideAfter: function($slideElement){
+          $(".item-detail").removeClass("current-slide");
+          $slideElement.addClass("current-slide");
+          TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
+          setTimeout(function(){ $(".pager-slider").removeClass("active");; }, 4000);
+      },
+      onSliderLoad: function() {
+        TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
+      }
+    });
+  }
+
+  onSlideBefore(current) {
+    console.log("yes");
+  }
+
+  onSlideAfter(current) {
+
+  }
+
+  onSliderLoad() {
+
+  }
+
+  bindUIActions() {
+    let self = this;
+
+    window.onscroll = function (e) {
+      self.scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+      self.update();
+    }
+  }
+}
+
+/** ###############
+* App *
+* ############## */
+
 
 var app = {
 
@@ -85,6 +163,11 @@ var app = {
     // get parallax items and init parallax
     let parallaxItems = document.getElementsByClassName("parallax");
     let parallax = new Parallax(parallaxItems);
+
+    // init slider
+    let sliderWrapper = $("#slider-1");
+    let sliderItems = $(".item-detail");
+    let slider = new Slider(sliderWrapper, sliderItems);
   },
 
   bindUI: function(){
