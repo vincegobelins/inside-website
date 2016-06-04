@@ -111,7 +111,7 @@ class Slider {
 
       onSlideBefore: ($slideElement) => { this.onSlideBefore($slideElement); },
       onSlideAfter: ($slideElement) => { this.onSlideAfter($slideElement); },
-      onSliderLoad => { this.onSliderLoad(); },
+      onSliderLoad: () => { this.onSliderLoad(); }
     });
   }
 
