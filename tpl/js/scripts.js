@@ -85,17 +85,16 @@ class Parallax {
 
 class Slider {
 
-  constructor(wrapper, slides) {
+  constructor(wrapper, slides, speed) {
     this.wrapper = wrapper;
     this.slides = slides;
+    this.speed = speed;
 
-    //this.bindUIActions();
     this.initSlider();
   }
 
   initSlider() {
-    self = this;
-    console.log(self);
+    let self = this;
 
     let slider = this.wrapper.bxSlider({
       mode: "fade",
@@ -110,43 +109,26 @@ class Slider {
       adaptiveHeight: true,
       responsive: true,
 
-      onSlideBefore: function($slideElement, self){
-          TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "-100%", ease: Power2.easeInOut}, 0.25);
-          $(".pager-slider").addClass("active");
-
-          // ici je veux appeler  onSlideBefore
-      },
-      onSlideAfter: function($slideElement){
-          $(".item-detail").removeClass("current-slide");
-          $slideElement.addClass("current-slide");
-          TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
-          setTimeout(function(){ $(".pager-slider").removeClass("active");; }, 4000);
-      },
-      onSliderLoad: function() {
-        TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
-      }
+      onSlideBefore: ($slideElement) => { this.onSlideBefore($slideElement); },
+      onSlideAfter: ($slideElement) => { this.onSlideAfter($slideElement); },
+      onSliderLoad => { this.onSliderLoad(); },
     });
   }
 
   onSlideBefore(current) {
-    console.log("yes");
+    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "-100%", ease: Power2.easeInOut}, 0.25);
+    $(".pager-slider").addClass("active");
   }
 
   onSlideAfter(current) {
-
+    $(".item-detail").removeClass("current-slide");
+    current.addClass("current-slide");
+    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
+    setTimeout(function(){ $(".pager-slider").removeClass("active");; }, 4000);
   }
 
   onSliderLoad() {
-
-  }
-
-  bindUIActions() {
-    let self = this;
-
-    window.onscroll = function (e) {
-      self.scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-      self.update();
-    }
+    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
   }
 }
 
@@ -167,7 +149,7 @@ var app = {
     // init slider
     let sliderWrapper = $("#slider-1");
     let sliderItems = $(".item-detail");
-    let slider = new Slider(sliderWrapper, sliderItems);
+    let slider = new Slider(sliderWrapper, sliderItems, 0);
   },
 
   bindUI: function(){
