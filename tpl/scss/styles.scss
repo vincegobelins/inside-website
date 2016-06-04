@@ -17,10 +17,19 @@
 /* ====================== */
 
 body {
+  overflow: hidden;
   &.dev {
     background: url('../img/tmp/fond.jpg') top center no-repeat;
     opacity: 0.5;
   }
+}
+
+/* ====================== */
+/* parallax */
+/* ====================== */
+
+.parallax {
+  @include transition(all .15s ease-in-out);
 }
 
 

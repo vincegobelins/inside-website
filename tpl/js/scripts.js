@@ -1,62 +1,100 @@
-(function($) {
-    // Theme path
-    var urlTpl = 'tpl/';
+class Parallax {
 
-    // Variables
-    var wWidth;
-    var wHeight;
-    var currentWidth;
-    var currentHeight;
-    var timerResponsive;
-    var wScroll;
+  constructor(itemsHTML) {
+    this.items = [];
+    this.activeItems = [];
+    this.scrollPos = 0;
+    this.windowHeight = window.innerHeight;
 
-    $(function() {
-        /*================== GENERAL ==========================*/
+    for (let i = 0; i < itemsHTML.length; i++) {
+      let item = {
+        id : i,
+        obj: itemsHTML[i],
+        speed: itemsHTML[i].dataset.speed,
+        step: 0
+      }
 
-        /*--- javascript strict mode ---*/
-        "use strict";
+      this.items.push(item);
+    }
 
-        /*================== INITIALISATIONS ==========================*/
+    this.bindUIActions();
+    this.render();
+  }
 
-        $('body').keypress(function() {
-          if ( event.which == 119 ) {
-             event.preventDefault();
-             $('body').toggleClass('dev');
-          }
-        });
+  /**
+  * Add / Remove items displayed on screen
+  */
 
-        /*================== PARALLAX ==========================*/
+  update() {
 
-        /*
-        var controller = new ScrollMagic.Controller();
+    for (let i = 0; i < this.items.length; i++) {
 
-        // build tween
-        var tweenIntro = new TimelineMax ()
-          .add([
-            TweenMax.fromTo(".bloc-subtitle-intro", 1, {top: 50}, {top: 300, ease: Power4.easeOut}),
-            TweenMax.fromTo(".bloc-shape-video-intro", 1, {top: "40%"}, {top: "90%", ease: Power4.easeOut})
-          ]);
+      let offsetTop = this.items[i].obj.getBoundingClientRect().top;
+      let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
+//this.activeItems[1].obj.getBoundingClientRect().height/2 - this.activeItems[1].obj.getBoundingClientRect().top) * 100 / this.windowHeight
 
-          var tweenFlaps = new TimelineMax ()
-            .add([
-              //TweenMax.fromTo(".bloc-subtitle-intro", 1, {top: 100}, {top: 200, ease: Linear.easeNone}),
-              //TweenMax.fromTo(".bloc-shape-video-intro", 1, {top: "40%"}, {top: "90%", ease: Linear.easeNone})
-              TweenMax.from("#bloc-img-item-flap-1", 0.5, {top: -200, ease: Power4.easeOut}),
-              TweenMax.from("#bloc-img-item-flap-2", 0.5, {top: -200, ease: Power4.easeOut}),
-              TweenMax.from("#bloc-img-item-flap-3", 0.5, {top: -200, ease: Power4.easeOut})
-            ]);
+      if(offsetTop < this.windowHeight && offsetBottom > 0) {
+        this.activeItems[this.items[i].id] = this.items[i];
+      }
+      else if(this.activeItems[this.items[i].id]) {
+        this.activeItems.splice(this.items[i].id);
+      }
+    }
 
-        // build scene
-        var sceneIntro = new ScrollMagic.Scene({triggerElement: ".intro", duration: $(window).width()})
-                .setTween(tweenIntro)
-                .addIndicators() // add indicators (requires plugin)
-                .addTo(controller);
+  }
 
-                var sceneFlaps = new ScrollMagic.Scene({triggerElement: ".flaps", duration: $(window).height()})
-                        .setTween(tweenFlaps)
-                        .addIndicators() // add indicators (requires plugin)
-                        .addTo(controller);
-*/
+  /**
+  * Render parallax
+  */
+
+  render() {
+    self = this;
+    Array.prototype.forEach.call(this.activeItems, function(item) {
+      let position = item.obj.getBoundingClientRect().height/2 - item.obj.getBoundingClientRect().top;
+      let offset = ( position * 100 / self.windowHeight) * item.speed;
+      let transform = 'translateY(' + offset + 'px)';
+      item.obj.style["transform"] = transform;
+      item.obj.style["webkitTransform"] = transform
+      item.obj.style["mozTransform"] = transform;
+      item.obj.style["msTransform"] = transform;
     });
+    
+    requestAnimationFrame(this.render.bind(this));
+  }
 
-})(jQuery);
+  /**
+  * Update on scroll
+  */
+
+  bindUIActions() {
+    let self = this;
+
+    window.onscroll = function (e) {
+      self.scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+      self.update();
+    }
+  }
+}
+
+
+var app = {
+
+  init: function() {
+    this.bindUI();
+
+    // get parallax items and init parallax
+    let parallaxItems = document.getElementsByClassName("parallax");
+    let parallax = new Parallax(parallaxItems);
+  },
+
+  bindUI: function(){
+    $('body').keypress(function() {
+      if ( event.which == 119 ) {
+         event.preventDefault();
+         $('body').toggleClass('dev');
+      }
+    });
+  }
+}
+
+app.init();
