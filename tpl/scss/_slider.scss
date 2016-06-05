@@ -15,6 +15,14 @@
     background: $color-site-1;
     @include transform(rotate(-35deg) translate(-50%, 0));
   }
+
+  .logo-deco {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: calc(50% + 440px);
+    display: block;
+  }
 }
 
 .deco-slider {

@@ -8,12 +8,30 @@
   &:before {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -50px;
-    width: 70%;
-    height: 180px;
+    top: -25%;
+    left: 50%;
+    width: 160%;
+    height: 1px;
     background: $color-site-1;
+    @include transform(rotate(-35deg) translate(-50%, 0));
   }
+
+  .logo-deco {
+    z-index: 10;
+    position: absolute;
+    bottom: -20em;
+    right: 35%;
+    display: block;
+  }
+}
+
+.deco-social {
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  width: 60%;
+  height: 180px;
+  background: $color-site-1;
 }
 
 .wrap-social {
