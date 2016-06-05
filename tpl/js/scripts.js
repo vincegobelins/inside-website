@@ -85,23 +85,26 @@ class Parallax {
 
 class Slider {
 
-  constructor(wrapper, slides, speed) {
+  constructor(wrapper, slides, speed, auto, mode) {
     this.wrapper = wrapper;
     this.slides = slides;
     this.speed = speed;
+    this.auto = auto;
+    this.mode = mode;
+    this.slider = null;
 
     this.initSlider();
+    this.bindUIActions();
   }
 
   initSlider() {
-    let self = this;
 
-    let slider = this.wrapper.bxSlider({
-      mode: "fade",
-      speed: 0,
-      pause: 5000,
+    this.slider = this.wrapper.bxSlider({
+      mode: this.mode,
+      speed: this.speed,
+      pause: 7000,
       controls: false,
-      auto: true,
+      auto: this.auto,
       autoControls: false,
       autoControlsCombine: false,
       pager: false,
@@ -110,7 +113,7 @@ class Slider {
       responsive: true,
 
       onSlideBefore: ($slideElement) => { this.onSlideBefore($slideElement); },
-      onSlideAfter: ($slideElement) => { this.onSlideAfter($slideElement); },
+      onSlideAfter: ($slideElement, oldIndex, newIndex) => { this.onSlideAfter($slideElement, oldIndex, newIndex); },
       onSliderLoad: () => { this.onSliderLoad(); }
     });
   }
@@ -120,15 +123,84 @@ class Slider {
     $(".pager-slider").addClass("active");
   }
 
-  onSlideAfter(current) {
+  onSlideAfter(current, oldIndex, newIndex) {
+    this.sendEvent(newIndex);
+    this.updatePager(oldIndex, newIndex);
+
     $(".item-detail").removeClass("current-slide");
     current.addClass("current-slide");
     TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
     setTimeout(function(){ $(".pager-slider").removeClass("active");; }, 4000);
+
   }
 
   onSliderLoad() {
     TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
+  }
+
+  goTo(pointer) {
+    this.slider.goToSlide(pointer);
+  }
+
+  prev(e) {
+    e.preventDefault();
+    this.slider.goToPrevSlide();
+    this.slider.stopAuto();
+  }
+
+  next(e) {
+    e.preventDefault();
+    this.slider.goToNextSlide();
+    this.slider.stopAuto();
+  }
+
+  updatePager(oldIndex, newIndex) {
+    let prev = document.getElementById("prev");
+    let next = document.getElementById("next");
+    oldIndex = parseInt(oldIndex);
+    newIndex = parseInt(newIndex);
+
+    prev.innerHTML = "0"+ oldIndex;
+    next.innerHTML = "0"+ newIndex;
+  }
+
+  sendEvent(pointer) {
+
+    let myEvent = new CustomEvent("nextSlide", {
+      detail: {
+    		pointer: pointer
+    	},
+      bubbles: true,
+    	cancelable: false
+    });
+
+    document.dispatchEvent(myEvent);
+  }
+
+  bindUIActions() {
+    let prev = document.getElementById("prev");
+    let next = document.getElementById("next");
+
+    prev.addEventListener('click', this.prev.bind(this), false);
+    next.addEventListener('click', this.next.bind(this), false);
+  }
+}
+
+/** ###############
+* Screen Slider *
+* ############## */
+
+class ScreenSlider extends Slider {
+  onSlideBefore(current) {
+    //todo
+  }
+
+  onSlideAfter(current) {
+    //todo
+  }
+
+  onSliderLoad() {
+    //todo
   }
 }
 
@@ -137,9 +209,14 @@ class Slider {
 * ############## */
 
 
-var app = {
+var store, app = {
+
+  store: {
+    screenSlider : ""
+  },
 
   init: function() {
+    store = this.store;
     this.bindUI();
 
     // get parallax items and init parallax
@@ -149,7 +226,20 @@ var app = {
     // init slider
     let sliderWrapper = $("#slider-1");
     let sliderItems = $(".item-detail");
-    let slider = new Slider(sliderWrapper, sliderItems, 0);
+    let slider = new Slider(sliderWrapper, sliderItems, 0, true, "fade");
+
+    // init screen slider
+    let screenSliderWrapper = $("#slider-2");
+    let screenSliderItems = $(".item-screen");
+    store.screenSlider = new ScreenSlider(screenSliderWrapper, screenSliderItems, 1000, false, "fade");
+
+    document.addEventListener('nextSlide', this.updateSliders, false);
+
+  },
+
+  updateSliders: function(e){
+    let pointer = e.detail.pointer;
+    store.screenSlider.goTo(pointer);
   },
 
   bindUI: function(){

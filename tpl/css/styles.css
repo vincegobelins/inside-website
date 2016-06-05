@@ -571,7 +571,7 @@ a:link {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
 }
 
-.box-shadow-min, .wrap-img-item, .deco-slider, .img-screen, .details-slider, .wrap-content-article {
+.box-shadow-min, .wrap-img-item, .deco-slider, .screen-slider, .details-slider, .wrap-content-article {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -1577,12 +1577,15 @@ button[type="submit"],
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 0 90px;
-  -webkit-transform: translate(-100%, -50%);
-  -moz-transform: translate(-100%, -50%);
-  -ms-transform: translate(-100%, -50%);
-  -o-transform: translate(-100%, -50%);
-  transform: translate(-100%, -50%);
+  -webkit-transform: translate(calc(-100% - 90px), -50%);
+  -moz-transform: translate(calc(-100% - 90px), -50%);
+  -ms-transform: translate(calc(-100% - 90px), -50%);
+  -o-transform: translate(calc(-100% - 90px), -50%);
+  transform: translate(calc(-100% - 90px), -50%);
+}
+
+.screen-slider .bx-wrapper {
+  width: 400px;
 }
 
 .img-screen {
