@@ -205,5 +205,6 @@
 }
 
 .tween-side {
-  @include transform(translateX(-100%));
+  opacity: 0;
+  @include transform(translateX(-20%));
 }

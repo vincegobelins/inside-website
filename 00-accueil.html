@@ -328,7 +328,19 @@
               </div>
             </section>
             <section class="map">
-
+              <div class="wrap-map">
+                <div id="gmap"></div>
+                <div class="controls-map">
+                  <ul class="list-controls-map">
+                    <li class="item-control-map">
+                      <a href="#" id="zoom-in" class="link-control-map zoom-in">Zoom in</a>
+                    </li>
+                    <li class="item-control-map">
+                      <a href="#" id="zoom-out" class="link-control-map zoom-out">Zoom out</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </section>
           </div>
         </div>
@@ -343,6 +355,8 @@
     </footer>
     <!-- @include:footer:end -->
   </div>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI4VxhVeSmSK82qwaGCWVCMm3vPdt-Go&callback=app.initMap"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="tpl/js/libs/jquery.min.js"><\/script>')</script>

@@ -119,7 +119,7 @@ class Slider {
   }
 
   onSlideBefore(current) {
-    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "-100%", ease: Power2.easeInOut}, 0.25);
+    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "20%", opacity: 0, ease: Power2.easeInOut}, 0.2);
     $(".pager-slider").addClass("active");
   }
 
@@ -129,13 +129,15 @@ class Slider {
 
     $(".item-detail").removeClass("current-slide");
     current.addClass("current-slide");
-    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
+    TweenMax.set(".current-slide .tween-side", {clearProps:"transform"});
+    TweenMax.staggerTo(".current-slide .tween-side", 1.5, {x: "0%", opacity: 1, delay: 0.5, ease: Power2.easeInOut}, 0.2);
     setTimeout(function(){ $(".pager-slider").removeClass("active");; }, 4000);
 
   }
 
   onSliderLoad() {
-    TweenMax.staggerTo(".current-slide .tween-side", 1, {x: "0%", delay: 0.5, ease: Power2.easeInOut}, 0.25);
+    TweenMax.set(".current-slide .tween-side", {clearProps:"transform"});
+    TweenMax.staggerTo(".current-slide .tween-side", 1.5, {x: "0%", opacity: 1, delay: 0.5, ease: Power2.easeInOut}, 0.2);
   }
 
   goTo(pointer) {
@@ -205,6 +207,185 @@ class ScreenSlider extends Slider {
 }
 
 /** ###############
+* Map *
+* ############## */
+
+class Map {
+  constructor(markers) {
+
+    self = this;
+
+    this.zoom = 15;
+    this.latLng = {lat: 45.896, lng: 6.128};
+    this.map = new google.maps.Map(document.getElementById('gmap'), {
+      center: self.latLng,
+      scrollwheel: false,
+      zoom: parseInt(self.zoom),
+      styles: self.getStyle(),
+      disableDefaultUI: true
+    });
+
+    for (let i=0; i<markers.length; i++) {
+      this.addMarker(markers[i]);
+    }
+
+    this.bindUIActions();
+  }
+
+  zoomIn(e) {
+    e.preventDefault();
+    this.zoom = this.zoom + 1;
+    this.map.setZoom(this.zoom);
+  }
+
+  zoomOut(e) {
+    e.preventDefault();
+    this.zoom = this.zoom - 1;
+    this.map.setZoom(this.zoom);
+  }
+
+  addMarker(marker) {
+    console.log(marker);
+    self = this;
+    new google.maps.Marker({
+      position: marker.latLng,
+      map: self.map,
+      icon: 'tpl/img/marker1.png'
+    });
+  }
+
+  getStyle() {
+    return [
+      {
+          "featureType": "administrative",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "color": "#0200fd"
+              },
+              {
+                  "visibility": "on"
+              },
+              {
+                  "weight": "1"
+              }
+          ]
+      },
+      {
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [
+              {
+                  "color": "#0200fd"
+              },
+              {
+                  "weight": "1.30"
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "administrative",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "color": "#000181"
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 45
+              },
+              {
+                  "color": "#0c005f"
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "color": "#0200ff"
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      }
+  ]
+  }
+
+  bindUIActions() {
+    let zoomIn = document.getElementById("zoom-in");
+    let zoomOut = document.getElementById("zoom-out");
+
+    zoomIn.addEventListener('click', this.zoomIn.bind(this), false);
+    zoomOut.addEventListener('click', this.zoomOut.bind(this), false);
+  }
+}
+
+/** ###############
 * App *
 * ############## */
 
@@ -236,6 +417,29 @@ var store, app = {
     document.addEventListener('nextSlide', this.updateSliders, false);
 
   },
+
+  initMap : function() {
+
+    let markers = [
+      {
+        id: 0,
+        latLng : {
+          lat: 45.896,
+          lng: 6.128
+        }
+      },
+      {
+        id: 1,
+        latLng : {
+          lat: 45.893514,
+          lng: 6.135523
+        }
+      }
+    ];
+
+    let map = new Map(markers);
+  },
+
 
   updateSliders: function(e){
     let pointer = e.detail.pointer;
