@@ -37,6 +37,7 @@
 }
 
 .text-footer {
+	margin-bottom: $space-1;
 	font-size: 1.2em;
 	font-weight: 600;
 	font-style: italic;
@@ -89,6 +90,46 @@
 	color: $color-text-2;
 }
 
+.icon-footer {
+	position: relative;
+	margin: .5em 0;
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: -30px;
+		width: 20px;
+		height: 20px;
+		@include transform(translate(0, -50%));
+	}
+}
+
+.mail-footer {
+	@extend .icon-footer;
+	@extend .link;
+	&:after {
+		background: url('../img/contact.png') no-repeat;
+	}
+}
+
+.location-footer {
+	@extend .icon-footer;
+	&:after {
+		background: url('../img/location.png') no-repeat;
+	}
+}
+
+.social-footer {
+	margin-top: $space-5;
+}
+
+.cta-footer {
+	@extend .cta-regular;
+	z-index: 10;
+	display: inline-block;
+	font-size: 12px;
+}
 
 
 /* ====================== */

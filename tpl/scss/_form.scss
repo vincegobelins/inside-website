@@ -143,6 +143,7 @@ input[type="submit"],
 	font-family: $font-2;
   font-size: 20px;
 	text-transform: uppercase;
+	text-decoration: none;
 	letter-spacing: 3px;
 	background: none;
 
@@ -163,7 +164,7 @@ input[type="submit"],
 	&:after {
 		background: $color-site-2;
 		width: 0%;
-		@include transition;
+		@include transition(width .3s ease-in-out);
 	}
 
 	&:hover,
