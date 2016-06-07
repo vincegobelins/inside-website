@@ -11,6 +11,28 @@
 
 .top-footer {
 	@extend .center;
+	position: relative;
+
+	.wrap-logo-deco {
+		position: absolute;
+		top: 24%;
+
+		&.logo-deco-1 {
+			left: 33%;
+
+			.logo-deco {
+				@include transform(rotateY(180deg) translate(50%, 0) scale(0.75));
+			}
+		}
+
+		&.logo-deco-2 {
+			left: 66%;
+
+			.logo-deco {
+				@include transform(translate(-50%, 0) scale(0.75));
+			}
+		}
+	}
 }
 
 .list-footer {
@@ -25,7 +47,7 @@
 }
 
 .content-item-footer {
-	padding: $space-7 0;
+	padding: $space-5 0;
 }
 
 .title-footer {
@@ -130,6 +152,8 @@
 	display: inline-block;
 	font-size: 12px;
 }
+
+
 
 
 /* ====================== */

@@ -1038,6 +1038,39 @@ button[type="submit"],
 /* ====================== */
 /* top footer */
 /* ====================== */
+.top-footer {
+  position: relative;
+}
+
+.top-footer .wrap-logo-deco {
+  position: absolute;
+  top: 24%;
+}
+
+.top-footer .wrap-logo-deco.logo-deco-1 {
+  left: 33%;
+}
+
+.top-footer .wrap-logo-deco.logo-deco-1 .logo-deco {
+  -webkit-transform: rotateY(180deg) translate(50%, 0) scale(0.75);
+  -moz-transform: rotateY(180deg) translate(50%, 0) scale(0.75);
+  -ms-transform: rotateY(180deg) translate(50%, 0) scale(0.75);
+  -o-transform: rotateY(180deg) translate(50%, 0) scale(0.75);
+  transform: rotateY(180deg) translate(50%, 0) scale(0.75);
+}
+
+.top-footer .wrap-logo-deco.logo-deco-2 {
+  left: 66%;
+}
+
+.top-footer .wrap-logo-deco.logo-deco-2 .logo-deco {
+  -webkit-transform: translate(-50%, 0) scale(0.75);
+  -moz-transform: translate(-50%, 0) scale(0.75);
+  -ms-transform: translate(-50%, 0) scale(0.75);
+  -o-transform: translate(-50%, 0) scale(0.75);
+  transform: translate(-50%, 0) scale(0.75);
+}
+
 .list-footer {
   margin: -13em;
 }
@@ -1048,7 +1081,7 @@ button[type="submit"],
 }
 
 .content-item-footer {
-  padding: 8em 0;
+  padding: 5em 0;
 }
 
 .title-footer {
