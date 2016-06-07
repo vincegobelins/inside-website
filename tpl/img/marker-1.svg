@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="Calque_1" width="35" height="35" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ff0000;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #ff0000;
+      }
+    </style>
+  </defs>
+  <title>marker-1</title>
+  <circle id="circle1" class="cls-1" cx="18.25" cy="18.25" r="17.25"/>
+  <animate
+           attributeName="cx"
+           from="0"
+           to="25"
+           dur="2s"
+           begin="0s"
+           repeatCount="indefinite">
+           </animate>
+  <circle class="cls-2" cx="17.5" cy="17.5" r="2.01" transform="translate(-6.5 18.25) rotate(-45)"/>
+</svg>

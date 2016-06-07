@@ -1,0 +1,20 @@
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 102">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <title>marker</title>
+  <circle class="cls-1" cx="51" cy="51" r="50">
+    <animate attributeName="scale" attributeType="XML"
+    fill="freeze"
+    from="0" to="300"
+    begin="0s" dur="3s"/>
+  </circle>
+  <circle cx="51" cy="51" r="5.69"/>
+</svg>

@@ -245,12 +245,45 @@ class Map {
   }
 
   addMarker(marker) {
-    console.log(marker);
+    let circle1 = {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 20,
+      strokeColor: '#fff',
+      strokeWeight: 2
+    };
+
+    let circle2 = {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 10,
+      strokeColor: '#fff',
+      strokeWeight: 2
+    };
+
+    let line = new google.maps.Polyline({
+      path: [{lat: 22.291, lng: 153.027}, {lat: 18.291, lng: 153.027}],
+      icons: [
+        {
+          icon: circle1
+        }, {
+          icon: circle2
+        }
+      ]
+    });
+
     self = this;
     new google.maps.Marker({
       position: marker.latLng,
       map: self.map,
-      icon: 'tpl/img/marker1.png'
+      icon: new google.maps.Polyline({
+        path: [{lat: 22.291, lng: 153.027}, {lat: 18.291, lng: 153.027}],
+        icons: [
+          {
+            icon: circle1
+          }, {
+            icon: circle2
+          }
+        ]
+      })
     });
   }
 

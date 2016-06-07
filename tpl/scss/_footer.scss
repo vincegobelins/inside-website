@@ -1,15 +1,95 @@
 /* ====================== */
 /* footer */
 /* ====================== */
-#footer {
-	@extend .center;
-}
-.wrap-footer {
+.footer {
+	background: #060083;
 }
 
 /* ====================== */
-/* nav footer */
+/* top footer */
 /* ====================== */
+
+.top-footer {
+	@extend .center;
+}
+
+.list-footer {
+	@extend .list-col;
+	margin: -$space-8;
+}
+
+.item-footer {
+	@extend .item-col;
+	padding: $space-8;
+	width: calc(100% / 3);
+}
+
+.content-item-footer {
+	padding: $space-7 0;
+}
+
+.title-footer {
+	margin-bottom: 1em;
+	font-size: 2em;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
+
+.text-footer {
+	font-size: 1.2em;
+	font-weight: 600;
+	font-style: italic;
+	line-height: 2em;
+
+	strong {
+		font-weight: 800;
+		font-style: normal;
+	}
+}
+
+.item-nav-footer {
+	padding: 1em 0;
+}
+
+.link-nav-footer {
+	@extend .link;
+}
+
+/* ====================== */
+/* bottom footer */
+/* ====================== */
+
+.wrap-bottom-footer {
+	background: $color-site-2;
+}
+
+.bottom-footer {
+	@extend .clearfix;
+	@extend .center;
+	padding: $space-2 0;
+}
+
+.legal-footer {
+	float: left;
+	font-size: 12px;
+	font-weight: 300;
+
+	strong {
+		font-weight: 700;
+		font-style: italic;
+	}
+}
+
+.text-bottom-footer {
+	float: right;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: $color-text-2;
+}
+
+
 
 /* ====================== */
 /* responsive */

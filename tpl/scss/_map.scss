@@ -67,3 +67,43 @@
     }
   }
 }
+
+/* ====================== */
+/* Legends */
+/* ====================== */
+
+.wrap-map-legend {
+  background: $color-site-2;
+}
+
+.map-legend {
+  @extend .center;
+  @extend .clearfix;
+}
+
+.item-legend {
+  position: relative;
+  float: left;
+  padding: $space-5;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: $space-5;
+    left: 0;
+    width: 33px;
+    height: 33px;
+    background: url('../img/marker1.png');
+  }
+}
+
+.text-legend {
+  font-size: 1.8em;
+  text-transform: uppercase;
+  font-weight: 400;
+
+  strong {
+    display: block;
+    font-weight: 700;
+  }
+}
