@@ -1,0 +1,44 @@
+/* ====================== */
+/* Download */
+/* ====================== */
+
+.download {
+  @extend .center;
+  position: relative;
+  text-align: center;
+}
+
+.content-download {
+  padding: $space-8 0;
+  padding-left: calc(100%/3);
+}
+
+.title-download {
+  margin-bottom: $space-1;
+  font-size: 28px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: $color-text-3;
+
+  strong {
+    font-size: 40px;
+    font-weight: 600;
+  }
+}
+
+.subtitle-download {
+  margin-bottom: $space-1;
+  font-size: 18px;
+  color: $color-text-2;
+
+  strong {
+    font-family: $font-2;
+  }
+}
+
+.link-visuel-download {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

@@ -225,6 +225,11 @@ class Map {
       disableDefaultUI: true
     });
 
+    this.infowindow = new google.maps.InfoWindow({
+      content: "coucou info view"
+    });
+
+    // create markers
     for (let i=0; i<markers.length; i++) {
       this.addMarker(markers[i]);
     }
@@ -244,47 +249,23 @@ class Map {
     this.map.setZoom(this.zoom);
   }
 
-  addMarker(marker) {
-    let circle1 = {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 20,
-      strokeColor: '#fff',
-      strokeWeight: 2
-    };
-
-    let circle2 = {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 10,
-      strokeColor: '#fff',
-      strokeWeight: 2
-    };
-
-    let line = new google.maps.Polyline({
-      path: [{lat: 22.291, lng: 153.027}, {lat: 18.291, lng: 153.027}],
-      icons: [
-        {
-          icon: circle1
-        }, {
-          icon: circle2
-        }
-      ]
-    });
-
+  addMarker(data) {
     self = this;
-    new google.maps.Marker({
-      position: marker.latLng,
+
+    let marker = new google.maps.Marker({
+      position: data.latLng,
       map: self.map,
-      icon: new google.maps.Polyline({
-        path: [{lat: 22.291, lng: 153.027}, {lat: 18.291, lng: 153.027}],
-        icons: [
-          {
-            icon: circle1
-          }, {
-            icon: circle2
-          }
-        ]
-      })
+      icon: 'tpl/img/marker1.png',
     });
+
+    marker.addListener('click', function(e) {
+                this.showInfo(marker);
+            }.bind(this), false);
+  }
+
+  showInfo(marker) {
+    this.infowindow.setContent("<h1>Go go go</h1>");
+    this.infowindow.open(self.map, marker);
   }
 
   getStyle() {
@@ -456,6 +437,8 @@ var store, app = {
     let markers = [
       {
         id: 0,
+        title: "Louise Roam",
+        time: "12/07/2015",
         latLng : {
           lat: 45.896,
           lng: 6.128
@@ -463,6 +446,8 @@ var store, app = {
       },
       {
         id: 1,
+        title: "Nekfeu",
+        time: "20/05/2015",
         latLng : {
           lat: 45.893514,
           lng: 6.135523

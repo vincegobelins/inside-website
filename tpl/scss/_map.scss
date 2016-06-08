@@ -2,7 +2,7 @@
 /* Map */
 /* ====================== */
 .map {
-  margin-top: 160em;
+  @extend .clearfix;
 }
 
 .wrap-map {

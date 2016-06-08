@@ -1,0 +1,73 @@
+/* ====================== */
+/* Interfaces */
+/* ====================== */
+
+.interfaces {
+  @extend .clearfix;
+  position: relative;
+  margin-top: 20em;
+}
+
+.deco-interface-1, .deco-interface-2 {
+  z-index: -1;
+  position: absolute;
+}
+
+.deco-interface-1 {
+  top: 0;
+  width: 60%;
+  height: 30em;
+  background: $color-site-2;
+}
+
+.deco-interface-2 {
+  bottom: 0;
+  right: 0;
+  width: 40%;
+  height: 30em;
+  background: $color-site-1;
+}
+
+.wrap-title-interfaces {
+  z-index: 2;
+  display: block;
+  text-align: center;
+}
+
+.title-interfaces {
+  padding-left: 500px;
+  font-family: $font-2;
+  font-size: 15em;
+  color: #cccbfe;
+  text-transform: uppercase;
+}
+
+.wrap-interfaces {
+  @extend .center;
+  position: relative;
+}
+
+.item-interface {
+  width: 50%;
+  float: left;
+  display: block;
+  overflow: hidden;
+  backface-visibility: hidden;
+
+  &.left {
+    clip-path: url(#mask-left);
+    -webkit-clip-path: url(#mask-left);
+    @include transform(translate(200px, -90px));
+  }
+
+  &.right {
+    clip-path: url(#mask-right);
+    -webkit-clip-path: url(#mask-right);
+    @include transform(translate(-200px, 0));
+  }
+}
+
+.img-item-interface {
+  display: block;
+  //max-width: 100%;
+}

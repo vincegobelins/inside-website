@@ -51,7 +51,7 @@
   position: relative;
   flex: 10;
   height: 250px;
-  @include transition(flex .5s ease-in-out);
+  @include transition(flex .25s ease-in-out);
 
   &:hover {
     flex: 11;

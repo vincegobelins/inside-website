@@ -71,7 +71,7 @@
 }
 
 .bloc-title-video-intro {
-  z-index: 30;
+  z-index: 35;
   position: absolute;
   top: 50%;
   left: 0;
@@ -171,17 +171,13 @@
   @extend .box-shadow;
   z-index: 20;
   position: absolute;
-  top: 13em;
+  top: 50em;
   right: -$space-5;
   width: 44em;
-  height: 110%;
   background: $color-site-1;
 }
 
 .subtitle-intro {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   padding: $space-3;
   font-size: 28px;
   font-weight: 600;
