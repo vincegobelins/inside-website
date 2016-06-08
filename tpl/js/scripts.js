@@ -22,6 +22,7 @@ class Parallax {
     }
 
     this.bindUIActions();
+    this.update();
     this.render();
   }
 
@@ -36,7 +37,7 @@ class Parallax {
       let offsetTop = this.items[i].obj.getBoundingClientRect().top;
       let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
 
-      if(offsetTop < this.windowHeight && offsetBottom > 0) {
+      if(offsetTop - 500 < this.windowHeight && offsetBottom > 0) {
         this.activeItems[this.items[i].id] = this.items[i];
       }
       else if(this.activeItems[this.items[i].id]) {
@@ -225,8 +226,22 @@ class Map {
       disableDefaultUI: true
     });
 
-    this.infowindow = new google.maps.InfoWindow({
-      content: "coucou info view"
+    this.infowindow = new InfoBubble({
+      map: this.map,
+      content: "coucou info view",
+      shadowStyle: 0,
+      padding: 20,
+      backgroundColor: "#fb224b",
+      borderRadius: 0,
+      arrowSize: 0,
+      arrowPosition: 0,
+      borderWidth: 0,
+      disableAutoPan: true,
+      hideCloseButton: true,
+      backgroundClassName: 'info-bubble',
+      arrowStyle: 0,
+      minWidth: 150,
+      minHeight: 150
     });
 
     // create markers
@@ -256,6 +271,7 @@ class Map {
       position: data.latLng,
       map: self.map,
       icon: 'tpl/img/marker1.png',
+      data: {title: data.title, time: data.time, place: data.location}
     });
 
     marker.addListener('click', function(e) {
@@ -264,7 +280,11 @@ class Map {
   }
 
   showInfo(marker) {
-    this.infowindow.setContent("<h1>Go go go</h1>");
+    console.log(marker);
+    this.infowindow.setContent('<h4 class="title-infobubble">' + marker.data.title + '</h4>'
++'<p class="time-infobubble">' + marker.data.time + '</p>'
+    + '<p class="location-infobubble">' + marker.data.place + '</p>'
+    + '<a href="#" class="link-infobubble">Voir le replay</a>');
     this.infowindow.open(self.map, marker);
   }
 
@@ -439,6 +459,7 @@ var store, app = {
         id: 0,
         title: "Louise Roam",
         time: "12/07/2015",
+        location: "Le Brise Glace",
         latLng : {
           lat: 45.896,
           lng: 6.128
@@ -448,6 +469,7 @@ var store, app = {
         id: 1,
         title: "Nekfeu",
         time: "20/05/2015",
+        location: "CCI",
         latLng : {
           lat: 45.893514,
           lng: 6.135523
