@@ -15,8 +15,91 @@
 #gmap {
   width: 100%;
   height: 500px;
+
+  img[src^='tpl/img/marker-1.svg']{
+    @extend .marker-alert-anim;
+  }
+
+  img[src^='tpl/img/marker-2.svg'], img[src^='tpl/img/marker-3.svg']{
+    @extend .marker-anim;
+  }
 }
 
+.infobubble {
+  padding: $space-3;
+}
+
+.infobubble-bg {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $color-site-1;
+}
+
+.title-infobubble {
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.location-infobubble {
+  margin: $space-1 0;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.time-infobubble {
+  font-family: $font-2;
+  font-size: 15px;
+}
+
+.link-infobubble {
+  @extend .link;
+  font-family: $font-2;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-shadow: none;
+  text-decoration: underline;
+  color: $color-text-3;
+
+  &:before {
+    background: $color-site-2;
+  }
+
+  &:hover {
+    color: $color-text-1;
+  }
+}
+
+/* ====================== */
+/* GMap Animation */
+/* ====================== */
+
+.marker-alert-anim {
+  @include animation(marker-alert .75s infinite linear);
+}
+
+.marker-anim {
+  @include animation(marker 4s infinite ease-in-out);
+}
+
+@include keyframes(marker-alert) {
+  0%   { opacity: 0; @include transform(scale(0)) }
+  20%   { opacity: 1; @include transform(scale(0.5)) }
+  80%   { opacity: 1; @include transform(scale(0.9)) }
+  100% { opacity: 0; @include transform(scale(1)) }
+}
+
+@include keyframes(marker) {
+  0%   { @include transform(scale(0.7)) }
+  50%   { @include transform(scale(0.9)) }
+  100%   { @include transform(scale(0.7)) }
+}
 /* ====================== */
 /* Controls */
 /* ====================== */
@@ -86,6 +169,24 @@
   float: left;
   padding: $space-5;
 
+  &.legend-1 {
+    &:before {
+      background: url('../img/marker-1.svg');
+    }
+  }
+
+  &.legend-2 {
+    &:before {
+      background: url('../img/marker-2.svg');
+    }
+  }
+
+  &.legend-3 {
+    &:before {
+      background: url('../img/marker-3.svg');
+    }
+  }
+
   &:before {
     content: "";
     position: absolute;
@@ -93,7 +194,6 @@
     left: 0;
     width: 33px;
     height: 33px;
-    background: url('../img/marker1.png');
   }
 }
 

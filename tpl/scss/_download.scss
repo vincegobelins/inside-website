@@ -14,7 +14,6 @@
 }
 
 .title-download {
-  margin-bottom: $space-1;
   font-size: 28px;
   font-weight: 300;
   text-transform: uppercase;
@@ -41,4 +40,48 @@
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+.cta-download {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin: $space-1;
+  padding: $space-1 $space-3;
+  border-radius: 50px;
+  font-size: 23px;
+  color: $color-white;
+  text-decoration: none;
+
+  &:before, &:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  &:before {
+    background: $color-site-2;
+    width: 100%;
+  }
+
+  &:after {
+    background: $color-site-1;
+    width: 0%;
+    @include transition(width .25s ease-in-out);
+  }
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+.dl {
+  display: block;
+  font-size: 12px;
 }

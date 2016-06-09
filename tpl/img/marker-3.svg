@@ -2,11 +2,11 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #ff194d;
+        fill: #0200fd;
       }
     </style>
   </defs>
-  <title>marker-1</title>
+  <title>marker-3</title>
   <path class="cls-1" d="M25,2.92A22.08,22.08,0,1,1,2.92,25,22.1,22.1,0,0,1,25,2.92m0-3A25.08,25.08,0,1,0,50.08,25,25.08,25.08,0,0,0,25-.08h0Z" transform="translate(0.08 0.08)"/>
   <circle class="cls-1" cx="25.08" cy="25.08" r="4.14"/>
 </svg>

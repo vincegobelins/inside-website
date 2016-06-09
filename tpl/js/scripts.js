@@ -34,10 +34,12 @@ class Parallax {
 
     for (let i = 0; i < this.items.length; i++) {
 
+      let offScreen = 500;
+
       let offsetTop = this.items[i].obj.getBoundingClientRect().top;
       let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
 
-      if(offsetTop - 500 < this.windowHeight && offsetBottom > 0) {
+      if(offsetTop - offScreen < this.windowHeight && offsetBottom > -offScreen) {
         this.activeItems[this.items[i].id] = this.items[i];
       }
       else if(this.activeItems[this.items[i].id]) {
@@ -230,18 +232,19 @@ class Map {
       map: this.map,
       content: "coucou info view",
       shadowStyle: 0,
-      padding: 20,
-      backgroundColor: "#fb224b",
+      padding: 0,
+      backgroundColor: "",
       borderRadius: 0,
       arrowSize: 0,
       arrowPosition: 0,
       borderWidth: 0,
       disableAutoPan: true,
       hideCloseButton: true,
-      backgroundClassName: 'info-bubble',
+      backgroundClassName: 'infobubble',
       arrowStyle: 0,
-      minWidth: 150,
-      minHeight: 150
+      minWidth: 230,
+      maxWidth: 230,
+      minHeight: 190,
     });
 
     // create markers
@@ -270,21 +273,44 @@ class Map {
     let marker = new google.maps.Marker({
       position: data.latLng,
       map: self.map,
-      icon: 'tpl/img/marker1.png',
-      data: {title: data.title, time: data.time, place: data.location}
+      icon: this.getIcon(data.state),
+      data: {title: data.title, time: data.time, place: data.location},
+      optimized:false
     });
 
     marker.addListener('click', function(e) {
-                this.showInfo(marker);
-            }.bind(this), false);
+      this.showInfo(marker);
+    }.bind(this), false);
+  }
+
+  getIcon(state) {
+    let icon = "";
+
+    if(state == "live") {
+      icon = 'tpl/img/marker-1.svg';
+    }
+    if(state == "old") {
+      icon = 'tpl/img/marker-2.svg';
+    }
+    if(state == "new") {
+      icon = 'tpl/img/marker-3.svg';
+    }
+
+    return icon;
   }
 
   showInfo(marker) {
-    console.log(marker);
-    this.infowindow.setContent('<h4 class="title-infobubble">' + marker.data.title + '</h4>'
+    //var tl = new TimelineMax();
+
+    //TweenMax.to($(".infobubble-bg"), 0.5, {width: 0, ease:Back.easeOut});
+    //$(".infobubble-bg").hide();
+    //console.log($(".infobubble-bg").length);
+
+    this.infowindow.setContent('<div class="infobubble-bg"></div><div class="content-infobubble"><h4 class="title-infobubble">' + marker.data.title + '</h4>'
 +'<p class="time-infobubble">' + marker.data.time + '</p>'
     + '<p class="location-infobubble">' + marker.data.place + '</p>'
-    + '<a href="#" class="link-infobubble">Voir le replay</a>');
+    + '<a href="#" class="link-infobubble">Voir le replay</a></div>');
+
     this.infowindow.open(self.map, marker);
   }
 
@@ -457,7 +483,19 @@ var store, app = {
     let markers = [
       {
         id: 0,
+        title: "L.E.J.",
+        state: "old",
+        time: "12/07/2015",
+        location: "Le Brise Glace",
+        latLng : {
+          lat: 45.900,
+          lng: 6.124
+        }
+      },
+      {
+        id: 1,
         title: "Louise Roam",
+        state: "live",
         time: "12/07/2015",
         location: "Le Brise Glace",
         latLng : {
@@ -466,13 +504,25 @@ var store, app = {
         }
       },
       {
-        id: 1,
-        title: "Nekfeu",
+        id: 2,
+        title: "Nekfeu Nek le Fenek",
+        state: "live",
         time: "20/05/2015",
         location: "CCI",
         latLng : {
           lat: 45.893514,
           lng: 6.135523
+        }
+      },
+      {
+        id: 3,
+        title: "L.E.J.",
+        state: "new",
+        time: "12/07/2015",
+        location: "Le Brise Glace",
+        latLng : {
+          lat: 45.893114,
+          lng: 6.120
         }
       }
     ];
