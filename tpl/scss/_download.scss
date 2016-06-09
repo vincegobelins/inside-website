@@ -42,17 +42,12 @@
   left: 0;
 }
 
-.cta-download {
-  z-index: 1;
+.bloc-cta-download {
   position: relative;
   overflow: hidden;
   display: inline-block;
   margin: $space-1;
-  padding: $space-1 $space-3;
   border-radius: 50px;
-  font-size: 23px;
-  color: $color-white;
-  text-decoration: none;
 
   &:before, &:after {
     z-index: -1;
@@ -77,6 +72,38 @@
   &:hover {
     &:after {
       width: 100%;
+    }
+  }
+}
+
+.cta-download {
+  z-index: 1;
+  position: relative;
+  display: block;
+  padding: 10px 40px 10px 80px;
+  font-size: 23px;
+  color: $color-white;
+  text-decoration: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    width: 28px;
+    height: 28px;
+    @include transform(translate(0, -50%));
+  }
+
+  &.android {
+    &:before {
+      background: url("../img/play.png");
+    }
+  }
+
+  &.apple {
+    &:before {
+      background: url("../img/apple.png");
     }
   }
 }

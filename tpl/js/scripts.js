@@ -1,4 +1,53 @@
 /** ###############
+* In View *
+* ############## */
+
+class InView {
+
+  constructor(itemsHTML) {
+    this.items = [];
+    this.activeItems = [];
+    this.scrollPos = 0;
+    this.windowHeight = window.innerHeight;
+
+    for (let i = 0; i < itemsHTML.length; i++) {
+      let item = {
+        id : i,
+        obj: itemsHTML[i]
+      }
+
+      this.items.push(item);
+    }
+
+    this.update();
+  }
+
+  /**
+  * Add / Remove items displayed on screen
+  */
+
+  update() {
+
+    for (let i = 0; i < this.items.length; i++) {
+
+      let offScreen = -500;
+
+      let offsetTop = this.items[i].obj.getBoundingClientRect().top;
+      let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
+
+      if(offsetTop - offScreen < this.windowHeight && offsetBottom > -offScreen) {
+        setTimeout(this.activate($(this.items[i].obj)), 4000);
+      }
+    }
+
+  }
+
+  activate(el){
+    el.addClass("active");
+  }
+}
+
+/** ###############
 * Parallax *
 * ############## */
 
@@ -21,7 +70,6 @@ class Parallax {
       this.items.push(item);
     }
 
-    this.bindUIActions();
     this.update();
     this.render();
   }
@@ -66,19 +114,6 @@ class Parallax {
     });
 
     requestAnimationFrame(this.render.bind(this));
-  }
-
-  /**
-  * Update on scroll
-  */
-
-  bindUIActions() {
-    let self = this;
-
-    window.onscroll = function (e) {
-      self.scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-      self.update();
-    }
   }
 }
 
@@ -453,16 +488,23 @@ class Map {
 var store, app = {
 
   store: {
-    screenSlider : ""
+    screenSlider : "",
+    inView : null,
+    parallax: null
   },
 
   init: function() {
     store = this.store;
     this.bindUI();
 
+    // add class active when is displayed
+    // get parallax items and init parallax
+    let sections = document.getElementsByTagName("section");
+    store.inView = new InView(sections);
+
     // get parallax items and init parallax
     let parallaxItems = document.getElementsByClassName("parallax");
-    let parallax = new Parallax(parallaxItems);
+    store.parallax = new Parallax(parallaxItems);
 
     // init slider
     let sliderWrapper = $("#slider-1");
@@ -543,6 +585,12 @@ var store, app = {
          $('body').toggleClass('dev');
       }
     });
+
+    window.onscroll = function (e) {
+      let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+      store.parallax.update();
+      store.inView.update();
+    }
   }
 }
 

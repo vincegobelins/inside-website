@@ -36,6 +36,46 @@ body {
   @include transition(all .15s ease-in-out);
 }
 
+.anim-title-active {
+  @include transform(translate(0, 0%));
+  opacity: 1;
+}
+
+.anim-title {
+  @include transform(translate(0, 25%));
+  @include transition(all 1s ease-in-out);
+  opacity: 0;
+}
+
+.anim-left-active {
+  @include transform(translate(0, 0%));
+  opacity: 1;
+}
+
+.anim-left {
+  @include transform(translate(-15%, 0));
+  @include transition(all 1.5s ease-in-out);
+  opacity: 0;
+}
+
+.width-active {
+  width: 100%;
+}
+
+.width {
+  width: 0%;
+  @include transition(width 1s ease-in-out);
+}
+
+.width-inverse {
+  width: 100%;
+  @include transition(width 1s ease-in-out);
+}
+
+.width-inverse-active {
+  width: 0%;
+}
+
 
 /* ====================== */
 /* sitemap */
