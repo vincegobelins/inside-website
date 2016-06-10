@@ -37,7 +37,7 @@ class InView {
       let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
 
       if(offsetTop - offScreen < this.windowHeight && offsetBottom > -offScreen) {
-        setTimeout(this.activate($(this.items[i].obj)), 4000);
+        this.activate($(this.items[i].obj));
       }
     }
 
