@@ -100,6 +100,10 @@
 
     .item-txt-flap {
       left: -$space-7;
+
+      &:before, &:after {
+        left: 150%;
+      }
     }
 
     .wrap-img-item {
@@ -122,6 +126,10 @@
     .item-txt-flap {
       right: -$space-7;
       text-align: right;
+
+      &:before, &:after {
+        left: -50%;
+      }
     }
 
     .wrap-img-item {
@@ -132,7 +140,7 @@
   &:hover {
     flex: 12;
 
-    .wrap-img-item {
+    .item-txt-flap {
       &:after {
         opacity: 1;
       }
@@ -146,13 +154,13 @@
 
     &:nth-child(1) {
       .item-txt-flap {
-        left: $space-4;
+        left: -$space-6;
       }
     }
 
     &:nth-child(3) {
       .item-txt-flap {
-        right: $space-3;
+        right: -$space-6;
       }
     }
   }
@@ -168,28 +176,6 @@
   overflow: hidden;
   height: 512px;
   @include transform(skew(-25deg));
-
-  &:after, &:before {
-    z-index: 1;
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    @include transform(skew(25deg));
-    @include transition(opacity .5s ease-out);
-  }
-
-  &:before {
-    background: url('../img/play.png') no-repeat;
-    opacity: 1;
-  }
-
-  &:after {
-    background: url('../img/play-hover.png') no-repeat;
-    opacity: 0;
-  }
 }
 
 .bloc-img-item-flap {
@@ -222,7 +208,7 @@
   left: 50%;
   display: block;
   width: auto;
-  height: 120%;
+  height: 110%;
   @include transform(skew(25deg) translate(-40%, -50%));
 }
 
@@ -231,6 +217,28 @@
   position: absolute;
   bottom: 30%;
   @include transition(all .5s ease-in-out !important);
+
+  &:after, &:before {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    @include transform(translate(-50%, 0));
+    @include transition(opacity .5s ease-out);
+  }
+
+  &:before {
+    background: url('../img/play.png') no-repeat;
+    opacity: 1;
+  }
+
+  &:after {
+    background: url('../img/play-hover.png') no-repeat;
+    opacity: 0;
+  }
 }
 
 .title-txt-flap {

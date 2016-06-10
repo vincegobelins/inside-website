@@ -252,20 +252,28 @@ class Player {
 
   openPlayer(link) {
 
+    // set poster
     this.setPoster(link.dataset.poster);
 
-    this.timeline = new TimelineMax();
+    // set video time
+    this.video.currentTime = link.dataset.time;
 
+    // set animation
+    this.timeline = new TimelineMax({onReverseComplete:this.pause.bind(this), onComplete:this.play.bind(this)});
+
+    this.timeline.set(".wrap-cta-close-player", {opacity:0});
     this.timeline.set(".video-player", {x:"-100%"});
     this.timeline.set(".player", {visibility:"visible"});
     this.timeline.to(".overlay-player-1", 2.5, {x:"200%", ease:Power2.easeInOut});
     this.timeline.set(".player", {background:"rgb(6, 0, 130)"}, 1.25);
     this.timeline.set(".video-player", {x:"0%"}, 1.25);
     this.timeline.to(".overlay-player-2", 4, {x:"190%", ease:Power2.easeInOut}, -0.2);
+    this.timeline.to(".wrap-cta-close-player", 0.25, {opacity:1, ease:Power2.easeInOut});
   }
 
   close() {
     this.timeline.reverse();
+    TweenMax.to(this.video, 1, {volume: 0, delay: 2, ease:Power2.easeInOut});
   }
 
   setPoster(poster) {
@@ -273,7 +281,9 @@ class Player {
   }
 
   play() {
+    this.video.volume = 0;
     this.video.play();
+    TweenMax.to(this.video, 2, {volume: 1, ease:Power2.easeInOut});
   }
 
   pause() {
