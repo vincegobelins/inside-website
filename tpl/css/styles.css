@@ -1213,18 +1213,22 @@ button[type="submit"],
   z-index: 20;
   position: absolute;
   top: 60em;
-  left: 30em;
+  left: 8em;
   display: block;
 }
 
 .wrap-intro {
   position: relative;
-  padding: 1em 13em;
+  padding: 1em 0;
 }
 
 /* ====================== */
 /* Navigation */
 /* ====================== */
+.main-nav {
+  padding: 0 13em;
+}
+
 .menu-item {
   float: left;
   padding: 4em 8em 4em 0;
@@ -1236,22 +1240,20 @@ button[type="submit"],
 .bloc-video-intro {
   z-index: 10;
   position: relative;
+  padding: 0 13em;
   width: 100%;
 }
 
-.content-video-intro {
-  margin-top: -50px;
-}
-
 .video-intro {
+  display: block;
   width: 90%;
   height: auto;
 }
 
 .bloc-title-video-intro {
-  z-index: 35;
+  z-index: 45;
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 0;
   width: 100%;
   text-align: center;
@@ -1266,13 +1268,14 @@ button[type="submit"],
   display: block;
   font-size: 70px;
   font-weight: 300;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
 }
 
 .bloc-frame-video-intro {
-  z-index: 31;
+  z-index: 40;
   position: absolute;
-  top: 10%;
+  top: 0;
+  left: 0;
   width: 100%;
   text-align: center;
 }
@@ -1285,34 +1288,12 @@ button[type="submit"],
   mix-blend-mode: overlay;
   z-index: 30;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  height: 60%;
+  top: 0;
+  left: 13em;
+  width: calc(53% - 13em);
+  height: 100%;
   text-align: center;
   background: #fc2850;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.bloc-shape-video-intro:before, .bloc-shape-video-intro:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 2.5em;
-  height: 100%;
-  background: #fc2850;
-}
-
-.bloc-shape-video-intro:before {
-  left: 0;
-}
-
-.bloc-shape-video-intro:after {
-  right: 0;
 }
 
 .shape-video-intro {
@@ -1323,25 +1304,8 @@ button[type="submit"],
   height: 100%;
 }
 
-.shape-video-intro:before, .shape-video-intro:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2.5em;
-  background: #fc2850;
-}
-
-.shape-video-intro:before {
-  top: 0;
-}
-
-.shape-video-intro:after {
-  bottom: 0;
-}
-
 .bloc-desc-intro {
-  padding: 4em 0;
+  padding: 4em 13em;
 }
 
 .desc-intro {
@@ -1353,10 +1317,10 @@ button[type="submit"],
 /* Subtitle Intro */
 /* ====================== */
 .bloc-subtitle-intro {
-  z-index: 20;
+  z-index: 35;
   position: absolute;
-  top: 50em;
-  right: -5em;
+  top: 40em;
+  right: 8em;
   width: 44em;
   background: #fc2850;
 }
@@ -1404,11 +1368,57 @@ button[type="submit"],
   width: 13px;
   height: 48px;
   background: url("../img/arrow.png");
-  -webkit-transform: translate(-50%, -150%);
-  -moz-transform: translate(-50%, -150%);
-  -ms-transform: translate(-50%, -150%);
-  -o-transform: translate(-50%, -150%);
-  transform: translate(-50%, -150%);
+  -webkit-animation: scroll 3s infinite ease-in-out;
+  -moz-animation: scroll 3s infinite ease-in-out;
+  animation: scroll 3s infinite ease-in-out;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translate(-50%, -125%);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -175%);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -125%);
+  }
+}
+
+@-moz-keyframes scroll {
+  0% {
+    -moz-transform: translate(-50%, -125%);
+  }
+  50% {
+    -moz-transform: translate(-50%, -175%);
+  }
+  100% {
+    -moz-transform: translate(-50%, -125%);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    -webkit-transform: translate(-50%, -125%);
+    -moz-transform: translate(-50%, -125%);
+    -ms-transform: translate(-50%, -125%);
+    -o-transform: translate(-50%, -125%);
+    transform: translate(-50%, -125%);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -175%);
+    -moz-transform: translate(-50%, -175%);
+    -ms-transform: translate(-50%, -175%);
+    -o-transform: translate(-50%, -175%);
+    transform: translate(-50%, -175%);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -125%);
+    -moz-transform: translate(-50%, -125%);
+    -ms-transform: translate(-50%, -125%);
+    -o-transform: translate(-50%, -125%);
+    transform: translate(-50%, -125%);
+  }
 }
 
 /* ====================== */
