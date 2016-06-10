@@ -202,14 +202,19 @@ class Slider {
     this.slider.stopAuto();
   }
 
-  updatePager(oldIndex, newIndex) {
+  updatePager(oldSlide, newSlide) {
+    let oldIndex = parseInt(oldSlide + 1);
+    let newIndex = parseInt(newSlide + 2);
+
+    if(newIndex > this.slider.getSlideCount()) {
+      newIndex = 1;
+    }
+
     let prev = document.getElementById("prev");
     let next = document.getElementById("next");
-    oldIndex = parseInt(oldIndex);
-    newIndex = parseInt(newIndex);
 
-    prev.innerHTML = "0"+ oldIndex;
-    next.innerHTML = "0"+ newIndex;
+    prev.innerHTML = "0"+ parseInt(oldIndex);
+    next.innerHTML = "0"+ parseInt(newIndex);
   }
 
   sendEvent(pointer) {
