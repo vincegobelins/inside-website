@@ -3,12 +3,40 @@
 /* ====================== */
 
 .flap {
+  position: relative;
   background: $color-site-2;
+
+  &:after {
+    @extend .width-inverse;
+    z-index: 2;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-bg-1;
+  }
+
+  &.active {
+    .title-flap {
+      @extend .anim-title-active;
+    }
+    &:after {
+      @extend .width-inverse-active;
+    }
+    .bloc-img-item-flap {
+      &:before {
+        @extend .width-inverse-active;
+      }
+    }
+  }
 }
 
 .wrap-flap {
   @extend .clearfix;
   @extend .center;
+  z-index: 3;
   position: relative;
   padding: $space-5 $space-7;
 
@@ -25,9 +53,11 @@
 
 .wrap-title-flap {
   padding: $space-2 0;
+  overflow: hidden;
 }
 
 .title-flap {
+  @extend .anim-title;
   font-size: 15px;
   font-weight: 300;
   text-transform: uppercase;
@@ -62,7 +92,7 @@
 
 .item-flap {
   float: left;
-  flex: 1;
+  flex: 10;
   margin: $space-2;
   @include transition(all .5s ease-in-out);
 
@@ -82,7 +112,7 @@
     .item-txt-flap {
       z-index: 1;
       left: 50%;
-      @include transform(translate(-50%, 0));
+      @include transform(translateX(-50%));
       text-align: center;
     }
   }
@@ -90,9 +120,8 @@
   &:nth-child(3) {
 
     .item-txt-flap {
-      right: -10em + -$space-7;
+      right: -$space-7;
       text-align: right;
-      @include transform(translate(-50%, 0));
     }
 
     .wrap-img-item {
@@ -101,7 +130,7 @@
   }
 
   &:hover {
-    flex: 1.5;
+    flex: 12;
 
     .wrap-img-item {
       &:after {
@@ -123,10 +152,14 @@
 
     &:nth-child(3) {
       .item-txt-flap {
-        right: -$space-3;
+        right: $space-3;
       }
     }
   }
+}
+
+.link-item-flap {
+  color: $color-text-1;
 }
 
 .wrap-img-item {
@@ -160,16 +193,26 @@
 }
 
 .bloc-img-item-flap {
-  &:after {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &:after, &:before {
     content: "";
     position: absolute;
-    top: 0;
+    top: -30%;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 150%;
     background: $color-bg-1;
     opacity: 0;
     @include transition(opacity .5s ease-out);
+  }
+
+  &:before {
+    z-index: 10;
+    opacity: 1;
+    @include transition(width 1s ease-in-out 1s);
   }
 }
 
@@ -178,6 +221,8 @@
   top: 50%;
   left: 50%;
   display: block;
+  width: auto;
+  height: 120%;
   @include transform(skew(25deg) translate(-40%, -50%));
 }
 
@@ -185,7 +230,7 @@
   z-index: 100;
   position: absolute;
   bottom: 30%;
-  @include transition(all .5s ease-in-out);
+  @include transition(all .5s ease-in-out !important);
 }
 
 .title-txt-flap {
@@ -197,4 +242,5 @@
 .subtitle-txt-flap {
   font-weight: 300;
   text-transform: uppercase;
+  line-height: 2em;
 }

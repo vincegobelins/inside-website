@@ -25,6 +25,14 @@
     left: $space-7;
     display: block;
   }
+
+  &.active {
+    .wrap-video-intro {
+      &:after {
+        @extend .width-inverse-active;
+      }
+    }
+  }
 }
 
 .wrap-intro {
@@ -65,6 +73,22 @@
 
 .content-video-intro {
   //margin-top: -50px;
+}
+
+.wrap-video-intro {
+  position: relative;
+
+  &:after {
+    @extend .width-inverse;
+    z-index: 30;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-site-1;
+  }
 }
 
 .video-intro {

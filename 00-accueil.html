@@ -100,6 +100,15 @@
       <div id="content" class="content">
         <div class="wrap-content">
           <div id="main-content" class="main-content">
+            <!-- Video player -->
+            <div class="player">
+              <div class="wrap-cta-close-player">
+                <button id="cta-close-player" class="cta-close-player">Close</button>
+              </div>
+              <div class="overlay-player-1"></div>
+              <div class="overlay-player-2"></div>
+              <video id="video-player" class="video-player" preload poster="tpl/img/tmp/video-1.jpg" src="http://thenewcode.com/assets/videos/polina.mp4"></video>
+            </div>
             <!-- Section intro -->
             <section class="intro">
               <div class="wrap-intro">
@@ -121,14 +130,12 @@
 
                 <div class="bloc-video-intro">
                   <div class="content-video-intro">
-                      <div class="bloc-frame-video-intro parallax" data-speed="1">
-                        <img src="tpl/img/frame.png" class="frame-video-intro" alt="">
-                      </div>
-                      <div class="wrap-shape-video">
-                        <div class="bloc-shape-video-intro">
-                          <div class="shape-video-intro"></div>
-                        </div>
-                      </div>
+                    <div class="bloc-frame-video-intro parallax" data-speed="1">
+                      <img src="tpl/img/frame.png" class="frame-video-intro" alt="">
+                    </div>
+                    <div class="bloc-shape-video-intro">
+                      <div class="shape-video-intro"></div>
+                    </div>
                     <div class="bloc-title-video-intro parallax" data-speed="1.5">
                       <p class="title-video-intro">Vivez l'expérience Inside</p>
                     </div>
@@ -137,7 +144,9 @@
       des concerts et des festivals comme si <span class="hightlight">vous y étiez !</span></div>
                     </div>
                   </div>
-                  <video src="tpl/movie/intro.mp4" autoplay loop class="video-intro"></video>
+                  <div class="wrap-video-intro">
+                    <video src="tpl/movie/intro.mp4" autoplay loop class="video-intro"></video>
+                  </div>
                 </div>
 
                 <div class="bloc-desc-intro">
@@ -160,43 +169,45 @@
                   <div class="bloc-list-flap">
                     <ul class="list-flap">
                       <li class="item-flap">
-                        <div class="parallax" data-speed="0.5">
+                        <a href="#" class="link-item-flap" data-time="" data-poster="tpl/img/tmp/video-1.jpg">
                           <div class="wrap-img-item">
-                            <div class="bloc-img-item-flap">
-                              <img class="img-item-flap" src="tpl/img/tmp/replay.jpg" alt="">
+                            <div class="bloc-img-item-flap parallax" data-speed="0.5">
+                              <img class="img-item-flap" src="tpl/img/tmp/video-1.jpg" alt="">
                             </div>
                           </div>
-                        </div>
-                        <div class="item-txt-flap">
-                          <h3 class="title-txt-flap">Stream</h3>
-                          <p class="subtitle-txt-flap">Filmer et partager ce que vous vivez.</p>
-                        </div>
+                          <div class="bloc-item-txt-flap">
+                            <div class="item-txt-flap parallax" data-speed="-1">
+                              <h3 class="title-txt-flap">Stream</h3>
+                              <p class="subtitle-txt-flap">Filmer et partager <br>ce que vous vivez.</p>
+                            </div>
+                          </div>
+                        </a>
                       </li>
                       <li class="item-flap">
-                        <div class="parallax" data-speed="1">
+                        <a href="#" class="link-item-flap" data-time="" data-poster="tpl/img/tmp/video-2.jpg">
                           <div class="wrap-img-item">
-                            <div class="bloc-img-item-flap">
-                              <img class="img-item-flap" src="tpl/img/tmp/replay.jpg" alt="">
+                            <div class="bloc-img-item-flap parallax" data-speed="0.5">
+                              <img class="img-item-flap" src="tpl/img/tmp/video-2.jpg" alt="">
                             </div>
                           </div>
-                        </div>
-                        <div class="item-txt-flap">
-                          <h3 class="title-txt-flap">Live</h3>
-                          <p class="subtitle-txt-flap">Regarder et vivez aujourd'hui.</p>
-                        </div>
+                          <div class="item-txt-flap parallax" data-x="-75px" data-speed="-1">
+                            <h3 class="title-txt-flap">Live</h3>
+                            <p class="subtitle-txt-flap">Regarder et vivez <br>en direct</p>
+                          </div>
+                        </a>
                       </li>
                       <li class="item-flap">
-                        <div class="parallax" data-speed="0.5">
+                        <a href="#" class="link-item-flap" data-time="" data-poster="tpl/img/tmp/video-3.jpg">
                           <div class="wrap-img-item">
-                            <div class="bloc-img-item-flap">
-                              <img class="img-item-flap" src="tpl/img/tmp/replay.jpg" alt="">
+                            <div class="bloc-img-item-flap parallax" data-speed="0.5">
+                              <img class="img-item-flap" src="tpl/img/tmp/video-3.jpg" alt="">
                             </div>
                           </div>
-                        </div>
-                        <div class="item-txt-flap">
-                          <h3 class="title-txt-flap">Relive</h3>
-                          <p class="subtitle-txt-flap">Revivez vos concerts.</p>
-                        </div>
+                          <div class="item-txt-flap parallax" data-speed="-1">
+                            <h3 class="title-txt-flap">Relive</h3>
+                            <p class="subtitle-txt-flap">Revivez<br> vos concerts.</p>
+                          </div>
+                        </a>
                       </li>
                     </ul>
                   </div>

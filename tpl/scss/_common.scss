@@ -67,6 +67,13 @@ a:link { -webkit-tap-highlight-color: rgba($color-site-1, .2); }
     margin: 0 auto;
     width: 1460px; max-width: 96%;
 }
+.active {
+  .link {
+    &:after {
+      width: 0%;
+    }
+  }
+}
 .link {
   position: relative;
   z-index: 1;
@@ -78,17 +85,25 @@ a:link { -webkit-tap-highlight-color: rgba($color-site-1, .2); }
   // text-shadow to solve the font-weight offset issue
   text-shadow: 0 0 1px $color-text-1, 0 0 1px $color-text-1;
 
-  &:before {
+  &:before, &:after {
     content: "";
-    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
     width: 0%;
     height: 100%;
     background: $color-site-1;
+  }
 
+  &:before {
+    z-index: -1;
     @include transition;
+  }
+
+  &:after {
+    z-index: 1;
+    width: 100%;
+    @include transition(width 1s ease-in-out);
   }
 
   &:hover {

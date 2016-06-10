@@ -9,14 +9,15 @@ class InView {
     this.activeItems = [];
     this.scrollPos = 0;
     this.windowHeight = window.innerHeight;
-
     for (let i = 0; i < itemsHTML.length; i++) {
-      let item = {
-        id : i,
-        obj: itemsHTML[i]
-      }
+      for (let j = 0; j < itemsHTML[i].length; j++) {
+        let item = {
+          id : j,
+          obj: itemsHTML[i][j]
+        }
 
-      this.items.push(item);
+        this.items.push(item);
+      }
     }
 
     this.update();
@@ -64,6 +65,7 @@ class Parallax {
         id : i,
         obj: itemsHTML[i],
         speed: itemsHTML[i].dataset.speed,
+        translateX: itemsHTML[i].dataset.x,
         step: 0
       }
 
@@ -104,9 +106,15 @@ class Parallax {
   render() {
     self = this;
     Array.prototype.forEach.call(this.activeItems, function(item) {
+      //check if x transform exist
+      let translateX = 0;
+      if(item.translateX) {
+        translateX = item.translateX;
+      }
+
       let position = item.obj.getBoundingClientRect().height/2 - item.obj.getBoundingClientRect().top;
       let offset = ( position * 100 / self.windowHeight) * item.speed;
-      let transform = 'translateY(' + offset.toFixed(2) + 'px)';
+      let transform = 'translate(' + translateX + ','+ offset.toFixed(2) + 'px)';
       item.obj.style["transform"] = transform;
       item.obj.style["webkitTransform"] = transform
       item.obj.style["mozTransform"] = transform;
@@ -224,6 +232,68 @@ class Slider {
     prev.addEventListener('click', this.prev.bind(this), false);
     next.addEventListener('click', this.next.bind(this), false);
   }
+}
+
+/** ###############
+* Player *
+* ############## */
+
+class Player {
+
+  constructor(video) {
+    this.video = video;
+    this.timeline = null;
+    this.bindUIActions();
+  }
+
+  /**
+  * Open Player on page
+  */
+
+  openPlayer(link) {
+
+    this.setPoster(link.dataset.poster);
+
+    this.timeline = new TimelineMax();
+
+    this.timeline.set(".video-player", {x:"-100%"});
+    this.timeline.set(".player", {visibility:"visible"});
+    this.timeline.to(".overlay-player-1", 2.5, {x:"200%", ease:Power2.easeInOut});
+    this.timeline.set(".player", {background:"rgb(6, 0, 130)"}, 1.25);
+    this.timeline.set(".video-player", {x:"0%"}, 1.25);
+    this.timeline.to(".overlay-player-2", 4, {x:"190%", ease:Power2.easeInOut}, -0.2);
+  }
+
+  close() {
+    this.timeline.reverse();
+  }
+
+  setPoster(poster) {
+    this.video.setAttribute('poster', poster);
+  }
+
+  play() {
+    this.video.play();
+  }
+
+  pause() {
+    this.video.pause();
+  }
+
+  bindUIActions() {
+    let self = this;
+    $( ".link-item-flap" ).on( "click", function(e) {
+      e.preventDefault();
+      self.openPlayer(this);
+    });
+
+    this.video.addEventListener("click", this.play.bind(this));
+
+    let closeBtn = document.getElementById("cta-close-player");
+    closeBtn.addEventListener("click", this.close.bind(this));
+  }
+
+
 }
 
 /** ###############
@@ -500,7 +570,9 @@ var store, app = {
     // add class active when is displayed
     // get parallax items and init parallax
     let sections = document.getElementsByTagName("section");
-    store.inView = new InView(sections);
+    let header = document.getElementsByTagName("header");
+    let footer = document.getElementsByTagName("footer");
+    store.inView = new InView([sections, header, footer]);
 
     // get parallax items and init parallax
     let parallaxItems = document.getElementsByClassName("parallax");
@@ -515,6 +587,10 @@ var store, app = {
     let screenSliderWrapper = $("#slider-2");
     let screenSliderItems = $(".item-screen");
     store.screenSlider = new ScreenSlider(screenSliderWrapper, screenSliderItems, 1000, false, "fade");
+
+    // video player
+    let video = document.getElementById("video-player");
+    let player = new Player(video);
 
     document.addEventListener('nextSlide', this.updateSliders, false);
 
