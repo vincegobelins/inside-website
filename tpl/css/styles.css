@@ -2928,7 +2928,7 @@ button[type="submit"],
 }
 
 .cta-download.android:before {
-  background: url("../img/play.png");
+  background: url("../img/playstore.png");
 }
 
 .cta-download.apple:before {
