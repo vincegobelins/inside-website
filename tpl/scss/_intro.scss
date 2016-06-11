@@ -32,6 +32,15 @@
         @extend .width-inverse-active;
       }
     }
+    .title-video-intro {
+      @extend .anim-title-active;
+    }
+    .frame-video-intro {
+      opacity: 1;
+    }
+    .subtitle-intro {
+      @extend .anim-left-active;
+    }
   }
 }
 
@@ -98,6 +107,7 @@
 }
 
 .bloc-title-video-intro {
+  overflow: hidden;
   z-index: 45;
   position: absolute;
   top: 45%;
@@ -108,6 +118,7 @@
 }
 
 .title-video-intro {
+  @extend .anim-title;
   display: block;
   font-size: 70px;
   font-weight: 300;
@@ -125,6 +136,8 @@
 
 .frame-video-intro {
   display: inline-block;
+  opacity: 0;
+  @include transition(opacity .5s ease-in-out 1s);
 }
 
 .bloc-shape-video-intro {
@@ -160,7 +173,7 @@
 /* Subtitle Intro */
 /* ====================== */
 
-.bloc-subtitle-intro {
+.wrap-subtitle-intro {
   @extend .box-shadow;
   z-index: 35;
   position: absolute;
@@ -170,8 +183,10 @@
   background: $color-site-1;
 }
 
-.subtitle-intro {
-  padding: $space-3;
+.bloc-subtitle-intro {
+  position: relative;
+  overflow: hidden;
+  margin: $space-3;
   font-size: 28px;
   font-weight: 600;
   font-style: italic;
@@ -181,6 +196,10 @@
     font-weight: 700;
     font-style: normal;
   }
+}
+
+.subtitle-intro {
+  @extend .anim-left;
 }
 
 /* ====================== */

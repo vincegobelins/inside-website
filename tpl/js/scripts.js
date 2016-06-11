@@ -19,8 +19,6 @@ class InView {
         this.items.push(item);
       }
     }
-
-    this.update();
   }
 
   /**
@@ -350,7 +348,7 @@ class Map {
     this.zoom = 15;
     this.latLng = {lat: 45.896, lng: 6.128};
     this.map = new google.maps.Map(document.getElementById('gmap'), {
-      center: self.latLng,
+      center: new google.maps.LatLng(self.latLng.lat, self.latLng.lng),
       scrollwheel: false,
       zoom: parseInt(self.zoom),
       styles: self.getStyle(),
@@ -570,6 +568,49 @@ class Map {
 }
 
 /** ###############
+* Loader *
+* ############## */
+
+class Loader {
+
+  constructor() {
+    this.position = 80;
+    this.time = 10;
+    this.animateLoader();
+    this.bindUIActions();
+  }
+
+  animateLoader() {
+    TweenMax.to(".progress-loading", this.time, {width: this.position +"%", ease:Power2.easeInOut});
+  }
+
+  end() {
+    TweenMax.to(".progress-loading", 1, {width: 100 +"%", ease:Power2.easeInOut, onComplete:this.hide});
+  }
+
+  hide() {
+    $(".loading").addClass("leave");
+
+    let myEvent = new CustomEvent("loaded", {
+      bubbles: true,
+    	cancelable: false
+    });
+
+    document.dispatchEvent(myEvent);
+  }
+
+  bindUIActions() {
+    let self = this;
+
+    $(window).bind("load", function() {
+       self.end();
+    });
+  }
+
+
+}
+
+/** ###############
 * App *
 * ############## */
 
@@ -584,6 +625,7 @@ var store, app = {
 
   init: function() {
     store = this.store;
+    let loader = new Loader();
     this.bindUI();
 
     // add class active when is displayed
@@ -612,7 +654,13 @@ var store, app = {
     let player = new Player(video);
 
     document.addEventListener('nextSlide', this.updateSliders, false);
+    document.addEventListener('loaded', this.onLoad, false);
 
+  },
+
+  onLoad : function() {
+    window.setTimeout(function() {store.inView.update();}, 1000);
+    $(".header").addClass("active");
   },
 
   initMap : function() {

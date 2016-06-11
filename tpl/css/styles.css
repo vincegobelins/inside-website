@@ -582,7 +582,7 @@ a:link {
 /* ====================== */
 /* classes projet */
 /* ====================== */
-.box-shadow, .bloc-cta-regular, .bloc-cta-slider, .bloc-cta-facebook, .bloc-cta-blog, .bloc-cta-partners, .wrap-cta-close-player, .wrap-header, .wrap-intro, .bloc-subtitle-intro, .wrap-content-article, .item-partner:before {
+.box-shadow, .bloc-cta-regular, .bloc-cta-slider, .bloc-cta-facebook, .bloc-cta-blog, .bloc-cta-partners, .wrap-cta-close-player, .wrap-header, .wrap-intro, .wrap-subtitle-intro, .wrap-content-article, .item-partner:before {
   box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -1237,6 +1237,10 @@ button[type="submit"],
   display: block;
 }
 
+.intro.active .frame-video-intro {
+  opacity: 1;
+}
+
 .wrap-intro {
   position: relative;
   padding: 1em 0;
@@ -1286,6 +1290,7 @@ button[type="submit"],
 }
 
 .bloc-title-video-intro {
+  overflow: hidden;
   z-index: 45;
   position: absolute;
   top: 45%;
@@ -1317,6 +1322,10 @@ button[type="submit"],
 
 .frame-video-intro {
   display: inline-block;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out 1s;
+  -moz-transition: opacity 0.5s ease-in-out 1s;
+  transition: opacity 0.5s ease-in-out 1s;
 }
 
 .bloc-shape-video-intro {
@@ -1351,7 +1360,7 @@ button[type="submit"],
 /* ====================== */
 /* Subtitle Intro */
 /* ====================== */
-.bloc-subtitle-intro {
+.wrap-subtitle-intro {
   z-index: 35;
   position: absolute;
   top: 40em;
@@ -1360,15 +1369,17 @@ button[type="submit"],
   background: #fc2850;
 }
 
-.subtitle-intro {
-  padding: 3em;
+.bloc-subtitle-intro {
+  position: relative;
+  overflow: hidden;
+  margin: 3em;
   font-size: 28px;
   font-weight: 600;
   font-style: italic;
   line-height: 1.5em;
 }
 
-.subtitle-intro .hightlight {
+.bloc-subtitle-intro .hightlight {
   font-weight: 700;
   font-style: normal;
 }
@@ -2305,9 +2316,14 @@ button[type="submit"],
 /* ====================== */
 /* GMap */
 /* ====================== */
+.wrap-gmap {
+  height: 500px;
+  overflow: hidden;
+}
+
 #gmap {
   width: 100%;
-  height: 500px;
+  height: 900px;
 }
 
 #gmap img[src^='tpl/img/marker-1.svg'] {
@@ -3074,7 +3090,7 @@ body.dev {
   transition: all 0.15s ease-in-out;
 }
 
-.anim-title-active, .flap.active .title-flap, .social.active .title-blog, .partners.active .title-partners, .interfaces.active .title-interfaces {
+.anim-title-active, .intro.active .title-video-intro, .flap.active .title-flap, .social.active .title-blog, .partners.active .title-partners, .interfaces.active .title-interfaces {
   -webkit-transform: translate(0, 0%);
   -moz-transform: translate(0, 0%);
   -ms-transform: translate(0, 0%);
@@ -3083,7 +3099,7 @@ body.dev {
   opacity: 1;
 }
 
-.anim-title, .title-flap, .title-blog, .title-partners, .title-interfaces {
+.anim-title, .title-video-intro, .title-flap, .title-blog, .title-partners, .title-interfaces {
   -webkit-transform: translate(0, 25%);
   -moz-transform: translate(0, 25%);
   -ms-transform: translate(0, 25%);
@@ -3095,7 +3111,7 @@ body.dev {
   opacity: 0;
 }
 
-.anim-left-active, .social.active .content-article, .link-facebook:hover .content-facebook-hover .bloc-article-facebook .text-facebook {
+.anim-left-active, .intro.active .subtitle-intro, .social.active .content-article, .link-facebook:hover .content-facebook-hover .bloc-article-facebook .text-facebook {
   -webkit-transform: translate(0, 0%);
   -moz-transform: translate(0, 0%);
   -ms-transform: translate(0, 0%);
@@ -3104,7 +3120,7 @@ body.dev {
   opacity: 1;
 }
 
-.anim-left, .text-facebook, .content-article {
+.anim-left, .subtitle-intro, .text-facebook, .content-article {
   -webkit-transform: translate(-15%, 0);
   -moz-transform: translate(-15%, 0);
   -ms-transform: translate(-15%, 0);
@@ -3129,9 +3145,9 @@ body.dev {
 
 .width-inverse, .wrap-video-intro:after, .flap:after, .wrap-item-social:after, .bloc-media-article:before {
   width: 100%;
-  -webkit-transition: width 1s ease-in-out;
-  -moz-transition: width 1s ease-in-out;
-  transition: width 1s ease-in-out;
+  -webkit-transition: width 1s ease-in-out 0.5s;
+  -moz-transition: width 1s ease-in-out 0.5s;
+  transition: width 1s ease-in-out 0.5s;
 }
 
 .width-inverse-active, .intro.active .wrap-video-intro:after, .flap.active:after, .flap.active .bloc-img-item-flap:before, .social.active .bloc-media-article:before, .social.active .wrap-item-social:after {
@@ -3195,6 +3211,93 @@ body.dev {
   position: absolute;
   top: 10px;
   right: 20px;
+}
+
+/* ====================== */
+/* Loader */
+/* ====================== */
+.loading {
+  z-index: 500;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #020042;
+  opacity: 1;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.loading.leave {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.content-loading {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.bloc-title-loading {
+  position: relative;
+  display: inline-block;
+}
+
+.progress-loading {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #0500cc;
+}
+
+.title-loading {
+  z-index: 1;
+  display: inline-block;
+  font-size: 33px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+.title-loading strong {
+  color: #fc2850;
+}
+
+.title-inside {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-family: "Paytone One";
+  font-size: 150px;
+  color: #2e2c58;
+  text-transform: uppercase;
+  -webkit-transform: translate(-50%, -45%);
+  -moz-transform: translate(-50%, -45%);
+  -ms-transform: translate(-50%, -45%);
+  -o-transform: translate(-50%, -45%);
+  transform: translate(-50%, -45%);
+}
+
+.subtitle-loading {
+  padding: 1em;
+  font-size: 28px;
+  font-weight: 300;
+  font-style: italic;
 }
 
 /* ====================== */
