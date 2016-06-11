@@ -59,7 +59,7 @@
 }
 
 .text-footer {
-	margin-bottom: $space-1;
+	margin-bottom: 1.5em;
 	font-size: 1.2em;
 	font-weight: 600;
 	font-style: italic;
@@ -114,7 +114,7 @@
 
 .icon-footer {
 	position: relative;
-	margin: .5em 0;
+	margin: 1em 0;
 
 	&:after {
 		content: "";
@@ -127,12 +127,17 @@
 	}
 }
 
-.mail-footer {
+.wrap-mail-footer {
 	@extend .icon-footer;
-	@extend .link;
 	&:after {
 		background: url('../img/contact.png') no-repeat;
 	}
+}
+
+.mail-footer {
+	@extend .link;
+	box-shadow: none;
+	font-style: italic;
 }
 
 .location-footer {

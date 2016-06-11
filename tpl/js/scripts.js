@@ -288,11 +288,20 @@ class Player {
   play() {
     this.video.volume = 0;
     this.video.play();
-    TweenMax.to(this.video, 2, {volume: 1, ease:Power2.easeInOut});
+    TweenMax.to(this.video, 1, {volume: 1, ease:Power2.easeInOut});
   }
 
   pause() {
     this.video.pause();
+  }
+
+  toggle() {
+    if(this.video.paused) {
+      this.play();
+    }
+    else {
+      this.pause();
+    }
   }
 
   bindUIActions() {
@@ -302,7 +311,7 @@ class Player {
       self.openPlayer(this);
     });
 
-    this.video.addEventListener("click", this.play.bind(this));
+    this.video.addEventListener("click", this.toggle.bind(this));
 
     let closeBtn = document.getElementById("cta-close-player");
     closeBtn.addEventListener("click", this.close.bind(this));
@@ -355,8 +364,8 @@ class Map {
       padding: 0,
       backgroundColor: "",
       borderRadius: 0,
-      arrowSize: 0,
-      arrowPosition: 0,
+      arrowSize: -25,
+      arrowPosition: "20%",
       borderWidth: 0,
       disableAutoPan: true,
       hideCloseButton: true,
@@ -400,6 +409,7 @@ class Map {
 
     marker.addListener('click', function(e) {
       this.showInfo(marker);
+      this.map.setCenter(marker.position);
     }.bind(this), false);
   }
 
@@ -420,12 +430,6 @@ class Map {
   }
 
   showInfo(marker) {
-    //var tl = new TimelineMax();
-
-    //TweenMax.to($(".infobubble-bg"), 0.5, {width: 0, ease:Back.easeOut});
-    //$(".infobubble-bg").hide();
-    //console.log($(".infobubble-bg").length);
-
     this.infowindow.setContent('<div class="infobubble-bg"></div><div class="content-infobubble"><h4 class="title-infobubble">' + marker.data.title + '</h4>'
 +'<p class="time-infobubble">' + marker.data.time + '</p>'
     + '<p class="location-infobubble">' + marker.data.place + '</p>'

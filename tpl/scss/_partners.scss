@@ -3,14 +3,34 @@
 /* ====================== */
 .partners {
   margin-top: $space-6;
+
+  &.active {
+    .title-partners {
+      @extend .anim-title-active;
+    }
+
+    .item-partner {
+
+      &:before {
+        @include transform(skew(-25deg) translate(0%, 0));
+      }
+
+      &:nth-child(2n) {
+        &:before {
+          @include transform(skew(-25deg) translate(0%, 0));
+        }
+      }
+    }
+  }
 }
 
 .wrap-title-partners {
-  display: block;
   text-align: center;
+  overflow: hidden;
 }
 
 .title-partners {
+  @extend .anim-title;
   position: relative;
   display: inline-block;
   padding-left: $space-1/2;
@@ -19,6 +39,7 @@
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 10px;
+  line-height: 0.8em;
   color: $color-site-1;
 
   .blue {
@@ -28,7 +49,7 @@
   &:before {
     content: "Inside";
     position: absolute;
-    top: 65px;
+    top: 10px;
     left: 0;
     font-family: $font-1;
     font-size: 25px;
@@ -40,7 +61,7 @@
 
 .wrap-partners {
   @extend .clearfix;
-  margin-top: -30px;
+  margin-top: -4px;
 }
 
 .list-partners {
@@ -51,7 +72,7 @@
   position: relative;
   flex: 10;
   height: 250px;
-  @include transition(flex .25s ease-in-out);
+  @include transition(flex .5s ease-in-out);
 
   &:hover {
     flex: 11;
@@ -67,7 +88,8 @@
     width: 110%;
     height: 100%;
     background: $color-site-1;
-    @include transform(skew(-25deg));
+    @include transform(skew(-25deg) translate(-100%, 0));
+    @include transition(all 1s ease-out);
   }
 
   &:nth-child(2n) {
@@ -75,6 +97,8 @@
       left: auto;
       right: -15%;
       background: $color-site-2;
+      @include transform(skew(-25deg) translate(100%, 0));
+      @include transition(all 1s ease-in-out);
     }
   }
 }

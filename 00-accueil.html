@@ -176,7 +176,7 @@
                             </div>
                           </div>
                           <div class="bloc-item-txt-flap">
-                            <div class="item-txt-flap parallax" data-speed="-1">
+                            <div class="item-txt-flap">
                               <h3 class="title-txt-flap">Stream</h3>
                               <p class="subtitle-txt-flap">Filmer et partager <br>ce que vous vivez.</p>
                             </div>
@@ -190,7 +190,7 @@
                               <img class="img-item-flap" src="tpl/img/tmp/video-2.jpg" alt="">
                             </div>
                           </div>
-                          <div class="item-txt-flap parallax" data-x="-75px" data-speed="-1">
+                          <div class="item-txt-flap">
                             <h3 class="title-txt-flap">Live</h3>
                             <p class="subtitle-txt-flap">Regarder et vivez <br>en direct</p>
                           </div>
@@ -203,7 +203,7 @@
                               <img class="img-item-flap" src="tpl/img/tmp/video-3.jpg" alt="">
                             </div>
                           </div>
-                          <div class="item-txt-flap parallax" data-speed="-1">
+                          <div class="item-txt-flap">
                             <h3 class="title-txt-flap">Relive</h3>
                             <p class="subtitle-txt-flap">Revivez<br> vos concerts.</p>
                           </div>
@@ -440,6 +440,15 @@
                       <p class="text-legend">événements <strong>à venir</strong></p>
                     </li>
                   </ul>
+                  <div class="desc-legend">
+                    <div class="bloc-desc-legend">
+                      <p class="title-desc-legend">Explorer</p>
+                    </div>
+                    <div class="bloc-desc-legend">
+                      <p class="text-desc-legend">Retrouver tous les évènements qui vous intéressent<br>
+  en <strong>LIVE, en replay et à venir</strong> -</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -451,12 +460,12 @@
               <div class="wrap-partners">
                 <ul class="list-partners">
                   <li class="item-partner">
-                    <a href="#" class="link-partner">
+                    <a target="_blank" href="http://www.festivaltransposition.com/" class="link-partner">
                       <img src="tpl/img/logo-transposition.png" alt="" class="img-partner">
                     </a>
                   </li>
                   <li class="item-partner">
-                    <a href="#" class="link-partner">
+                    <a target="_blank" href="http://www.le-brise-glace.com/" class="link-partner">
                       <img src="tpl/img/logo-brise-glace.png" alt="" class="img-partner">
                     </a>
                   </li>
@@ -527,7 +536,9 @@
                 <h3 class="title-footer">Contact</h3>
                 <p class="text-footer">Vous souhaitez en savoir plus sur l'application, vous souhaitez devenir partenaire <strong>INSIDE</strong> ?
 <br>Contactez - nous !</p>
-                <a href="mailto:inside.application@gmail.com" class="mail-footer">inside.application@gmail.com</a>
+                <div class="wrap-mail-footer">
+                  <a href="mailto:inside.application@gmail.com" class="mail-footer">inside.application@gmail.com</a>
+                </div>
                 <p class="location-footer">Annecy / France</p>
               </div>
             </div>
@@ -544,7 +555,6 @@
     <!-- @include:footer:end -->
   </div>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI4VxhVeSmSK82qwaGCWVCMm3vPdt-Go&callback=app.initMap"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="tpl/js/libs/jquery.min.js"><\/script>')</script>
@@ -554,6 +564,7 @@
   <script src="tpl/js/libs/infobubble.min.js"></script>
 
   <script src="tpl/js/scripts-dist.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOI4VxhVeSmSK82qwaGCWVCMm3vPdt-Go&callback=app.initMap"></script>
 
 </body>
 </html>

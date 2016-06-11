@@ -125,6 +125,7 @@ body {
   z-index: 100;
   display: block;
   width: 100%;
+  cursor: pointer;
   @include transform(translate(-100%, -50%));
 }
 
