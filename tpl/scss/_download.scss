@@ -112,3 +112,25 @@
   display: block;
   font-size: 12px;
 }
+
+@media only screen and (max-width: $mq-4) {
+  .download {
+    z-index: 0;
+    margin-top: $space-8;
+    background: $color-site-1;
+  }
+  .content-download {
+    z-index: 10;
+    padding: $space-5 $space-2 $space-5 30% !important;
+  }
+  .link-visuel-download {
+    z-index: -1;
+    position: absolute;
+    height: 120%;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+}

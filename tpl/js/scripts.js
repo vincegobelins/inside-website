@@ -112,7 +112,7 @@ class Parallax {
 
       let position = item.obj.getBoundingClientRect().height/2 - item.obj.getBoundingClientRect().top;
       let offset = ( position * 100 / self.windowHeight) * item.speed;
-      let transform = 'translate(' + translateX + ','+ offset.toFixed(2) + 'px)';
+      let transform = 'translate3d(' + 0 + ','+ offset.toFixed(2) + 'px,' + 0 + ')';
       item.obj.style["transform"] = transform;
       item.obj.style["webkitTransform"] = transform
       item.obj.style["mozTransform"] = transform;
@@ -431,7 +431,7 @@ class Map {
     this.infowindow.setContent('<div class="infobubble-bg"></div><div class="content-infobubble"><h4 class="title-infobubble">' + marker.data.title + '</h4>'
 +'<p class="time-infobubble">' + marker.data.time + '</p>'
     + '<p class="location-infobubble">' + marker.data.place + '</p>'
-    + '<a href="#" class="link-infobubble">Voir le replay</a></div>');
+    + '<a href="#" class="link-infobubble">Voir le concert</a></div>');
 
     this.infowindow.open(self.map, marker);
   }
@@ -637,7 +637,7 @@ var store, app = {
 
     // get parallax items and init parallax
     let parallaxItems = document.getElementsByClassName("parallax");
-    store.parallax = new Parallax(parallaxItems);
+    //store.parallax = new Parallax(parallaxItems);
 
     // init slider
     let sliderWrapper = $("#slider-1");
@@ -679,10 +679,10 @@ var store, app = {
       },
       {
         id: 1,
-        title: "Louise Roam",
+        title: "Eva Peillex",
         state: "live",
-        time: "12/07/2015",
-        location: "Le Brise Glace",
+        time: "15/06/2016",
+        location: "CCI Formation",
         latLng : {
           lat: 45.896,
           lng: 6.128
@@ -690,10 +690,10 @@ var store, app = {
       },
       {
         id: 2,
-        title: "Nekfeu Nek le Fenek",
+        title: "Louise Roam",
         state: "live",
-        time: "20/05/2015",
-        location: "CCI",
+        time: "28/05/2016",
+        location: "Le Brise Glace",
         latLng : {
           lat: 45.893514,
           lng: 6.135523
@@ -731,7 +731,7 @@ var store, app = {
 
     window.onscroll = function (e) {
       let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-      store.parallax.update();
+      //store.parallax.update();
       store.inView.update();
     }
   }

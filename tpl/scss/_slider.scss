@@ -208,3 +208,35 @@
   opacity: 0;
   @include transform(translateX(-20%));
 }
+
+@media only screen and (max-width: $mq-4) {
+  .slider {
+    .parallax {
+      display: none;
+    }
+  }
+  .list-pages {
+    z-index: 100;
+  }
+  .screen-slider {
+    position: relative;
+    top: auto;
+    left: auto;
+    @include transform(none);
+  }
+  .pager-slider {
+    top: 0;
+    margin-top: 0;
+    height: 100%;
+  }
+  .details-slider {
+    z-index: 100;
+    position: relative;
+    //bottom: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    min-height: 50em;
+    @include transform(none);
+  }
+}

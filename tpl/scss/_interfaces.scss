@@ -114,5 +114,14 @@
 
 .img-item-interface {
   display: block;
-  //max-width: 100%;
+}
+
+@media only screen and (max-width: $mq-4) {
+  .interfaces {
+    display: none;
+  }
+
+  svg {
+    display: none;
+  }
 }

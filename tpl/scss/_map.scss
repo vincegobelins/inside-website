@@ -185,6 +185,10 @@
   @extend .clearfix;
 }
 
+.list-legend {
+  @extend .clearfix;
+}
+
 .item-legend {
   position: relative;
   float: left;
@@ -231,6 +235,7 @@
 }
 
 .desc-legend {
+  @extend .clearfix;
   float: right;
 }
 
@@ -263,4 +268,39 @@
     color: $color-text-2;
     text-transform: uppercase;
   }
+}
+
+@media only screen and (max-width: $mq-4) {
+
+  /* ====================== */
+  /* GMap */
+  /* ====================== */
+  .wrap-gmap {
+    height: 400px;
+  }
+
+  .wrap-map-legend {
+    padding: 0 $space-5;
+  }
+
+  /* ====================== */
+  /* Legend */
+  /* ====================== */
+
+  .desc-legend {
+    float: none;
+    padding-bottom: $space-5;
+    margin: 0 auto;
+  }
+
+  .bloc-desc-legend {
+    float: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .text-desc-legend {
+    text-align: center;
+  }
+
 }

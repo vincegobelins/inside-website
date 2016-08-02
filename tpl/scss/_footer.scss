@@ -171,6 +171,36 @@
 @media only screen and (max-width: $mq-5) {
 }
 @media only screen and (max-width: $mq-4) {
+	.top-footer {
+		max-width: 100%;
+		padding: 0 $space-3;
+	}
+	.list-footer {
+		margin: 0;
+	}
+	.item-footer {
+		float: none;
+		width: 100%;
+		margin: $space-3 0;
+		padding: 0;
+		text-align: center;
+	}
+	.wrap-logo-deco {
+		display: none;
+	}
+	.content-item-footer {
+		padding: 0;
+	}
+	.item-nav-footer {
+		display: inline-block;
+		padding: $space-1;
+	}
+	.bottom-footer {
+		text-align: center;
+	}
+	.legal-footer {
+		float: none;
+	}
 }
 @media only screen and (max-width: $mq-3) {
 }

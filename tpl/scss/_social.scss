@@ -4,6 +4,7 @@
 
 .social {
   position: relative;
+  @extend .clearfix;
 
   &.active {
     .bloc-media-article {
@@ -66,6 +67,7 @@
 .list-social {
   @extend .list-col;
   overflow: visible;
+  margin: 0;
 }
 
 .item-social {
@@ -431,4 +433,54 @@
 
 .cta-blog {
   @extend .cta-regular;
+}
+
+@media only screen and (max-width: $mq-4) {
+  .social {
+    .logo-deco {
+      display: none;
+    }
+  }
+  .facebook, .blog {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  /* Blog */
+  .title-blog {
+    margin: $space-3;
+    text-align: center;
+  }
+
+  .item-social {
+    padding: 0;
+    text-align: center;
+  }
+
+  .deco-social {
+    display: none;
+  }
+
+  .bloc-media-article {
+    display: block;
+  }
+
+  .wrap-article {
+    margin-top: 0;
+  }
+
+  .wrap-content-article {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .content-article {
+    text-align: left;
+  }
+
+  .bloc-cta-blog {
+    display: inline-block;
+    float: none;
+  }
 }

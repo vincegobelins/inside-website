@@ -37,7 +37,7 @@ body {
 /* ====================== */
 
 .parallax {
-  @include transition(all .15s ease-in-out);
+  @include transition(all .2s);
 }
 
 .anim-title-active {
