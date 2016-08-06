@@ -241,3 +241,86 @@
   50%   { @include transform(translate(-50%, -175%)) }
   100%   { @include transform(translate(-50%, -125%)) }
 }
+
+@media only screen and (max-width: $mq-4) {
+  .intro {
+    margin-top: 0;
+  }
+  .wrap-intro {
+    padding: 0;
+  }
+  .main-nav {
+    display: none;
+  }
+
+  .wrap-video-intro {
+    height: 80em;
+  }
+
+  .bloc-video-intro {
+    padding: 0;
+  }
+
+  .video-intro {
+    position: absolute;
+    left: 50%;
+    width: auto;
+    height: 100%;
+    @include transform(translate(-50%, 0))
+  }
+
+  /* title */
+
+  .bloc-title-video-intro {
+    top: 50%;
+  }
+
+  /* baseline */
+
+  .wrap-subtitle-intro {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .bloc-subtitle-intro {
+    margin: 2em;
+    font-size: 18px;
+  }
+
+  /* shape */
+
+  .bloc-frame-video-intro {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .frame-video-intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    margin: 0 auto;
+    height: 50%;
+    @include transform(translate(-50%, -50%) rotate(90deg));
+  }
+
+  /* scroll */
+  .bloc-scroll-top {
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, 25%))
+  }
+
+  .scroll-top {
+    color: white;
+  }
+
+  /* bloc desc*/
+
+  .bloc-desc-intro {
+    display: none;
+  }
+}

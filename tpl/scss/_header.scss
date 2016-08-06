@@ -127,6 +127,9 @@
 @media only screen and (max-width: $mq-5) {
 }
 @media only screen and (max-width: $mq-4) {
+  .header {
+    display: none;
+  }
 }
 @media only screen and (max-width: $mq-3) {
 }

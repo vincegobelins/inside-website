@@ -441,19 +441,30 @@
       display: none;
     }
   }
+
+  .list-social {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .item-social {
+    flex: 1;
+    padding: 0;
+    text-align: center;
+  }
+
   .facebook, .blog {
     width: 100%;
     margin-top: 0;
   }
 
+  .blog {
+    margin-bottom: $space-3;
+  }
+
   /* Blog */
   .title-blog {
     margin: $space-3;
-    text-align: center;
-  }
-
-  .item-social {
-    padding: 0;
     text-align: center;
   }
 
@@ -472,7 +483,7 @@
   .wrap-content-article {
     position: relative;
     width: 100%;
-    box-shadow: none;
+    //box-shadow: none;
   }
 
   .content-article {

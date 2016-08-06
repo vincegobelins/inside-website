@@ -610,6 +610,71 @@ class Loader {
 
 }
 
+/**
+*
+* ViewportHeight
+* Allow elements to take the viewport height size
+*
+* @author Vincent Aguettaz
+*/
+
+class ViewportHeight {
+
+  /**
+  *
+  * Constructor
+  *
+  * @param className the class of element
+  * @param widthMin Unset height under this width value
+  * @param widthMax Unset height over this width value
+  */
+
+  constructor(className, widthMin, widthMax) {
+    this.className = className;
+    this.widthMin = widthMin;
+    this.widthMax = widthMax;
+
+    this.setViewportHeight();
+    this.bindUIActions();
+  }
+
+  /**
+  *
+  * Set viewport height to element
+  *
+  * @return void
+  */
+
+  setViewportHeight() {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    if( width < this.widthMax && width > this.widthMin) {
+      $(this.className).height(height);
+    }
+    else {
+      $(this.className).height('auto');
+    }
+  }
+
+  /**
+  *
+  * If the viewport is resized
+  *
+  * @return void
+  */
+
+  bindUIActions() {
+    let self = this;
+
+    $( window ).resize(function() {
+      self.setViewportHeight();
+    });
+  }
+
+
+}
+
 /** ###############
 * App *
 * ############## */
@@ -652,6 +717,9 @@ var store, app = {
     // video player
     let video = document.getElementById("video-player");
     let player = new Player(video);
+
+    // set viewport height to element
+    let intro = new ViewportHeight('.wrap-video-intro', 0, 800);
 
     document.addEventListener('nextSlide', this.updateSliders, false);
     document.addEventListener('loaded', this.onLoad, false);
