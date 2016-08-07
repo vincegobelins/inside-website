@@ -54,6 +54,7 @@
 
 .link-tool {
   @extend .link;
+  position: relative;
   margin-left: $space-1;
   font-weight: 300;
 
@@ -63,7 +64,9 @@
 
   &:after {
     content: "/";
-    position: absolute; top: 0; right: -0.75em;
+    position: absolute;
+    top: 0;
+    left: calc(100% + .25em);
   }
 
   &:hover {

@@ -983,6 +983,7 @@ button[type="submit"],
 }
 
 .link-tool {
+  position: relative;
   margin-left: 1em;
   font-weight: 300;
 }
@@ -995,7 +996,7 @@ button[type="submit"],
   content: "/";
   position: absolute;
   top: 0;
-  right: -0.75em;
+  left: calc(100% + .25em);
 }
 
 .link-tool:hover {
@@ -2868,6 +2869,10 @@ button[type="submit"],
   background: #0500cc;
 }
 
+.list-legend {
+  display: inline-block;
+}
+
 .item-legend {
   position: relative;
   float: left;
@@ -2954,6 +2959,9 @@ button[type="submit"],
   /* ====================== */
   /* Legend */
   /* ====================== */
+  .list-legend {
+    display: block;
+  }
   .desc-legend {
     float: none;
     padding-bottom: 5em;
