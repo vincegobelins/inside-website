@@ -937,6 +937,12 @@ button[type="submit"],
 /* ====================== */
 /* responsive */
 /* ====================== */
+@media only screen and (max-width: 50em) {
+  .cta-regular, .cta-footer, .cta-slider, .cta-facebook, .cta-blog, .cta-partners, .cta-close-player {
+    font-size: 14px;
+  }
+}
+
 /* ====================== */
 /* Header */
 /* ====================== */
@@ -1051,8 +1057,43 @@ button[type="submit"],
 }
 
 @media only screen and (max-width: 50em) {
-  .header {
+  .fake-title {
     display: none;
+  }
+  .wrap-header {
+    z-index: 100000;
+    width: 100%;
+    height: auto;
+    background: none;
+    box-shadow: none;
+  }
+  .bloc-fb {
+    display: none;
+  }
+  .logo {
+    padding: 3em;
+    width: 15em;
+  }
+  .img-logo {
+    max-width: 100%;
+  }
+  .tools {
+    padding: 4em;
+  }
+}
+
+@media only screen and (max-width: 38em) {
+  .title-video-intro {
+    font-size: 50px !important;
+  }
+  .tools {
+    padding: 4em 2em;
+  }
+  .link-tool {
+    font-size: 12px;
+  }
+  .bloc-subtitle-intro {
+    font-size: 14px !important;
   }
 }
 
@@ -1145,7 +1186,7 @@ button[type="submit"],
 }
 
 .bottom-footer {
-  padding: 2em 0;
+  padding: 2em;
 }
 
 .legal-footer {
@@ -1240,7 +1281,7 @@ button[type="submit"],
   .bottom-footer {
     text-align: center;
   }
-  .legal-footer {
+  .legal-footer, .text-bottom-footer {
     float: none;
   }
 }
@@ -1316,6 +1357,9 @@ button[type="submit"],
 
 .wrap-video-intro {
   position: relative;
+  -webkit-transition: height 0.2s ease-in-out;
+  -moz-transition: height 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out;
 }
 
 .wrap-video-intro:after {
@@ -1842,10 +1886,10 @@ button[type="submit"],
 
 @media only screen and (max-width: 50em) {
   .wrap-flap {
-    padding: 5em 0;
+    padding: 2em 0;
   }
   .wrap-title-flap {
-    padding: 2em;
+    padding: 3em 0 5em;
   }
   .title-flap {
     text-align: center;
@@ -1855,6 +1899,7 @@ button[type="submit"],
   }
   .list-flap {
     flex-direction: column;
+    padding: 0;
   }
   .item-flap {
     position: relative;
@@ -1862,7 +1907,7 @@ button[type="submit"],
   }
   .wrap-img-item {
     top: 0 !important;
-    height: 260px;
+    height: 24em;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -1893,6 +1938,23 @@ button[type="submit"],
   .item-txt-flap:after, .item-txt-flap:before {
     top: -60px;
     left: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 38em) {
+  /* ====================== */
+  /* Content */
+  /* ====================== */
+  .wrap-img-item {
+    height: 12em;
+  }
+  .title-txt-flap {
+    font-size: 20px;
+  }
+  .subtitle-txt-flap {
+    padding: .5em 0 0 0;
+    font-size: 12px;
+    line-height: 1.2em;
   }
 }
 
@@ -2107,11 +2169,23 @@ button[type="submit"],
 }
 
 @media only screen and (max-width: 50em) {
+  .slider {
+    margin-top: 0;
+    border-top: 2em solid #0500cc;
+  }
   .slider .parallax {
     display: none;
   }
   .list-pages {
-    z-index: 100;
+    z-index: 1000 !important;
+    position: absolute;
+    bottom: 38%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
   .screen-slider {
     position: relative;
@@ -2140,6 +2214,39 @@ button[type="submit"],
     -ms-transform: none;
     -o-transform: none;
     transform: none;
+  }
+}
+
+@media only screen and (max-width: 38em) {
+  /* ====================== */
+  /* Details */
+  /* ====================== */
+  .wrap-detail {
+    padding: 4em 4em 16em;
+  }
+  .details-slider {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    min-height: auto;
+  }
+  .title-detail {
+    font-size: 20px;
+  }
+  .text-detail {
+    font-size: 14px;
+  }
+  .bloc-cta-slider {
+    bottom: 4em;
+  }
+  /* ====================== */
+  /* Pager */
+  /* ====================== */
+  .list-pages {
+    bottom: 20%;
+  }
+  .current-page .link-page {
+    font-size: 20px;
   }
 }
 
@@ -2573,6 +2680,22 @@ button[type="submit"],
   }
 }
 
+@media only screen and (max-width: 38em) {
+  /* ====================== */
+  /* Blog */
+  /* ====================== */
+  .title-blog {
+    margin: 2em;
+    font-size: 20px;
+  }
+  .title-blog .hightlight {
+    font-size: 20px;
+  }
+  .wrap-content-article {
+    padding: 4em;
+  }
+}
+
 /* ====================== */
 /* Map */
 /* ====================== */
@@ -2957,6 +3080,12 @@ button[type="submit"],
     padding: 0 5em;
   }
   /* ====================== */
+  /* Controls */
+  /* ====================== */
+  .controls-map {
+    display: none;
+  }
+  /* ====================== */
   /* Legend */
   /* ====================== */
   .list-legend {
@@ -2974,6 +3103,33 @@ button[type="submit"],
   }
   .text-desc-legend {
     text-align: center;
+  }
+}
+
+@media only screen and (max-width: 38em) {
+  /* ====================== */
+  /* Legend */
+  /* ====================== */
+  .wrap-map-legend {
+    padding: 4em;
+  }
+  .item-legend {
+    padding: 1em 1em 1em 4em;
+  }
+  .item-legend:before {
+    top: 1em;
+    width: 25px;
+    height: 25px;
+  }
+  .text-legend {
+    font-size: 12px;
+  }
+  .desc-legend {
+    padding-bottom: 0;
+    padding-top: 2em;
+  }
+  .title-desc-legend:after {
+    content: "";
   }
 }
 
@@ -3135,6 +3291,9 @@ button[type="submit"],
 }
 
 @media only screen and (max-width: 50em) {
+  .title-partners {
+    font-size: 6em;
+  }
   .item-partner {
     height: 180px;
   }
@@ -3147,6 +3306,21 @@ button[type="submit"],
     left: 0 !important;
     right: 0 !important;
     box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: 38em) {
+  .item-partner {
+    height: 100px;
+  }
+  .title-partners {
+    font-size: 30px;
+  }
+  .title-partners:before {
+    content: "";
+  }
+  .partners {
+    margin-top: 2em;
   }
 }
 
@@ -3387,12 +3561,14 @@ button[type="submit"],
 @media only screen and (max-width: 50em) {
   .download {
     z-index: 0;
-    margin-top: 13em;
     background: #fc2850;
   }
   .content-download {
     z-index: 10;
     padding: 5em 2em 5em 30% !important;
+  }
+  .subtitle-download {
+    color: #fff;
   }
   .link-visuel-download {
     z-index: -1;
@@ -3402,6 +3578,15 @@ button[type="submit"],
   .link-visuel-download img {
     width: auto;
     height: 100%;
+  }
+}
+
+@media only screen and (max-width: 38em) {
+  .link-visuel-download {
+    display: none;
+  }
+  .content-download {
+    padding: 4em !important;
   }
 }
 

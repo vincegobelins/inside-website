@@ -90,7 +90,7 @@
 .bottom-footer {
 	@extend .clearfix;
 	@extend .center;
-	padding: $space-2 0;
+	padding: $space-2;
 }
 
 .legal-footer {
@@ -198,7 +198,7 @@
 	.bottom-footer {
 		text-align: center;
 	}
-	.legal-footer {
+	.legal-footer, .text-bottom-footer {
 		float: none;
 	}
 }

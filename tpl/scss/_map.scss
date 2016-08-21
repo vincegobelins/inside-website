@@ -285,6 +285,14 @@
   }
 
   /* ====================== */
+  /* Controls */
+  /* ====================== */
+
+  .controls-map {
+    display: none;
+  }
+
+  /* ====================== */
   /* Legend */
   /* ====================== */
 
@@ -306,6 +314,43 @@
 
   .text-desc-legend {
     text-align: center;
+  }
+
+}
+
+@media only screen and (max-width: $mq-3) {
+
+  /* ====================== */
+  /* Legend */
+  /* ====================== */
+
+  .wrap-map-legend {
+    padding: $space-4;
+  }
+
+  .item-legend {
+    padding: $space-1 $space-1 $space-1 $space-4;
+
+    &:before {
+      top: 1em;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .text-legend {
+    font-size: 12px;
+  }
+
+  .desc-legend {
+    padding-bottom: 0;
+    padding-top: $space-2;
+  }
+
+  .title-desc-legend {
+    &:after {
+      content: "";
+    }
   }
 
 }

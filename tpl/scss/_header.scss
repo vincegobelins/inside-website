@@ -130,11 +130,52 @@
 @media only screen and (max-width: $mq-5) {
 }
 @media only screen and (max-width: $mq-4) {
-  .header {
+  .fake-title {
     display: none;
+  }
+
+  .wrap-header {
+    z-index: 100000;
+    width: 100%;
+    height: auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  .bloc-fb {
+    display: none;
+  }
+
+  .logo {
+    padding: 3em;
+    width: 15em;
+  }
+
+  .img-logo {
+    max-width: 100%;
+  }
+
+  .tools {
+    padding: 4em;
   }
 }
 @media only screen and (max-width: $mq-3) {
+  .title-video-intro {
+    font-size: 50px !important;
+  }
+
+  .tools {
+    padding: $space-4 $space-2;
+  }
+
+  .link-tool {
+    font-size: 12px;
+  }
+
+  .bloc-subtitle-intro {
+    font-size: 14px !important;
+  }
+
 }
 @media only screen and (max-width: $mq-2) {
 }

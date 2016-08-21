@@ -86,6 +86,7 @@
 
 .wrap-video-intro {
   position: relative;
+  @include transition(height .2s ease-in-out);
 
   &:after {
     @extend .width-inverse;

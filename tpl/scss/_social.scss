@@ -495,3 +495,24 @@
     float: none;
   }
 }
+
+@media only screen and (max-width: $mq-3) {
+
+  /* ====================== */
+  /* Blog */
+  /* ====================== */
+
+  .title-blog {
+    margin: 2em;
+    font-size: 20px;
+
+    .hightlight {
+      font-size: 20px;
+    }
+  }
+
+  .wrap-content-article {
+    padding: $space-4;
+  }
+
+}

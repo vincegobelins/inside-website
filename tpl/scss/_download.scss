@@ -114,15 +114,21 @@
 }
 
 @media only screen and (max-width: $mq-4) {
+
   .download {
     z-index: 0;
-    margin-top: $space-8;
     background: $color-site-1;
   }
+
   .content-download {
     z-index: 10;
     padding: $space-5 $space-2 $space-5 30% !important;
   }
+
+  .subtitle-download {
+    color: $color-white;
+  }
+
   .link-visuel-download {
     z-index: -1;
     position: absolute;
@@ -133,4 +139,17 @@
       height: 100%;
     }
   }
+
+}
+
+@media only screen and (max-width: $mq-3) {
+
+  .link-visuel-download {
+    display: none;
+  }
+
+  .content-download {
+    padding: $space-4 !important;
+  }
+
 }

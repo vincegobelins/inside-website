@@ -255,11 +255,11 @@
 
 @media only screen and (max-width: $mq-4) {
   .wrap-flap {
-    padding: $space-5 0;
+    padding: $space-2 0;
   }
 
   .wrap-title-flap {
-    padding: $space-2
+    padding: $space-3 0 $space-5;
   }
 
   .title-flap {
@@ -272,6 +272,7 @@
 
   .list-flap {
     flex-direction: column;
+    padding: 0;
   }
   .item-flap {
     position: relative;
@@ -279,7 +280,7 @@
   }
   .wrap-img-item {
     top: 0 !important;
-    height: 260px;
+    height: 24em;
     @include transform(none);
   }
   .img-item-flap {
@@ -300,4 +301,26 @@
       left: 50% !important;
     }
   }
+}
+
+@media only screen and (max-width: $mq-3) {
+
+  /* ====================== */
+  /* Content */
+  /* ====================== */
+
+  .wrap-img-item {
+    height: 12em;
+  }
+
+  .title-txt-flap {
+    font-size: 20px;
+  }
+
+  .subtitle-txt-flap {
+    padding: .5em 0 0 0;
+    font-size: 12px;
+    line-height: 1.2em;
+  }
+
 }

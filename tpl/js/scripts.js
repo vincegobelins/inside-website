@@ -153,7 +153,7 @@ class Slider {
       autoControlsCombine: false,
       pager: false,
       touchEnabled: true,
-      adaptiveHeight: true,
+      adaptiveHeight: false,
       responsive: true,
 
       onSlideBefore: ($slideElement) => { this.onSlideBefore($slideElement); },
