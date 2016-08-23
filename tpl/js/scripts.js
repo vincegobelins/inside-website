@@ -4,11 +4,13 @@
 
 class InView {
 
-  constructor(itemsHTML) {
+  constructor(itemsHTML, isMobile) {
     this.items = [];
+    this.isMobile = isMobile;
     this.activeItems = [];
     this.scrollPos = 0;
     this.windowHeight = window.innerHeight;
+
     for (let i = 0; i < itemsHTML.length; i++) {
       for (let j = 0; j < itemsHTML[i].length; j++) {
         let item = {
@@ -19,6 +21,10 @@ class InView {
         this.items.push(item);
       }
     }
+
+    if(this.isMobile) {
+      this.doMobile();
+    }
   }
 
   /**
@@ -27,15 +33,17 @@ class InView {
 
   update() {
 
-    for (let i = 0; i < this.items.length; i++) {
+    if(!this.isMobile) {
+      for (let i = 0; i < this.items.length; i++) {
 
-      let offScreen = -500;
+        let offScreen = -500;
 
-      let offsetTop = this.items[i].obj.getBoundingClientRect().top;
-      let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
+        let offsetTop = this.items[i].obj.getBoundingClientRect().top;
+        let offsetBottom = this.items[i].obj.getBoundingClientRect().bottom;
 
-      if(offsetTop - offScreen < this.windowHeight && offsetBottom > -offScreen) {
-        this.activate($(this.items[i].obj));
+        if(offsetTop - offScreen < this.windowHeight && offsetBottom > -offScreen) {
+          this.activate($(this.items[i].obj));
+        }
       }
     }
 
@@ -43,6 +51,12 @@ class InView {
 
   activate(el){
     el.addClass("active");
+  }
+
+  doMobile() {
+    for (let i = 0; i < this.items.length; i++) {
+      this.activate($(this.items[i].obj));
+    }
   }
 }
 
@@ -336,25 +350,42 @@ class ScreenSlider extends Slider {
   }
 }
 
-/** ###############
-* Map *
-* ############## */
+/**
+*
+* Map
+* Build GMaps on #gmap div
+*
+* @author Vincent Aguettaz
+*/
 
 class Map {
-  constructor(markers) {
+
+  /**
+  *
+  * Constructor
+  *
+  * @param data JSON Object with markers data
+  */
+
+  constructor(data) {
 
     self = this;
 
+    // init map
     this.zoom = 15;
-    this.latLng = {lat: 45.896, lng: 6.128};
+    this.minZoom = 5;
+    this.maxZoom = 15;
+    this.markers = [];
     this.map = new google.maps.Map(document.getElementById('gmap'), {
-      center: new google.maps.LatLng(self.latLng.lat, self.latLng.lng),
       scrollwheel: false,
-      zoom: parseInt(self.zoom),
+      //zoom: parseInt(self.zoom),
       styles: self.getStyle(),
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      maxZoom: this.maxZoom,
+      minZoom: this.minZoom
     });
 
+    // init InfoWindow
     this.infowindow = new InfoBubble({
       map: this.map,
       content: "coucou info view",
@@ -363,7 +394,7 @@ class Map {
       backgroundColor: "",
       borderRadius: 0,
       arrowSize: -25,
-      arrowPosition: "20%",
+      arrowPosition: 0,
       borderWidth: 0,
       disableAutoPan: true,
       hideCloseButton: true,
@@ -374,26 +405,56 @@ class Map {
       minHeight: 190,
     });
 
-    // create markers
-    for (let i=0; i<markers.length; i++) {
-      this.addMarker(markers[i]);
+    // init markers
+    for (let i=0; i<data.length; i++) {
+      this.addMarker(data[i]);
     }
+
+    // center map
+    this.center();
 
     this.bindUIActions();
   }
 
-  zoomIn(e) {
-    e.preventDefault();
-    this.zoom = this.zoom + 1;
-    this.map.setZoom(this.zoom);
+  /**
+  *
+  * Zoom in the map while maxZoom limit is not riched
+  *
+  * @param event Click or touch event
+  * @return void
+  */
+  zoomIn(event) {
+    event.preventDefault();
+
+    if(this.zoom < this.maxZoom) {
+      this.zoom = this.zoom + 1;
+      this.map.setZoom(this.zoom);
+    }
   }
 
-  zoomOut(e) {
-    e.preventDefault();
-    this.zoom = this.zoom - 1;
-    this.map.setZoom(this.zoom);
+  /**
+  *
+  * Zoom out the map while minZoom limit is not riched
+  *
+  * @param event Click or touch event
+  * @return void
+  */
+  zoomOut(event) {
+    event.preventDefault();
+
+    if(this.zoom > this.minZoom) {
+      this.zoom = this.zoom - 1;
+      this.map.setZoom(this.zoom);
+    }
   }
 
+  /**
+  *
+  * Create a marker on the map
+  *
+  * @param data Object with data for one marker (latLng, state, time, title, location)
+  * @return void
+  */
   addMarker(data) {
     self = this;
 
@@ -401,32 +462,58 @@ class Map {
       position: data.latLng,
       map: self.map,
       icon: this.getIcon(data.state),
+      size: new google.maps.Size(50, 50),
+      anchor: new google.maps.Point(0, 0),
+      origin: new google.maps.Point(25, 25),
       data: {title: data.title, time: data.time, place: data.location},
       optimized:false
     });
 
     marker.addListener('click', function(e) {
       this.showInfo(marker);
-      this.map.setCenter(marker.position);
+      this.map.panTo(marker.position);
     }.bind(this), false);
+
+    this.markers.push(marker);
   }
 
+  /**
+  *
+  * Get Icon with the appropriate picture
+  *
+  * @param state String wich give the current status of the event
+  * @return icon Object wich define a Google Maps icon
+  */
   getIcon(state) {
-    let icon = "";
+    let img = "";
 
     if(state == "live") {
-      icon = 'tpl/img/marker-1.svg';
+      img = 'tpl/img/marker-1.svg';
     }
     if(state == "old") {
-      icon = 'tpl/img/marker-2.svg';
+      img = 'tpl/img/marker-2.svg';
     }
     if(state == "new") {
-      icon = 'tpl/img/marker-3.svg';
+      img = 'tpl/img/marker-3.svg';
     }
+
+    let icon = {
+      url: img,
+      size: new google.maps.Size(50, 50),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(25, 25)
+    };
 
     return icon;
   }
 
+  /**
+  *
+  * Set content and show infobulle
+  *
+  * @param marker Google Map Marker Object
+  * @return void
+  */
   showInfo(marker) {
     this.infowindow.setContent('<div class="infobubble-bg"></div><div class="content-infobubble"><h4 class="title-infobubble">' + marker.data.title + '</h4>'
 +'<p class="time-infobubble">' + marker.data.time + '</p>'
@@ -436,6 +523,28 @@ class Map {
     this.infowindow.open(self.map, marker);
   }
 
+  /**
+  *
+  * Fit bounds the map
+  *
+  * @return void
+  */
+  center() {
+    var bounds = new google.maps.LatLngBounds ();
+    console.log(this.markers);
+    for (var i = 0; i < this.markers.length; i++) {
+      bounds.extend (this.markers[i].position);
+    }
+    this.map.setCenter(bounds.getCenter());
+    this.map.fitBounds(bounds);
+  }
+
+  /**
+  *
+  * Get the style of the map
+  *
+  * @return Array wich define styles
+  */
   getStyle() {
     return [
       {
@@ -558,6 +667,12 @@ class Map {
   ]
   }
 
+  /**
+  *
+  * Bind UI Action for Zoom
+  *
+  * @return void
+  */
   bindUIActions() {
     let zoomIn = document.getElementById("zoom-in");
     let zoomOut = document.getElementById("zoom-out");
@@ -675,6 +790,7 @@ class ViewportHeight {
 
 }
 
+
 /** ###############
 * App *
 * ############## */
@@ -693,16 +809,12 @@ var store, app = {
     let loader = new Loader();
     this.bindUI();
 
-    // add class active when is displayed
-    // get parallax items and init parallax
-    let sections = document.getElementsByTagName("section");
-    let header = document.getElementsByTagName("header");
-    let footer = document.getElementsByTagName("footer");
-    store.inView = new InView([sections, header, footer]);
-
-    // get parallax items and init parallax
-    let parallaxItems = document.getElementsByClassName("parallax");
-    //store.parallax = new Parallax(parallaxItems);
+    // make sur the video is played on mobile device
+    let bgVideo = document.getElementById("video-intro");
+    $( ".wrap-intro" ).on( "click", function() {
+      alert("clicked !");
+      bgVideo.play();
+    });
 
     // init slider
     let sliderWrapper = $("#slider-1");
@@ -720,6 +832,26 @@ var store, app = {
 
     // set viewport height to element
     let intro = new ViewportHeight('.wrap-video-intro', 0, 800);
+
+    // add class active when is displayed
+    let sections = document.getElementsByTagName("section");
+    let header = document.getElementsByTagName("header");
+    let footer = document.getElementsByTagName("footer");
+    store.inView = new InView([sections, header, footer]);
+
+    // check mobile device
+    if (/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
+      $('.wrap-video-intro').addClass('disabled');
+
+      store.inView = new InView([sections, header, footer], true);
+    }
+    else {
+      // get parallax items and init parallax
+      let parallaxItems = document.getElementsByClassName("parallax");
+      store.parallax = new Parallax(parallaxItems);
+
+      store.inView = new InView([sections, header, footer], false);
+    }
 
     document.addEventListener('nextSlide', this.updateSliders, false);
     document.addEventListener('loaded', this.onLoad, false);
@@ -799,7 +931,11 @@ var store, app = {
 
     window.onscroll = function (e) {
       let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-      //store.parallax.update();
+
+      if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
+        store.parallax.update();
+      }
+
       store.inView.update();
     }
   }

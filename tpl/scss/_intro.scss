@@ -99,6 +99,15 @@
     height: 100%;
     background: $color-site-1;
   }
+
+  &.disabled {
+    background: url('../img/tmp/background-intro.jpg') center center;
+    background-size: cover;
+
+    .video-intro {
+      display: none;
+    }
+  }
 }
 
 .video-intro {
@@ -246,6 +255,11 @@
 @media only screen and (max-width: $mq-4) {
   .intro {
     margin-top: 0;
+
+    .shape-deco {
+      top: calc(50% + 40px);
+      left: calc(50% - 210px);
+    }
   }
   .wrap-intro {
     padding: 0;
@@ -306,6 +320,11 @@
     margin: 0 auto;
     height: 50%;
     @include transform(translate(-50%, -50%) rotate(90deg));
+  }
+
+  .bloc-shape-video-intro {
+    left: 0;
+    width: 50%;
   }
 
   /* scroll */

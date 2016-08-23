@@ -218,6 +218,7 @@
     margin-top: 0;
     border-top: 2em solid $color-site-2;
   }
+
   .list-pages {
     z-index: 1000 !important;
     position: absolute;
@@ -225,17 +226,21 @@
     left: 50%;
     @include transform(translate(-50%, 0));
   }
+
   .screen-slider {
     position: relative;
     top: auto;
     left: auto;
     @include transform(none);
+    box-shadow: none;
   }
+
   .pager-slider {
     top: 0;
     margin-top: 0;
     height: 100%;
   }
+
   .details-slider {
     z-index: 100;
     position: relative;
