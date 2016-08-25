@@ -397,12 +397,13 @@ class Map {
       arrowPosition: 0,
       borderWidth: 0,
       disableAutoPan: true,
-      hideCloseButton: true,
+      hideCloseButton: false,
       backgroundClassName: 'infobubble',
       arrowStyle: 0,
       minWidth: 230,
       maxWidth: 230,
       minHeight: 190,
+      closeSrc: 'tpl/img/close.png'
     });
 
     // init markers
@@ -520,7 +521,21 @@ class Map {
     + '<p class="location-infobubble">' + marker.data.place + '</p>'
     + '<a href="#" class="link-infobubble">Voir le concert</a></div>');
 
+    let closeInfo = document.getElementById('close-infobubble');
+    //closeInfo.addEventListener('click', this.closeInfo.bind(this), false);
+
     this.infowindow.open(self.map, marker);
+  }
+
+  /**
+  *
+  * Close Infobulle
+  *
+  * @return void
+  */
+  closeInfo() {
+    alert('yepa !');
+    this.infowindow.close(self.map, marker);
   }
 
   /**
@@ -831,7 +846,7 @@ var store, app = {
     let player = new Player(video);
 
     // set viewport height to element
-    let intro = new ViewportHeight('.wrap-video-intro', 0, 800);
+    let intro = new ViewportHeight('.wrap-video-intro', 0, 1030);
 
     // add class active when is displayed
     let sections = document.getElementsByTagName("section");

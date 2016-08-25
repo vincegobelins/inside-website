@@ -116,6 +116,20 @@
   display: block;
 }
 
+@media only screen and (max-width: $mq-5) {
+  .title-interfaces {
+    font-size: 80px;
+  }
+  .item-interface {
+    &.left {
+      @include transform(translate(100px, 90px));
+    }
+    &.right {
+      @include transform(translate(-100px, 0));
+    }
+  }
+}
+
 @media only screen and (max-width: $mq-4) {
   .interfaces {
     display: none;

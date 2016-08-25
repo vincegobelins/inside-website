@@ -161,14 +161,13 @@
   left: 0%;
   margin: 0 0 0 50%;
   width: 52em;
-  height: 70em;
   background: $color-site-2;
   @include transform(translate(0, -50%));
 }
 
 .wrap-detail {
   @extend .clearfix;
-  padding: 10em;
+  padding: 10em 10em 15em;
 }
 
 .item-detail {
@@ -208,6 +207,13 @@
   opacity: 0;
   @include transform(translateX(-20%));
 }
+
+@media only screen and (max-width: $mq-5) {
+  .title-detail {
+    font-size: 26px;
+  }
+}
+
 
 @media only screen and (max-width: $mq-4) {
   .slider {

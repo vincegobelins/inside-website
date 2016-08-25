@@ -350,7 +350,7 @@ a:hover { color: #0976d8; }*/
 /* --- 512px --- */
 /* --- 608px --- */
 /* --- 800px --- */
-/* --- 928px --- */
+/* --- 1350px --- */
 /* --- 1216px --- */
 /* --- 1360px --- */
 /* ====================== */
@@ -590,7 +590,7 @@ a:link {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
   .center, .header, .top-footer, .bottom-footer, .intro, .wrap-flap, .wrap-pages, .wrap-social, .map-legend, .wrap-interfaces, .download {
     max-width: 100%;
   }
@@ -937,7 +937,7 @@ button[type="submit"],
 /* ====================== */
 /* responsive */
 /* ====================== */
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1030px) {
   .cta-regular, .cta-footer, .cta-slider, .cta-facebook, .cta-blog, .cta-partners, .cta-close-player {
     font-size: 14px;
   }
@@ -1056,7 +1056,7 @@ button[type="submit"],
   font-weight: 900;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1030px) {
   .fake-title {
     display: none;
   }
@@ -1253,7 +1253,13 @@ button[type="submit"],
 /* ====================== */
 /* responsive */
 /* ====================== */
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
+  .top-footer {
+    padding: 0 5em;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
   .top-footer {
     max-width: 100%;
     padding: 0 3em;
@@ -1566,7 +1572,36 @@ button[type="submit"],
   }
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
+  .intro .frame-video-intro {
+    width: 50%;
+  }
+  .intro .logo-deco {
+    display: none;
+  }
+  .logo {
+    padding: 5em 3em;
+  }
+  .tools {
+    padding: 8em 3em;
+  }
+  .wrap-subtitle-intro {
+    top: 30em;
+    width: 30em;
+  }
+  .bloc-subtitle-intro {
+    margin: 2em;
+    font-size: 18px;
+  }
+  .menu-item {
+    padding: 4em 2em 4em 0;
+  }
+  .title-video-intro {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
   .intro {
     margin-top: 0;
   }
@@ -1624,6 +1659,7 @@ button[type="submit"],
     left: 50%;
     display: block;
     margin: 0 auto;
+    width: auto !important;
     height: 50%;
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
     -moz-transform: translate(-50%, -50%) rotate(90deg);
@@ -1901,7 +1937,26 @@ button[type="submit"],
   line-height: 2em;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
+  .item-flap:nth-child(1) .item-txt-flap {
+    left: 12em;
+  }
+  .item-flap:nth-child(3) .item-txt-flap {
+    right: 12em;
+  }
+  .item-txt-flap:after, .item-txt-flap:before {
+    top: -60px;
+    left: 50% !important;
+  }
+  .item-flap {
+    position: relative;
+  }
+  .title-txt-flap {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
   .wrap-flap {
     padding: 2em 0;
   }
@@ -1918,28 +1973,6 @@ button[type="submit"],
     flex-direction: column;
     padding: 0;
   }
-  .item-flap {
-    position: relative;
-    margin: 0;
-  }
-  .wrap-img-item {
-    top: 0 !important;
-    height: 24em;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-  }
-  .img-item-flap {
-    width: 100%;
-    height: auto;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
   .item-txt-flap {
     top: 50%;
     left: 50% !important;
@@ -1952,9 +1985,26 @@ button[type="submit"],
     -o-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
   }
-  .item-txt-flap:after, .item-txt-flap:before {
-    top: -60px;
-    left: 50% !important;
+  .wrap-img-item {
+    top: 0 !important;
+    height: 24em;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+  .item-flap {
+    margin: 0;
+  }
+  .img-item-flap {
+    width: 100%;
+    height: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -2129,7 +2179,6 @@ button[type="submit"],
   left: 0%;
   margin: 0 0 0 50%;
   width: 52em;
-  height: 70em;
   background: #0500cc;
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
@@ -2139,7 +2188,7 @@ button[type="submit"],
 }
 
 .wrap-detail {
-  padding: 10em;
+  padding: 10em 10em 15em;
 }
 
 .item-detail {
@@ -2185,7 +2234,13 @@ button[type="submit"],
   transform: translateX(-20%);
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
+  .title-detail {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
   .slider {
     margin-top: 0;
     border-top: 2em solid #0500cc;
@@ -2361,6 +2416,12 @@ button[type="submit"],
   display: block;
 }
 
+.link-facebook:hover .content-facebook-hover .bloc-article-facebook .text-facebook {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
 .content-facebook {
   z-index: 2;
   position: absolute;
@@ -2433,6 +2494,15 @@ button[type="submit"],
   font-size: 12px;
   color: #0500cc;
   line-height: 1.5em;
+  -webkit-transform: translate(-15%, 0);
+  -moz-transform: translate(-15%, 0);
+  -ms-transform: translate(-15%, 0);
+  -o-transform: translate(-15%, 0);
+  transform: translate(-15%, 0);
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  opacity: 0;
 }
 
 .meta-facebook {
@@ -2651,7 +2721,13 @@ button[type="submit"],
   background-color: #0500cc;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1030px) {
+  .wrap-content-article {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
   .social .logo-deco {
     display: none;
   }
@@ -3109,7 +3185,7 @@ a[href^="https://maps.google.com/maps"] {
   text-transform: uppercase;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
   /* ====================== */
   /* GMap */
   /* ====================== */
@@ -3330,13 +3406,16 @@ a[href^="https://maps.google.com/maps"] {
   display: inline-block;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
   .title-partners {
     font-size: 6em;
   }
   .item-partner {
     height: 180px;
   }
+}
+
+@media only screen and (max-width: 1030px) {
   .item-partner:before {
     -webkit-transform: skew(0deg) translate(0%, 0) !important;
     -moz-transform: skew(0deg) translate(0%, 0) !important;
@@ -3476,7 +3555,27 @@ a[href^="https://maps.google.com/maps"] {
   display: block;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1360px) {
+  .title-interfaces {
+    font-size: 80px;
+  }
+  .item-interface.left {
+    -webkit-transform: translate(100px, 90px);
+    -moz-transform: translate(100px, 90px);
+    -ms-transform: translate(100px, 90px);
+    -o-transform: translate(100px, 90px);
+    transform: translate(100px, 90px);
+  }
+  .item-interface.right {
+    -webkit-transform: translate(-100px, 0);
+    -moz-transform: translate(-100px, 0);
+    -ms-transform: translate(-100px, 0);
+    -o-transform: translate(-100px, 0);
+    transform: translate(-100px, 0);
+  }
+}
+
+@media only screen and (max-width: 1030px) {
   .interfaces {
     display: none;
   }
@@ -3598,7 +3697,7 @@ a[href^="https://maps.google.com/maps"] {
   font-size: 12px;
 }
 
-@media only screen and (max-width: 50em) {
+@media only screen and (max-width: 1030px) {
   .download {
     z-index: 0;
     background: #fc2850;
@@ -3694,7 +3793,7 @@ body.dev {
   opacity: 1;
 }
 
-.anim-left, .subtitle-intro, .text-facebook, .content-article {
+.anim-left, .subtitle-intro, .content-article {
   -webkit-transform: translate(-15%, 0);
   -moz-transform: translate(-15%, 0);
   -ms-transform: translate(-15%, 0);

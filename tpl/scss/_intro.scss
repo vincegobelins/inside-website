@@ -252,6 +252,45 @@
   100%   { @include transform(translate(-50%, -125%)) }
 }
 
+@media only screen and (max-width: $mq-5) {
+
+  .intro {
+    .frame-video-intro {
+      width: 50%;
+    }
+
+    .logo-deco {
+      display: none;
+    }
+  }
+
+  .logo {
+    padding: $space-5 $space-3;
+  }
+
+  .tools {
+    padding: $space-7 $space-3;
+  }
+
+  .wrap-subtitle-intro {
+    top: 30em;
+    width: 30em;
+  }
+
+  .bloc-subtitle-intro {
+    margin: $space-2;
+    font-size: 18px;
+  }
+
+  .menu-item {
+    padding: $space-4 $space-2 $space-4 0;
+  }
+
+  .title-video-intro {
+    font-size: 50px;
+  }
+}
+
 @media only screen and (max-width: $mq-4) {
   .intro {
     margin-top: 0;
@@ -318,6 +357,7 @@
     left: 50%;
     display: block;
     margin: 0 auto;
+    width: auto !important;
     height: 50%;
     @include transform(translate(-50%, -50%) rotate(90deg));
   }
