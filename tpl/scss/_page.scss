@@ -1,0 +1,292 @@
+/* ====================== */
+/* Article */
+/* ====================== */
+$page-width : 80%;
+
+.page {
+  z-index: 0;
+  position: relative;
+  @extend .clearfix;
+  background: $color-white;
+
+  img {
+    display: block;
+    @extend .box-shadow;
+  }
+}
+
+.page-center {
+  width: $page-width;
+  margin: 0 auto;
+}
+
+/* ====================== */
+/* Header */
+/* ====================== */
+
+.header-page {
+  @extend .clearfix;
+  @extend .page-center;
+  position: relative;
+  margin: 12em auto 12em;
+
+  &.active {
+    .title-header-page {
+      @extend .anim-title-active;
+    }
+  }
+}
+
+.wrap-title-section-page {
+  overflow: hidden;
+  //margin-bottom: $space-6;
+}
+
+.title-header-page {
+  //@extend .anim-title;
+  font-family: $font-2;
+  font-size: 13em;
+  color: $color-text-5;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 70px;
+}
+
+.wrap-header-page  {
+  @extend .wrap-detail;
+  display: block;
+  padding: 10em;
+  width: 40%;
+  background: $color-site-2;
+  float: right;
+}
+
+.bloc-header-page  {
+  @extend .bloc-detail;
+}
+
+.subtitle-header-page  {
+  @extend .title-detail;
+}
+
+.text-header-page  {
+  @extend .text-detail;
+}
+
+.wrap-thumb-header-page {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+}
+
+.thumb-header-page {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ====================== */
+/* Content */
+/* ====================== */
+.section-page {
+  margin: 12em 0;
+
+  &.section-page-blue {
+    .deco-content-section-page {
+      background: $color-site-2;
+    }
+    figcaption {
+      color: $color-text-2;
+    }
+  }
+
+  &.active {
+    .title-section-page {
+      @extend .anim-title-active;
+    }
+  }
+}
+
+.wrap-title-section-page {
+  @extend .page-center;
+  overflow: hidden;
+  margin-bottom: $space-6;
+}
+
+.title-section-page {
+  @extend .anim-title;
+  font-family: $font-2;
+  font-size: 10em;
+  color: $color-text-5;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.wrap-content-section-page {
+  position: relative;
+}
+
+.deco-content-section-page {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: $page-width + (100% - $page-width) / 2;
+  height: 100%;
+  background: $color-site-1;
+
+  &.align-right {
+    left: auto;
+    right: 0;
+  }
+}
+
+.content-section-page {
+  @extend .page-center;
+  z-index: 1;
+  position: relative;
+  padding: $space-7;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 2em;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* ====================== */
+/* Image */
+/* ====================== */
+
+.section-page {
+
+  figure {
+    &.align-left {
+      float: left;
+      margin: -20em $space-5 $space-5 0;
+    }
+
+    &.align-right {
+      float: right;
+      margin: -20em 0 $space-5 $space-5;
+    }
+  }
+
+  figcaption {
+    position: relative;
+    padding: $space-2 0 0 $space-4;
+    font-weight: 500;
+    color: $color-text-3;
+    font-size: 22px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 55px;
+      left: 0;
+      width: 48px;
+      height: 13px;
+      background: url("../img/arrow-right.png") no-repeat;
+    }
+  }
+}
+
+/* ====================== */
+/* Blockquote */
+/* ====================== */
+
+.section-page-quote {
+  position: relative;
+  margin: 12em 0;
+  padding: $space-7 $space-3;
+  background: $color-site-2;
+  overflow: hidden;
+}
+
+.wrap-bg-quote {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bg-quote {
+  margin-top: -10%;
+}
+
+.wrap-quote {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.quote {
+  position: relative;
+  display: block;
+  padding: $space-1;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 500;
+  text-align: center;
+
+  &:before, &:after {
+    position: absolute;
+    content: '"';
+    font-size: 110px;
+    font-style: italic;
+    color: $color-text-2;
+    line-height: 20px;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+  }
+
+  &:after {
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.author-quote {
+  padding: $space-1 0 0;
+  text-align: right;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  color: $color-text-2;
+}
+
+/* ====================== */
+/* Blockquote */
+/* ====================== */
+
+.section-page-download {
+  z-index: 0;
+  @extend .page-center;
+  position: relative;
+  margin: 12em auto;
+  background: $color-bg-3;
+}
+
+.title-section-page-download {
+  z-index: 0;
+  text-align: center;
+  font-size: 130px;
+  font-family: $font-2;
+  color: $color-text-2;
+  text-transform: uppercase;
+}
+.wrap-cta-download {
+  z-index: 2;
+  margin-top: -$space-8;
+  padding: $space-4;
+  text-align: center;
+}

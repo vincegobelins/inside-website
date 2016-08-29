@@ -37,6 +37,7 @@
 
 .list-footer {
 	@extend .list-col;
+	display: inline-block;
 	margin: -$space-8;
 }
 

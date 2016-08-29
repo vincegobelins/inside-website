@@ -84,7 +84,7 @@
 }
 
 .list-flap {
-  display: flex;
+  @include display(flex);
   margin: 0 0 0 -15%;
   padding: $space-5 0;
   width: 130%;
@@ -92,7 +92,7 @@
 
 .item-flap {
   float: left;
-  flex: 10;
+  @include flex(10);
   margin: $space-2;
   @include transition(all .5s ease-in-out);
 
@@ -138,7 +138,7 @@
   }
 
   &:hover {
-    flex: 12;
+    @include flex(12);
 
     .item-txt-flap {
       &:after {
@@ -297,7 +297,7 @@
   }
 
   .list-flap {
-    flex-direction: column;
+    @include flex-direction(column);
     padding: 0;
   }
 

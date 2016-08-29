@@ -15,6 +15,7 @@
 @import "interfaces";
 @import "download";
 @import "content";
+@import "page";
 
 /* ====================== */
 /* body */
@@ -46,7 +47,7 @@ body {
 }
 
 .anim-title {
-  @include transform(translate(0, 25%));
+  @include transform(translate(0, 50%));
   @include transition(all 1s ease-in-out);
   opacity: 0;
 }

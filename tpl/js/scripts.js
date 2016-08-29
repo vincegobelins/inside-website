@@ -834,16 +834,22 @@ var store, app = {
     // init slider
     let sliderWrapper = $("#slider-1");
     let sliderItems = $(".item-detail");
-    let slider = new Slider(sliderWrapper, sliderItems, 0, true, "fade");
+    if(sliderWrapper.length > 0) {
+      let slider = new Slider(sliderWrapper, sliderItems, 0, true, "fade");
+    }
 
     // init screen slider
     let screenSliderWrapper = $("#slider-2");
     let screenSliderItems = $(".item-screen");
-    store.screenSlider = new ScreenSlider(screenSliderWrapper, screenSliderItems, 1000, false, "fade");
+    if(sliderWrapper.length > 0) {
+      store.screenSlider = new ScreenSlider(screenSliderWrapper, screenSliderItems, 1000, false, "fade");
+    }
 
     // video player
     let video = document.getElementById("video-player");
-    let player = new Player(video);
+    if(video) {
+      let player = new Player(video);
+    }
 
     // set viewport height to element
     let intro = new ViewportHeight('.wrap-video-intro', 0, 1030);
