@@ -81,6 +81,28 @@ body {
   width: 0%;
 }
 
+.right-left {
+  opacity: 0;
+  left: -50px;
+  @include transition(left 1s ease-out .25s);
+}
+
+.right-left-active {
+  opacity: 1;
+  left: 0;
+}
+
+.to-padding-60 {
+  opacity: 0;
+  padding-left: 100px;
+  @include transition(all 1s ease-out);
+}
+
+.to-padding-60-active {
+  opacity: 1;
+  padding-left: 60px;
+}
+
 /* ====================== */
 /* Video Player */
 /* ====================== */

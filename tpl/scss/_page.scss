@@ -1,7 +1,7 @@
 /* ====================== */
 /* Article */
 /* ====================== */
-$page-width : 80%;
+$page-width : 75%;
 
 .page {
   z-index: 0;
@@ -28,35 +28,44 @@ $page-width : 80%;
   @extend .clearfix;
   @extend .page-center;
   position: relative;
-  margin: 12em auto 12em;
+  margin: 12em auto 0;
 
   &.active {
     .title-header-page {
       @extend .anim-title-active;
     }
+    .wrap-thumb-header-page {
+      &:before {
+        @extend .width-inverse-active;
+      }
+    }
   }
 }
 
-.wrap-title-section-page {
+.wrap-title-section-page, .wrap-title-header-page {
   overflow: hidden;
   //margin-bottom: $space-6;
 }
 
 .title-header-page {
-  //@extend .anim-title;
+  @extend .anim-title;
+  position: relative;
+  z-index: 1;
   font-family: $font-2;
   font-size: 13em;
   color: $color-text-5;
   text-transform: uppercase;
   text-align: right;
-  line-height: 70px;
 }
 
 .wrap-header-page  {
   @extend .wrap-detail;
+  position: relative;
+  z-index: 2;
   display: block;
+  margin-top: -5em;
   padding: 10em;
-  width: 40%;
+  width: 35%;
   background: $color-site-2;
   float: right;
 }
@@ -78,7 +87,19 @@ $page-width : 80%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 70%;
+  width: 55%;
+
+  &:before {
+    @extend .width-inverse;
+    z-index: 2;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-site-1;
+  }
 }
 
 .thumb-header-page {
@@ -86,6 +107,27 @@ $page-width : 80%;
   height: auto;
 }
 
+.wrap-bottom-header-page {
+  position: relative;
+  width: 100%;
+  background: $color-site-2;
+}
+
+.bottom-header-page {
+  @extend .page-center;
+  position: relative;
+  overflow: hidden;
+  height: 15em;
+  background: $color-site-1;
+}
+
+.bg-bottom-header-page {
+  position: absolute;
+  display: block;
+  top: -50%;
+  width: 100%;
+  height: auto;
+}
 /* ====================== */
 /* Content */
 /* ====================== */
@@ -105,11 +147,30 @@ $page-width : 80%;
     .title-section-page {
       @extend .anim-title-active;
     }
+
+    figcaption, .subtitle-section-page {
+      @extend .to-padding-60-active;
+
+      &:before {
+        @extend .right-left-active;
+      }
+    }
+
+    .deco-content-section-page {
+      width: $page-width + (100% - $page-width) / 2;
+    }
+
+    .wrap-thumb-content-section-page {
+      &:before {
+        @extend .width-inverse-active;
+      }
+    }
   }
 }
 
 .wrap-title-section-page {
   @extend .page-center;
+  position: relative;
   overflow: hidden;
   margin-bottom: $space-6;
 }
@@ -123,16 +184,46 @@ $page-width : 80%;
   text-align: right;
 }
 
+.wrap-subtitle-section-page {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 100%;
+  @include transform(translate(0, -50%));
+}
+
+.subtitle-section-page {
+  @extend .to-padding-60;
+  position: relative;
+  padding-left: 60px;
+  display: inline-block;
+  color: $color-text-3;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 8px;
+
+  &:before {
+    @extend .right-left;
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 48px;
+    height: 13px;
+    background: url('../img/red-arrows.png');
+  }
+}
+
 .wrap-content-section-page {
   position: relative;
 }
 
 .deco-content-section-page {
+  @extend .width;
   z-index: -1;
   top: 0;
   left: 0;
   position: absolute;
-  width: $page-width + (100% - $page-width) / 2;
   height: 100%;
   background: $color-site-1;
 
@@ -142,6 +233,9 @@ $page-width : 80%;
   }
 }
 
+/* ====================== */
+/* Editor Wysiwyg */
+/* ====================== */
 .content-section-page {
   @extend .page-center;
   z-index: 1;
@@ -150,6 +244,41 @@ $page-width : 80%;
   font-size: 20px;
   font-weight: 300;
   line-height: 2em;
+
+  .date {
+    color: $color-text-3;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: $color-text-3;
+  }
+
+  p {
+    margin-bottom: 40px;
+  }
+
+  h3, h4, h5 {
+    font-family: $font-2;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-size: 36px;
+    color: $color-text-3;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
 }
 
 .align-left {
@@ -158,6 +287,27 @@ $page-width : 80%;
 
 .align-right {
   text-align: right;
+}
+
+/* For blue background */
+
+.section-page-blue {
+  .wrap-thumb-content-section-page:before {
+    background: $color-site-1;
+  }
+  .content-section-page {
+    .date {
+      color: $color-text-2;
+    }
+
+    strong {
+      color: $color-text-2;
+    }
+
+    h4 {
+      color: $color-text-2;
+    }
+  }
 }
 
 /* ====================== */
@@ -170,15 +320,41 @@ $page-width : 80%;
     &.align-left {
       float: left;
       margin: -20em $space-5 $space-5 0;
+
+      .wrap-thumb-content-section-page:before {
+        right: auto;
+        left: 0;
+      }
     }
 
     &.align-right {
       float: right;
       margin: -20em 0 $space-5 $space-5;
+
+      .wrap-thumb-content-section-page:before {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+
+  .wrap-thumb-content-section-page {
+    position: relative;
+
+    &:before {
+      @extend .width-inverse;
+      z-index: 2;
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: $color-site-2;
     }
   }
 
   figcaption {
+    @extend .to-padding-60;
     position: relative;
     padding: $space-2 0 0 $space-4;
     font-weight: 500;
@@ -186,10 +362,10 @@ $page-width : 80%;
     font-size: 22px;
 
     &:before {
+      @extend .right-left;
       content: "";
       position: absolute;
       top: 55px;
-      left: 0;
       width: 48px;
       height: 13px;
       background: url("../img/arrow-right.png") no-repeat;
@@ -207,6 +383,12 @@ $page-width : 80%;
   padding: $space-7 $space-3;
   background: $color-site-2;
   overflow: hidden;
+
+  &.active {
+    .wrap-bg-quote:before {
+      @extend .width-inverse-active;
+    }
+  }
 }
 
 .wrap-bg-quote {
@@ -214,6 +396,20 @@ $page-width : 80%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.wrap-bg-quote {
+
+  &:before {
+    @extend .width-inverse;
+    z-index: 2;
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-site-2;
+  }
 }
 
 .bg-quote {
@@ -265,7 +461,7 @@ $page-width : 80%;
 }
 
 /* ====================== */
-/* Blockquote */
+/* Download */
 /* ====================== */
 
 .section-page-download {
