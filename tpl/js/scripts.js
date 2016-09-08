@@ -71,8 +71,12 @@ var store, app = {
       store.inView = new InView([sections, header, footer], false);
     }
 
+    // listen for events
     document.addEventListener('nextSlide', this.updateSliders, false);
     document.addEventListener('loaded', this.onLoad, false);
+
+    // render website
+    this.render();
 
   },
 
@@ -82,7 +86,7 @@ var store, app = {
   },
 
   initMap : function() {
-
+    // TODO : delete
     let markers = [
       {
         id: 0,
@@ -146,17 +150,16 @@ var store, app = {
          $('body').toggleClass('dev');
       }
     });
+  },
 
-    window.onscroll = function (e) {
-      let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-
-      // TODO : Don't call parallax on scroll but with requestAnimationFrame
-      if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
-        store.parallax.update();
-      }
-
-      store.inView.update();
+  render: function() {
+    if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
+      store.parallax.update();
     }
+
+    store.inView.update();
+
+    window.requestAnimationFrame(this.render.bind(this));
   }
 }
 

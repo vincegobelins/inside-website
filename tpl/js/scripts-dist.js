@@ -1459,8 +1459,12 @@ var store,
       store.inView = new InView([sections, header, footer], false);
     }
 
+    // listen for events
     document.addEventListener("nextSlide", this.updateSliders, false);
     document.addEventListener("loaded", this.onLoad, false);
+
+    // render website
+    this.render();
   },
 
   onLoad: function onLoad() {
@@ -1471,7 +1475,7 @@ var store,
   },
 
   initMap: function initMap() {
-
+    // TODO : delete
     var markers = [{
       id: 0,
       title: "L.E.J.",
@@ -1529,17 +1533,16 @@ var store,
         $("body").toggleClass("dev");
       }
     });
+  },
 
-    window.onscroll = function (e) {
-      var scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+  render: function render() {
+    if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
+      store.parallax.update();
+    }
 
-      // TODO : Don't call parallax on scroll but with requestAnimationFrame
-      if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
-        store.parallax.update();
-      }
+    store.inView.update();
 
-      store.inView.update();
-    };
+    window.requestAnimationFrame(this.render.bind(this));
   }
 };
 
