@@ -439,12 +439,13 @@
 }
 
 @media only screen and (max-width: $mq-4) {
-  .wrap-content-article {
-    width: 70%;
-  }
 }
 
 @media only screen and (max-width: $mq-4) {
+  .wrap-content-article {
+    width: 70%;
+  }
+  
   .social {
     .logo-deco {
       display: none;

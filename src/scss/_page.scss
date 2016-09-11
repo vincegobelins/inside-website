@@ -2,6 +2,7 @@
 /* Article */
 /* ====================== */
 $page-width : 75%;
+$margin-page : 10em;
 
 .page {
   z-index: 0;
@@ -123,6 +124,7 @@ $page-width : 75%;
 
 .bg-bottom-header-page {
   position: absolute;
+  margin: 0 0 $margin-page;
   display: block;
   top: -50%;
   width: 100%;
@@ -132,7 +134,7 @@ $page-width : 75%;
 /* Content */
 /* ====================== */
 .section-page {
-  margin: 12em 0;
+  margin: $margin-page 0;
 
   &.section-page-blue {
     .deco-content-section-page {
@@ -261,6 +263,20 @@ $page-width : 75%;
     margin-bottom: 40px;
   }
 
+  a {
+    @extend .link;
+    color: $color-text-3;
+    text-shadow: none;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &:before, &:after {
+      background: $color-site-2;
+    }
+  }
+
   h3, h4, h5 {
     font-family: $font-2;
     margin-bottom: 40px;
@@ -307,6 +323,14 @@ $page-width : 75%;
     h4 {
       color: $color-text-2;
     }
+
+    a {
+      color: $color-text-1;
+
+      &:before, &:after {
+        background: $color-site-1;
+      }
+    }
   }
 }
 
@@ -317,9 +341,13 @@ $page-width : 75%;
 .section-page {
 
   figure {
+
+    margin-top: $space-2;
+    margin-bottom: $space-2;
+
     &.align-left {
       float: left;
-      margin: -20em $space-5 $space-5 0;
+      margin-right: $space-5;
 
       .wrap-thumb-content-section-page:before {
         right: auto;
@@ -329,12 +357,17 @@ $page-width : 75%;
 
     &.align-right {
       float: right;
-      margin: -20em 0 $space-5 $space-5;
+      margin-left: $space-5;
 
       .wrap-thumb-content-section-page:before {
         right: 0;
         left: auto;
       }
+    }
+
+    &:first-child {
+      margin-top: -12em;
+      margin-bottom: $space-4;
     }
   }
 
@@ -350,6 +383,12 @@ $page-width : 75%;
       width: 100%;
       height: 100%;
       background: $color-site-2;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
     }
   }
 
@@ -379,7 +418,7 @@ $page-width : 75%;
 
 .section-page-quote {
   position: relative;
-  margin: 12em 0;
+  margin: $margin-page 0;
   padding: $space-7 $space-3;
   background: $color-site-2;
   overflow: hidden;
@@ -468,7 +507,7 @@ $page-width : 75%;
   z-index: 0;
   @extend .page-center;
   position: relative;
-  margin: 12em auto;
+  margin: $margin-page auto;
   background: $color-bg-3;
 }
 
@@ -485,4 +524,186 @@ $page-width : 75%;
   margin-top: -$space-8;
   padding: $space-4;
   text-align: center;
+}
+
+@media only screen and (max-width: $mq-5) {
+  .header-page {
+    width: 100% !important;
+  }
+
+  .wrap-thumb-header-page {
+    width: 75%;
+  }
+
+  .wrap-header-page {
+    width: 60%;
+  }
+
+  .page-center {
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .content-section-page {
+    padding: $space-5;
+  }
+
+  .section-page {
+    margin: $margin-page 0;
+    &.active {
+
+      .deco-content-section-page {
+        width: 98%;
+      }
+    }
+  }
+
+  .title-section-page-download {
+    padding: 1em;
+    font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+
+  .wrap-thumb-header-page {
+    width: 100%;
+  }
+
+  .section-page {
+
+    figure {
+
+      margin-top: $space-1;
+      margin-bottom: $space-1;
+
+      &:first-child {
+        max-width: 50%;
+        margin-top: -8em;
+        margin-bottom: $space-1;
+      }
+
+      &.align-left {
+        margin-right: $space-2;
+      }
+
+      &.align-right {
+        margin-left: $space-2;
+      }
+
+    }
+/*
+    .wrap-thumb-content-section-page {
+      position: relative;
+
+      &:before {
+        @extend .width-inverse;
+        z-index: 2;
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: $color-site-2;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+    }*/
+
+    figcaption {
+      padding: $space-1 0;
+      font-size: 16px;
+
+      &:before {
+        top: 30px;
+      }
+    }
+  }
+
+  .content-section-page {
+    padding: $space-2;
+  }
+
+  .subtitle-section-page {
+    width: 50%;
+  }
+
+  .title-section-page-download {
+    font-size: 60px;
+  }
+
+}
+
+@media only screen and (max-width: $mq-3) {
+  .wrap-thumb-header-page {
+    position: relative;
+  }
+
+  .wrap-title-header-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: $space-5;
+    font-size: 0.5em;
+  }
+
+  .wrap-header-page {
+    padding: $space-5;
+    width: 100%;
+  }
+
+  .wrap-bottom-header-page {
+    display: none;
+  }
+
+  .section-page {
+    figure {
+
+      display: block;
+
+      &:first-child {
+        margin-top: $space-1;
+        margin-bottom: $space-1;
+        max-width: 100%;
+      }
+
+      &.align-left {
+        float: none;
+        margin-right: 0;
+      }
+
+      &.align-right {
+        float: none;
+        margin-left: 0;
+      }
+
+      .thumb-content-section-page {
+        width: 100%;
+      }
+
+    }
+  }
+
+  .subtitle-section-page {
+    width: 100%;
+  }
+
+  .title-section-page-download {
+    font-size: 30px;
+    padding: $space-4 $space-2;
+  }
+
+  .title-section-page {
+    font-size: 6em;
+  }
+
+  .quote {
+    font-size: 20px;
+  }
+
+
 }
