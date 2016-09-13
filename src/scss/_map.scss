@@ -21,13 +21,13 @@
   width: 100%;
   height: 100%;
 
-  img[src^='tpl/img/marker-1.svg']{
+  img[src^='src/img/marker-1.svg']{
     @extend .marker-alert-anim;
     width: 50px !important;
     height: 50px !important;
   }
 
-  img[src^='tpl/img/marker-2.svg'], img[src^='tpl/img/marker-3.svg']{
+  img[src^='src/img/marker-2.svg'], img[src^='src/img/marker-3.svg']{
     @extend .marker-anim;
     width: 50px !important;
     height: 50px !important;

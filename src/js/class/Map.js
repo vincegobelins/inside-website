@@ -17,7 +17,7 @@ class Map {
 
   constructor(data) {
 
-    self = this;
+    let self = this;
 
     // init map
     this.zoom = 15;
@@ -51,7 +51,7 @@ class Map {
       minWidth: 230,
       maxWidth: 230,
       minHeight: 190,
-      closeSrc: 'tpl/img/close.png'
+      closeSrc: 'src/img/close.png'
     });
 
     // init markers
@@ -137,13 +137,13 @@ class Map {
     let img = "";
 
     if(state == "live") {
-      img = 'tpl/img/marker-1.svg';
+      img = 'src/img/marker-1.svg';
     }
     if(state == "old") {
-      img = 'tpl/img/marker-2.svg';
+      img = 'src/img/marker-2.svg';
     }
     if(state == "new") {
-      img = 'tpl/img/marker-3.svg';
+      img = 'src/img/marker-3.svg';
     }
 
     let icon = {

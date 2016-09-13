@@ -168,7 +168,7 @@ class Slider {
   */
 
   sendEvent(pointer) {
-
+    /*
     let myEvent = new CustomEvent("nextSlide", {
       detail: {
     		pointer: pointer
@@ -178,6 +178,9 @@ class Slider {
     });
 
     document.dispatchEvent(myEvent);
+    */
+
+    $( "#body").trigger( "nextSlide", pointer );
   }
 
   /**

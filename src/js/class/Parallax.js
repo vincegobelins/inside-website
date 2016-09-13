@@ -69,7 +69,7 @@ class Parallax {
   */
 
   render() {
-    self = this;
+    let self = this;
     Array.prototype.forEach.call(this.activeItems, function(item) {
       //check if x transform exist
       let translateX = 0;

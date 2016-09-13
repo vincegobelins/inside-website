@@ -21,6 +21,10 @@ $margin-page : 10em;
   margin: 0 auto;
 }
 
+.content-page {
+  //margin: -$margin-page/2 0;
+}
+
 /* ====================== */
 /* Header */
 /* ====================== */
@@ -136,6 +140,12 @@ $margin-page : 10em;
 .section-page {
   margin: $margin-page 0;
 
+  &.section-page-white {
+    .deco-content-section-page {
+      background: white;
+    }
+  }
+
   &.section-page-blue {
     .deco-content-section-page {
       background: $color-site-2;
@@ -244,7 +254,7 @@ $margin-page : 10em;
   position: relative;
   padding: $space-7;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 2em;
 
   .date {
@@ -305,6 +315,20 @@ $margin-page : 10em;
   text-align: right;
 }
 
+.youtube {
+	position: relative;
+	padding-bottom: 54%;
+	padding-top: 25px;
+	height: 0;
+}
+.youtube iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
 /* For blue background */
 
 .section-page-blue {
@@ -334,6 +358,38 @@ $margin-page : 10em;
   }
 }
 
+/* For light background */
+
+.section-page-white {
+  .wrap-thumb-content-section-page:before {
+    background: $color-site-1;
+  }
+  .content-section-page {
+    padding: 0 $space-7;
+    color: $color-text-3;
+
+    .date {
+      color: $color-text-2;
+    }
+
+    strong {
+      color: $color-text-2;
+    }
+
+    h4 {
+      color: $color-text-2;
+    }
+
+    a {
+      color: $color-text-3;
+
+      &:before, &:after {
+        background: $color-site-1;
+      }
+    }
+  }
+}
+
 /* ====================== */
 /* Image */
 /* ====================== */
@@ -343,7 +399,7 @@ $margin-page : 10em;
   figure {
 
     margin-top: $space-2;
-    margin-bottom: $space-2;
+    margin-bottom: 0;
 
     &.align-left {
       float: left;
@@ -367,7 +423,7 @@ $margin-page : 10em;
 
     &:first-child {
       margin-top: -12em;
-      margin-bottom: $space-4;
+      margin-bottom: $space-2;
     }
   }
 
@@ -526,6 +582,53 @@ $margin-page : 10em;
   text-align: center;
 }
 
+/* ====================== */
+/* Links */
+/* ====================== */
+
+.section-page-link {
+  @extend .page-center;
+  position: relative;
+  margin: $margin-page auto;
+  text-align: center;
+}
+
+.title-section-page-link, .list-section-page-link {
+  display: inline-block;
+}
+
+.title-section-page-link {
+  position: relative;
+  padding: 0 60px;
+  font-size: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  color: $color-text-3;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 48px;
+    height: 13px;
+    background: url('../img/red-arrows.png');
+  }
+}
+
+.item-section-page-link {
+  float: left;
+}
+
+.link-section-page-link {
+  @extend .link;
+  margin: 0 $space-1;
+  font-size: 22px;
+  color: $color-text-3;
+}
+
+
 @media only screen and (max-width: $mq-5) {
   .header-page {
     width: 100% !important;
@@ -541,7 +644,8 @@ $margin-page : 10em;
 
   .page-center {
     width: 98%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .content-section-page {

@@ -50,12 +50,7 @@ class Loader {
   hide() {
     $(".loading").addClass("leave");
 
-    let myEvent = new CustomEvent("loaded", {
-      bubbles: true,
-    	cancelable: false
-    });
-
-    document.dispatchEvent(myEvent);
+    $( "#body").trigger( "loaded" );
   }
 
   /**

@@ -24,7 +24,6 @@ var store, app = {
     // make sur the video is played on mobile device
     let bgVideo = document.getElementById("video-intro");
     $( ".wrap-intro" ).on( "click", function() {
-      alert("clicked !");
       bgVideo.play();
     });
 
@@ -71,8 +70,15 @@ var store, app = {
       store.inView = new InView([sections, header, footer], false);
     }
 
-    // listen for events
-    document.addEventListener('nextSlide', this.updateSliders, false);
+    // add listener
+    $( "#body" ).on( "nextSlide", function( event, pointer ) {
+      app.updateSliders(pointer);
+    });
+
+    $( "#body" ).on( "loaded", function( event ) {
+      app.onLoad();
+    });
+
     document.addEventListener('loaded', this.onLoad, false);
 
     // render website
@@ -138,8 +144,7 @@ var store, app = {
   },
 
 
-  updateSliders: function(e){
-    let pointer = e.detail.pointer;
+  updateSliders: function(pointer){
     store.screenSlider.goTo(pointer);
   },
 
@@ -158,7 +163,6 @@ var store, app = {
     }
 
     store.inView.update();
-
     window.requestAnimationFrame(this.render.bind(this));
   }
 }
