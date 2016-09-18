@@ -134,6 +134,30 @@ $margin-page : 10em;
   width: 100%;
   height: auto;
 }
+
+/* Without header */
+
+.without-header {
+
+  .header-page {
+    margin: 0 auto;
+  }
+  
+  .title-header-page {
+    text-align: center;
+  }
+
+  .wrap-header-page {
+    float: none;
+    margin: -5em auto 0;
+    width: 60%;
+  }
+
+  .wrap-thumb-header-page, .wrap-bottom-header-page {
+    display: none;
+  }
+}
+
 /* ====================== */
 /* Content */
 /* ====================== */
@@ -143,6 +167,11 @@ $margin-page : 10em;
   &.section-page-white {
     .deco-content-section-page {
       background: white;
+    }
+    figcaption {
+      &:before {
+        background: url("../img/red-arrows.png") no-repeat;
+      }
     }
   }
 
@@ -178,6 +207,28 @@ $margin-page : 10em;
       }
     }
   }
+
+  &:nth-child(2n+1) {
+    .title-section-page, .wrap-subtitle-section-page {
+      @extend .align-left;
+    }
+
+    .first-thumb, .deco-content-section-page {
+      @extend .align-right;
+    }
+  }
+
+  &:nth-child(2n) {
+    .title-section-page, .wrap-subtitle-section-page {
+      @extend .align-right;
+    }
+
+    .first-thumb, .deco-content-section-page {
+      @extend .align-left;
+    }
+  }
+
+
 }
 
 .wrap-title-section-page {
@@ -365,7 +416,9 @@ $margin-page : 10em;
     background: $color-site-1;
   }
   .content-section-page {
-    padding: 0 $space-7;
+    padding-top: 0;
+    padding-bottom: 0;
+    //padding: 0 $space-7;
     color: $color-text-3;
 
     .date {
@@ -397,9 +450,9 @@ $margin-page : 10em;
 .section-page {
 
   figure {
-
+    @extend .clearfix;
     margin-top: $space-2;
-    margin-bottom: 0;
+    margin-bottom: $space-3;
 
     &.align-left {
       float: left;
@@ -423,7 +476,7 @@ $margin-page : 10em;
 
     &:first-child {
       margin-top: -12em;
-      margin-bottom: $space-2;
+      margin-bottom: $space-5;
     }
   }
 
@@ -747,6 +800,13 @@ $margin-page : 10em;
     position: relative;
   }
 
+  .without-header {
+    .wrap-title-header-page {
+      position: relative;
+      text-align: center;
+    }
+  }
+
   .wrap-title-header-page {
     position: absolute;
     top: 0;
@@ -755,6 +815,7 @@ $margin-page : 10em;
     font-size: 0.5em;
   }
 
+  .without-header .wrap-header-page,
   .wrap-header-page {
     padding: $space-5;
     width: 100%;
@@ -771,7 +832,7 @@ $margin-page : 10em;
 
       &:first-child {
         margin-top: $space-1;
-        margin-bottom: $space-1;
+        margin-bottom: $space-3;
         max-width: 100%;
       }
 

@@ -26,7 +26,7 @@ class Parallax {
         id : i,
         obj: itemsHTML[i],
         speed: itemsHTML[i].dataset.speed,
-        translateX: itemsHTML[i].dataset.x,
+        height: itemsHTML[i].offsetHeight,
         step: 0
       }
 
@@ -71,21 +71,15 @@ class Parallax {
   render() {
     let self = this;
     Array.prototype.forEach.call(this.activeItems, function(item) {
-      //check if x transform exist
-      let translateX = 0;
-      if(item.translateX) {
-        translateX = item.translateX;
-      }
-
-      let position = item.obj.getBoundingClientRect().height/2 - item.obj.getBoundingClientRect().top;
-      let offset = ( position * 100 / self.windowHeight) * item.speed;
-      let transform = 'translate3d(' + 0 + ','+ offset.toFixed(2) + 'px,' + 0 + ')';
+      let scrollPosition = $(window).scrollTop();
+      let elPosition = $(item.obj).offset().top ;
+      let position = (elPosition - scrollPosition - 400) * item.speed/10;
+      let transform = 'translate3d(' + 0 + ','+ position.toFixed(2) + 'px,' + 0 + ')';
       item.obj.style["transform"] = transform;
       item.obj.style["webkitTransform"] = transform
       item.obj.style["mozTransform"] = transform;
       item.obj.style["msTransform"] = transform;
     });
 
-    requestAnimationFrame(this.render.bind(this));
   }
 }

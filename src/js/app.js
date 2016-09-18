@@ -160,6 +160,7 @@ var store, app = {
   render: function() {
     if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
       store.parallax.update();
+      store.parallax.render();
     }
 
     store.inView.update();
